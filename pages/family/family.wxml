@@ -1,0 +1,67 @@
+<image src="/images/beta.jpg" class="background" mode='widthFix' />
+<view class='family row-box' bindtap='click'>
+
+  <view class='title clearfix'>
+    <text class='tag'>家庭成员 ( 3 / 5 )</text>
+    <icon class='iconfont icon-add'></icon>
+  </view>
+
+  <view>
+    <image src='/images/avatar_user_0.png' />
+    <view>
+      <text>姓名:</text>
+      <text>小明</text>
+    </view>
+    <view>
+      <text>出生:</text>
+      <text>2018-11-12</text>
+    </view>
+    <view>
+      <text>手机号:</text>
+      <text>13345829695</text>
+    </view>
+    <view class='button-list'>
+      <button bindtap='click' data-name="小明">删除</button>
+    </view>
+  </view>
+
+  <view>
+    <image src='/images/avatar_user_0.png' />
+    <view>
+      <text>姓名:</text>
+      <text>小明</text>
+    </view>
+    <view>
+      <text>出生:</text>
+      <text>2018-11-12</text>
+    </view>
+    <view>
+      <text>手机号:</text>
+      <text>13345829695</text>
+    </view>
+    <view class='button-list'>
+      <button>删除</button>
+    </view>
+  </view>
+
+  <view>
+    <image src='/images/avatar_user_0.png' />
+    <view>
+      <text>姓名:</text>
+      <text>小明</text>
+    </view>
+    <view>
+      <text>出生:</text>
+      <text>2018-11-12</text>
+    </view>
+    <view>
+      <text>手机号:</text>
+      <text>13345829695</text>
+    </view>
+    <view class='button-list'>
+      <button>删除</button>
+    </view>
+  </view>
+
+</view>
+<msg data="{{toast}}" />
