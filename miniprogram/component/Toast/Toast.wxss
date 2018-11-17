@@ -1,0 +1,107 @@
+@import "../../app.wxss";
+
+.toast {
+  position: fixed;
+  bottom: 5vh;
+  right: 0;
+  padding-right: 10px;
+  min-width: 50vw;
+  line-height: 10vw;
+  background-color: white;
+  box-shadow: 5px 10px 5px -5px rgba(0, 0, 0, 0.3);
+  border-radius: 5px 0 0 5px;
+  transition: 1s;
+  transform: translateX(100%);
+}
+
+.select {
+  animation: 0.5s 1s marTop;
+  animation-fill-mode: forwards;
+}
+
+@keyframes marTop {
+  to {
+    bottom: calc(10vh + 30rpx);
+  }
+}
+
+.toast-show {
+  transform: translateX(0);
+}
+
+.toast.error {
+  background-color: #ffa7a1;
+  color: red;
+}
+
+.toast.success {
+  background-color: #a7ffab;
+  color: #00b12c;
+}
+
+.toast.warning {
+  background-color: #ffcb9a;
+  color: #cc7400;
+}
+
+.toast.zhiwen, .saoma {
+  background-color: #aafff4;
+  color: #0087b1;
+}
+
+.toast.loading {
+  background-color: #aeadff;
+  color: #0003a8;
+}
+
+.toast icon {
+  margin: 0 10px;
+  vertical-align: middle;
+  font-size: 25px;
+}
+
+.toast text {
+  vertical-align: middle;
+  font-size: 15px;
+}
+
+.select + .toast {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  height: 10vw;
+  min-width: 50vw;
+  max-height: 0;
+  padding: 0 10rpx;
+  animation: 0.5s 1s maxH;
+  animation-fill-mode: forwards;
+}
+
+@keyframes maxH {
+  to {
+    transform: translateX(0);
+    max-height: 10vw;
+  }
+}
+
+.toast button {
+  display: inline-block;
+  padding: 5rpx 10rpx;
+  line-height: 5vh;
+  color: white;
+}
+
+.toast button.green {
+  background-color: #00b100;
+}
+
+.toast button.red {
+  background-color: #f11c1c;
+}
+
+.toast button {
+  background-color: #999;
+}

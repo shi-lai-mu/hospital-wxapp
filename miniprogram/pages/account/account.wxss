@@ -1,0 +1,67 @@
+.account {
+  position: relative;
+  margin-top: 20px;
+  padding: 20rpx 0;
+}
+
+.backgroundColor {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 120rpx;
+  background-color: #b5cfff;
+}
+
+.notPage, .notPage icon {
+  color: #ddd !important;
+}
+
+.account image {
+  width: 120rpx;
+  height: 120rpx;
+  margin: 0 30rpx;
+  vertical-align: middle;
+  border-radius: 60rpx;
+  box-shadow: 2px 2px 10px var(--shadow-color);
+}
+
+.account>view {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  float: right;
+  width: calc(100% - 180rpx);
+  height: 120rpx;
+}
+
+.account>view text {
+  width: 100%;
+  color: #888;
+}
+
+.account .nickName {
+  color: #333;
+  font-size: 1.2rem;
+  text-shadow: 1px 2px 2px var(--shadow-color);
+}
+
+.row-box:nth-child(1) {
+  margin-bottom: 50rpx;
+}
+
+.row-box:nth-child(n+2) {
+  margin-top: 20rpx;
+}
+
+.get-user-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  color: transparent;
+}

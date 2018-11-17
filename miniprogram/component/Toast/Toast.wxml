@@ -1,0 +1,8 @@
+<view class="toast {{msg._type}} {{msg._text?'toast-show':''}} {{msg.select?'select':''}}">
+  <icon class="{{msg._icon?'iconfont icon-'+msg._icon:''}}"></icon>
+  <text>{{msg._text}}{{msg.icon?'iconfont icon-'+msg.icon:''}}</text>
+</view>
+
+<view class="toast {{msg._type}}" bindtap='selectClick'>
+  <button wx:for="{{msg.select}}" wx:key="**this" class='{{item.color}}' data-fn="{{item._fn}}">{{item.text}}</button>
+</view>

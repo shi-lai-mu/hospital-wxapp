@@ -1,0 +1,42 @@
+{
+	"description": "项目配置文件",
+  "miniprogramRoot": "miniprogram/",
+  "cloudfunctionRoot": "cloud/",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"uglifyFileName": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.3.2",
+	"appid": "wx5db8bb3e34cd9234",
+	"projectname": "%E7%94%A8%E8%83%BD%E5%85%AC%E5%8F%B8",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": []
+		}
+	}
+}
