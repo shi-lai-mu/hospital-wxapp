@@ -1,4 +1,5 @@
 .account {
+  position: relative;
   margin-top: 20px;
   padding: 20rpx 0;
 }
@@ -53,4 +54,14 @@
 
 .row-box:nth-child(n+2) {
   margin-top: 20rpx;
+}
+
+.get-user-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  color: transparent;
 }

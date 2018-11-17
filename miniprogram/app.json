@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/account/account",
     "pages/index/index",
     "pages/login/login",
-    "pages/family/family",
-    "pages/account/account"
+    "pages/family/family"
   ],
   "window": {
     "backgroundTextStyle": "light",

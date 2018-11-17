@@ -1,0 +1,1 @@
+exports.main = async (event, context) => event.userInfo;

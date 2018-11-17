@@ -1,10 +1,11 @@
 <view class='backgroundColor'></view>
 <view class="account row-box">
-  <image src="/images/avatar_1.jpg"></image>
+  <image src="{{userInfo.avatarUrl}}"></image>
   <view>
-    <text class="nickName">测试中</text>
-    <text>病号: 1000</text>
+    <text class="nickName">{{userInfo.nickName}}</text>
+    <text>病号: ----</text>
   </view>
+  <button class='get-user-info' open-type='getUserInfo' bindgetuserinfo='settingAccount'>s</button>
 </view>
 <view class="row-box four-list clearfix">
   <view>

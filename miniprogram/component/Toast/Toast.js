@@ -1,5 +1,5 @@
-// component/Toast.js
-// 组件作者: 郑余国
+// component/Toast.js 
+// 组件作者: 郑余国     https://gitee.com/slm47888/wechat_applet__component_toast
 
 // 任务列表
 let Task = [], show = null, self = null, hide = null, fn = [];
@@ -23,7 +23,7 @@ Component({
     saoma: 'saoma',
   },
   methods: {
-    selectClick: function(e) {
+    selectClick: function (e) {
       // 点击按钮时执行函数
       let Id = e.target.dataset.fn;
       fn[Id - 1] && fn[Id - 1]();
@@ -55,7 +55,6 @@ Component({
 
 function Message(data) {
   if (typeof data !== 'object') throw Error('data 必须为 Object!');
-  if (!data.text) throw Error('data.text 值不能为空!');
   // 隐藏时间或持续显示 否则 1500ms 后消失
   data.hideTime = (data.hideTime || data.hideTime === false) ? data.hideTime : 1500;
   // 修复耦合度 短时间内最多重复两条相同消息
@@ -69,7 +68,6 @@ function Message(data) {
     icon: self.data[data.icon] || "",
     back: data.icon,
     hide: data.hideTime,
-    // layer: data.layer || 1,
     callback: data.callback,
     select: data.select || false
   });
@@ -95,7 +93,6 @@ Message.prototype = {
           select: after['select']
         }
       });
-      console.log(self.data.msg)
       // 如果Toast不是false则有消失时间
       after['hide'] && (hide = setTimeout(this.hide, after['hide']));
       this.data = after;
