@@ -1,0 +1,25 @@
+<view class="search-box row-box {{searchClass}}">
+  <input placeholder="搜索医生" placeholderClass="search-placeholder"></input>
+  <icon class="iconfont icon-sousuo"></icon>
+</view>
+<view class='tag row-box'>按照科室查找</view>
+<view class='row-box type-list'>
+  <view class='left'>
+    <view>xxxx</view>
+    <view>xxxx</view>
+    <view>xxxx</view>
+    <view>xxxx</view>
+    <view>xxxx</view>
+    <view>xxxx</view>
+    <view>xxxx</view>
+  </view>
+  <view class='right'>
+    <view>xssx</view>
+    <view>xxxx</view>
+    <view>xxxx</view>
+    <view>xxxx</view>
+    <view>xxxx</view>
+    <view>xxxx</view>
+    <view>xxxx</view>
+  </view>
+</view>

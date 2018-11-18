@@ -3,10 +3,8 @@
   <input placeholder="按专家名字搜索" placeholderClass="search-placeholder" bindtap='searchFocus' bindblur='searchBlur'></input>
   <icon class="iconfont icon-sousuo"></icon>
   <view class='search-list'>
-    <view>
-      <text>mm</text>xxxaassss 医院</view>
-    <view>
-      <text>mmmmm</text>ssss 医院</view>
+    <view><text>mm</text>xxxaassss 医院</view>
+    <view><text>mmmmm</text>ssss 医院</view>
     <view>xxx 医院</view>
     <view>sss 医院</view>
     <view>cxcxasd 医院</view>
@@ -34,8 +32,10 @@
     </view>
   </view>
   <view wx:for="{{department}}" wx:key="**this">
-    <icon class="iconfont icon-{{item.icon}}"></icon>
-    <text>{{item.tag}}</text>
+    <navigator url='../search/search?tag={{item.tag}}'>
+      <icon class="iconfont icon-{{item.icon}}"></icon>
+      <text>{{item.tag}}</text>
+    </navigator>
   </view>
 </view>
 <view class="four-list row-box clearfix">

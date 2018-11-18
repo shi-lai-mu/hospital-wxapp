@@ -123,7 +123,6 @@ page {
   background-color: #fff;
   border: 1px solid #eee;
 }
-
 .color1 {
   background-image: linear-gradient(135deg, #FFA7E7, #EA6362);
 }
@@ -149,6 +148,37 @@ page {
   background-image: linear-gradient(135deg, #F57C00, #CF360C);
 }
 
+/* 搜索栏 */
+
+.search-box {
+  position: absolute;
+  top: 270rpx;
+  width: 90vw;
+  margin: 0 5vw;
+  padding: 0;
+  background-color: white;
+  transition: .25s;
+}
+
+.search-box input {
+  height: 70rpx;
+  padding: 0 40px 0 .5em;
+  color: #555;
+}
+
+.search-box input + icon {
+  position: absolute;
+  top: 0;
+  right: 25rpx;
+  line-height: 70rpx;
+  font-size: 40rpx;
+  color: #888;
+}
+
+.search-placeholder {
+  color: #ddd;
+}
+/* 横向盒子 */
 .row-list {
   margin-top: 20px;
   color: #777;

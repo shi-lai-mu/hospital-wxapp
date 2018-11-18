@@ -60,7 +60,7 @@ Page({
               if (!res.data.error) { //user not exist
                 
               } else {
-                this.setData({
+                /*this.setData({
                   toast: {
                     text: "检测到您还未绑定主账号!即将跳转...",
                     icon: "loading",
@@ -69,7 +69,7 @@ Page({
                       wx.navigateTo({ url: '../login/login' });
                     }
                   }
-                });
+                });*/
               }
             }
           });

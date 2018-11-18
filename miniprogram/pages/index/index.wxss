@@ -2,35 +2,6 @@ page {
   margin-bottom: 30rpx;
 }
 
-.search-box {
-  position: absolute;
-  top: 270rpx;
-  width: 90vw;
-  margin: 0 5vw;
-  padding: 0;
-  background-color: white;
-  transition: .25s;
-}
-
-.search-box input {
-  height: 70rpx;
-  padding: 0 40px 0 .5em;
-  color: #555;
-}
-
-.search-box input + icon {
-  position: absolute;
-  top: 0;
-  right: 25rpx;
-  line-height: 70rpx;
-  font-size: 40rpx;
-  color: #888;
-}
-
-.search-placeholder {
-  color: #ddd;
-}
-
 .inputFocus {
   position: fixed;
   transform: translateY(-100px);

@@ -1,0 +1,36 @@
+.search-box {
+  top: 25rpx;
+}
+.tag {
+  position: relative;
+  display: inline-block;
+  width: 90vw;
+  margin: 110rpx 0 0 5vw;
+  padding: 10rpx 20rpx;
+  text-align: center;
+  color: #6d6d6d;
+  background-color: #f8f8f8;
+  border-radius: 5px 5px 0 0;
+  box-sizing: border-box;
+  z-index: -1;
+}
+.type-list {
+  display: flex;
+  overflow: auto;
+  height: calc(100vh - 190rpx);
+  background-color: white;
+  border-radius: 5px;
+}
+.type-list > view > view {
+  padding: 10rpx;
+  border-bottom: 1px solid #eee; 
+}
+.type-list .left {
+  flex: 3;
+  margin: 10rpx 0; 
+  border-right: 2px dashed #eee;
+}
+.type-list .right {
+  flex: 7;
+  margin: 10rpx 0; 
+}
