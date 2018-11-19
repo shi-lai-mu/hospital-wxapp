@@ -1,4 +1,7 @@
 <image class="background" mode="widthFix" src="../../images/121.png"></image>
+
+
+
 <view class="search-box row-box {{searchClass}}">
   <input placeholder="按专家名字搜索" placeholderClass="search-placeholder" bindtap='searchFocus' bindblur='searchBlur'></input>
   <icon class="iconfont icon-sousuo"></icon>
@@ -13,46 +16,70 @@
     <view>cc 医院</view>
   </view>
 </view>
+
+
+
 <view class="consulting-type row-box clearfix">
+
   <view>
     <icon class="iconfont icon-zhuanjia"></icon>
     <text>专家咨询</text>
   </view>
+
   <view>
     <icon class="iconfont icon-Micon-zixun"></icon>
     <text>快速咨询</text>
   </view>
+
 </view>
+
+
+
 <view class="four-list row-box clearfix">
-  <view class="tag">
+
+  <view class="four-list-tag">
     <text>按科室选择</text>
-    <view>
+    <view class='four-list-all'>
       <text>更多</text>
       <icon class="iconfont icon-fangxiangyou"></icon>
     </view>
   </view>
-  <view wx:for="{{department}}" wx:key="**this">
-    <navigator url='../search/search?tag={{item.tag}}'>
-      <icon class="iconfont icon-{{item.icon}}"></icon>
-      <text>{{item.tag}}</text>
-    </navigator>
+  
+  <view class="four-list-icon">
+    <view wx:for="{{department}}" wx:key="**this">
+      <navigator url='../search/search?tag={{item.tag}}'>
+        <icon class="iconfont icon-{{item.icon}}"></icon>
+        <text>{{item.tag}}</text>
+      </navigator>
+    </view>
   </view>
+
 </view>
+
+
+
 <view class="four-list row-box clearfix">
-  <view class="tag">
+
+  <view class="four-list-tag">
     <text>推荐医生</text>
-    <view>
+    <view class='four-list-all'>
       <text>更多</text>
       <icon class="iconfont icon-fangxiangyou"></icon>
     </view>
   </view>
-  <view>
-    <image src="/images/avatar_1.jpg"></image>
-    <text>胡铖杰</text>
+
+  <view class="four-list-icon">
+    <view>
+      <image src="/images/avatar_1.jpg"></image>
+      <text>胡铖杰</text>
+    </view>
+    <view>
+      <image src="/images/avatar_0.jpg"></image>
+      <text>大佬</text>
+    </view>
   </view>
-  <view>
-    <image src="/images/avatar_0.jpg"></image>
-    <text>大佬</text>
-  </view>
+
 </view>
+
+
 <msg data="{{msg}}"></msg>
