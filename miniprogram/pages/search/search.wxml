@@ -2,24 +2,24 @@
   <input placeholder="搜索医生" placeholderClass="search-placeholder"></input>
   <icon class="iconfont icon-sousuo"></icon>
 </view>
-<view class='tag row-box'>按照科室查找</view>
-<view class='row-box type-list'>
-  <view class='left'>
-    <view>xxxx</view>
-    <view>xxxx</view>
-    <view>xxxx</view>
-    <view>xxxx</view>
-    <view>xxxx</view>
-    <view>xxxx</view>
-    <view>xxxx</view>
+<view class="type-list-tag row-box">按照科室查找</view>
+<view class="row-box type-list">
+  <view class="type-list-left">
+    <view
+      wx:for="{{all}}"
+      class="{{index == listSelect ? 'select' : '' }}"
+      data-i="{{index}}"
+      wx:key="**this"
+      bindtap="unSelect"
+    >
+      <icon class="iconfont {{item.icon}}"></icon>
+      <text>{{item.tag}}</text>
+    </view>
   </view>
-  <view class='right'>
-    <view>xssx</view>
-    <view>xxxx</view>
-    <view>xxxx</view>
-    <view>xxxx</view>
-    <view>xxxx</view>
-    <view>xxxx</view>
-    <view>xxxx</view>
-  </view>
+  
+  <block wx:for="{{all}}" wx:if="{{index == listSelect}}" wx:key="**this">
+    <view class="type-list-right">
+      <view wx:for="{{item.list}}" wx:key="**this">{{item.name}}</view>
+    </view>
+  </block>
 </view>

@@ -5,7 +5,10 @@ Page({
     version: "1.0.0",
     userInfo: {
       nickName: "点击登录",
-      avatarUrl: "/images/avatar_1.jpg"
+      avatarUrl: "/images/avatar_1.jpg",
+      bind_account: {
+        zxyy_id: '------'
+      }
     }
   },
   onLoad: function(a) {
@@ -23,6 +26,7 @@ Page({
     Object.defineProperty(this.data, 'userInfo', {
       set: data => {
         app.globalData.userInfo = data;
+        console.log(data);
       }
     });
   },
@@ -35,6 +39,8 @@ Page({
       }
     });
   },
+
+  // 提示版本
   printVersion: function() {
     this.setData({
       toast: {
@@ -44,7 +50,11 @@ Page({
       }
     });
   },
-  settingAccount: function(res) {
+
+  // 设置账号
+  settingAccount: function (res) {
+    if(this.data.userInfo) return;
+    
     // 兼容事件处理
     res.detail && (res = res.detail);
 
@@ -59,27 +69,21 @@ Page({
       wx.cloud.callFunction({
         name: 'getOpenId',
         complete: data => {
-          res.userInfo.id = data.result;
 
-          /////bate openid
-          res.userInfo.id.openId = "test";
           // 拉取主系统数据
           let getLoginData = this.login(data.result.openId, login => {
 
-            res.userInfo.login = login;
-
             // 用户是否注册
             if (login) {
+              /////bate openid
+              login.xcxid = 1;
 
               // 获取账号数据
-              this.getAccountData(res.userInfo, info => {
-                res.userInfo.info = info;
-                res.userInfo.endTime = res.userInfo.login.token.split('-')[2] || (new Date()).valueOf() + 259200;
-                this.setData({ userInfo: res.userInfo });
-                wx.setStorage({
-                  key: 'userInfo',
-                  data: res.userInfo,
-                });
+              this.getAccountData(login, info => {
+                let user = Object.assign(res.userInfo, login, info);
+                res.userInfo.endTime = user.token.split('-')[2] || (new Date()).valueOf() + 259200;
+                this.setData({ userInfo: user });
+                wx.setStorage({ key: 'userInfo', data: user });
               });
             } else {
 
@@ -100,6 +104,7 @@ Page({
       });
     }
   },
+
   /**
    * 登录函数
    * @openId string 小程序ID
@@ -112,6 +117,7 @@ Page({
       success: res => callback && !res.data.error ? callback(res.data) : callback(false)
     });
   },
+
   /**
    * 注册函数
    * @openId string 小程序ID
@@ -124,15 +130,16 @@ Page({
       success: res => callback && !res.data.error ? callback(res.data) : callback(false)
     });
   },
+
   /**
    * 注册函数
    * @openId string 小程序ID
    * @callback object 回调函数
    * @return 主系统ID
    */
-  getAccountData: function (userInfo, callback) {
+  getAccountData: function (login, callback) {
     wx.request({
-      url: `http://${app.globalData.ip}/api/getUserDetail/${userInfo.login.xcxid}/?token=${userInfo.login.token}`,
+      url: `http://${app.globalData.ip}/api/getUserDetail/${login.xcxid}/?token=${login.token}`,
       success: res => callback && !res.data.error ? callback(res.data) : callback(false)
     });
   }

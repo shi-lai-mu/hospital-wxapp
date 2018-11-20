@@ -1,7 +1,7 @@
 .search-box {
   top: 25rpx;
 }
-.tag {
+.type-list-tag {
   position: relative;
   display: inline-block;
   width: 90vw;
@@ -15,22 +15,65 @@
   z-index: -1;
 }
 .type-list {
-  display: flex;
-  overflow: auto;
+  position: relative;
+  overflow: hidden;
   height: calc(100vh - 190rpx);
   background-color: white;
   border-radius: 5px;
 }
-.type-list > view > view {
+.type-list-left {
+  width: 35%;
+  height: 100%;
+}
+.type-list-left icon {
+  margin: -10rpx 10rpx 0 0;
+  font-size: 1em;
+  color: #555;
+}
+.type-list-right {
+  overflow-x: hidden;
+  right: 0;
+  width: 65%;
+  height: 100%;
+}
+.type-list-left, .type-list-right {
+  position: absolute;
+}
+.type-list-left > view, .type-list-right > view {
   padding: 10rpx;
-  border-bottom: 1px solid #eee; 
+  line-height: 40rpx;
+  border-bottom: 1px solid #d8d8d8;
 }
-.type-list .left {
-  flex: 3;
-  margin: 10rpx 0; 
-  border-right: 2px dashed #eee;
+.type-list-right > view {
+  border-bottom: 1px solid #eee;
 }
-.type-list .right {
-  flex: 7;
-  margin: 10rpx 0; 
+view.select {
+  margin-top: -1px;
+  color: #444;
+  background-color: white;
+  border-top: 1px solid #fff;
+  border-bottom: none;
+}
+.select::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin-top: 50rpx;
+  background-color: rgba(0, 0, 0, .1);
+  border-top-right-radius: 8px;
+  pointer-events: none;
+}
+.select::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin-top: -10rpx;
+  background-color: rgba(0, 0, 0, .1);
+  border-bottom-right-radius: 8px;
+  transform: translateY(-100%);
+  pointer-events: none;
 }
