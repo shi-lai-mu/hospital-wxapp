@@ -1,7 +1,8 @@
 Page({
   data: {
     shouji: "",
-    suo: ""
+    suo: "",
+    phone: ""
   },
   onLoad: function (t) { },
   inputFocus: function (t) {

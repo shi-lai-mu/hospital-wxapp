@@ -24,6 +24,10 @@
 .type-list-left {
   width: 35%;
   height: 100%;
+  font-size: 1em;
+}
+.type-list-left text {
+  pointer-events: none;
 }
 .type-list-left icon {
   margin: -10rpx 10rpx 0 0;

@@ -135,9 +135,10 @@ Page({
   },
 
   unSelect: function(e) {
-    this.setData({
-      listSelect: e.target.dataset.i
-    });
-    console.log(this.data.listSelect)
+    if (e.target.dataset.i) {
+      this.setData({
+        listSelect: e.target.dataset.i
+      });
+    }
   }
 })

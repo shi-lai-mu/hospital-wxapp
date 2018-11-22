@@ -31,11 +31,12 @@ page {
 }
 
 input {
-  width: calc(80vw - 6em);
+  width: 80vw;
   padding: 0 3em 10rpx;
   margin: 0 auto;
   color: var(--main-icon-color);
   border-bottom: 2px solid #eee;
+  box-sizing: border-box;
   vertical-align: middle;
   transition: 0.5s linear;
 }
@@ -53,6 +54,9 @@ input~label {
   left: 3em;
   color: #ccc;
   transition: 0.5s linear;
+}
+.placeholder {
+  color: #ccc;
 }
 
 .form>.changed input {
@@ -92,4 +96,19 @@ input~label {
 }
 .form > button:active {
   box-shadow: 0 5px 15px 2px rgba(0, 0, 0, .4);
+}
+
+.form-input-left {
+  float: left;
+  width: 50vw;
+}
+.form-input-left ~ icon {
+  left: 0;
+}
+.form-input-right {
+  float: right;
+  width: calc(20vw - 20px);
+  padding: 0 20px;
+  margin-top: -2px;
+  box-sizing: content-box;
 }
