@@ -70,7 +70,7 @@ Page({
         complete: data => {
 
           // 拉取主系统数据 data.result.openId
-          data.result.openId = "test666"
+          data.result.openId = "test7"
           let getLoginData = () => {
             app.request(data.result.openId, 'login', login => {
 
@@ -87,10 +87,7 @@ Page({
                     this.setData({ userInfo: user });
                     wx.setStorage({ key: 'userInfo', data: user });
                   } else {
-                    // app.request('13345829695/?token=' + login.data.token, 'api/bindExistAccount/', res => {
-                    //   console.log(res)
-                    // });
-                    wx.navigateTo({
+                    wx.redirectTo({
                       url: '../login/login?bindMode=true&token=' + login.data.token
                     });
                   }

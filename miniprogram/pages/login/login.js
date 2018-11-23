@@ -54,11 +54,22 @@ Page({
         if (!mssion_id) return this.setData({
           toast: { text: '未找到验证信息!', icon: 'error' }
         });
-        app.request(mssion_id + '/' + value.codes + '/?token=' + this.data.token, 'finishBind', res => {
-          console.log(res);
+        app.request(`${mssion_id}/${value.codes}/?token=${this.data.token}`, 'finishBind', res => {
+          if (res.error) {
+            this.setData({
+              toast: { text: '验证码错误!', icon: 'error' }
+            });
+          } else {
+            this.setData({
+              toast: { text: '验证码错误!', icon: 'error' }
+            });
+            wx.navigateBack({
+              delta: 1
+            });
+          }
         });
       } else {
-        app.request(value.phone + '/?token=' + this.data.token, 'existAccount', res => {
+        app.request(`${value.phone}/?token=${this.data.token}`, 'existAccount', res => {
           if (res.data) {
             mssion_id = res.data.mssion_id;
             this.setData({
