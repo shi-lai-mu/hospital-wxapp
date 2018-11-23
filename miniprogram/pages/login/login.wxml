@@ -7,30 +7,45 @@
 <image class="logo" src="/images/logo2.jpg"></image>
 
 
-<view class="form">
+<!-- <view class="form"> -->
 
-  <view class="{{shouji}}">
+  <!-- <view class="{{shouji}}" wx:if="{{!bindMode}}">
     <input bindblur="inputBlur" bindtap="inputFocus" data-id="shouji" type="text"></input>
     <icon class="iconfont icon-shouji"></icon>
     <label>手机</label>
   </view>
-
-  <view class="{{phone}}">
-    <input bindblur="inputBlur" bindtap="inputFocus" data-id="phone" type="number" class='form-input-left'></input>
-    <icon class="iconfont icon-duanxin"></icon>
-    <label>手机</label>
-    <input bindblur="inputBlur" bindtap="inputFocus" data-id="phone" type="text" class='form-input-right' placeholder='验证码' placeholder-class='placeholder'></input>
-  </view>
-
-  <view class="{{suo}}">
+  <view class="{{suo}}" wx:if="{{!bindMode}}">
     <input bindblur="inputBlur" bindtap="inputFocus" data-id="suo" type="password"></input>
     <icon class="iconfont icon-suo"></icon>
     <label>密码</label>
-  </view>
+  </view> -->
+  <!-- <button bindtap="login" wx:if="{{!bindMode}}">登录</button> -->
 
-  <button bindtap="login">登录</button>
+  <form bindsubmit='bind' wx:if="{{bindMode}}">
+    <view class="{{phone}}">
+      <input bindblur="inputBlur" bindtap="inputFocus" data-id="phone" type="number" name="phone"></input>
+      <icon class="iconfont icon-shouji"></icon>
+      <label>手机</label>
+    </view>
+    
+    <view class="{{codes}} clearfix">
+      <input
+        bindblur="inputBlur"
+        bindtap="inputFocus"
+        data-id="codes"
+        name="codes"
+        class='{{!codes ? "form-input-left" : ""}}'
+      ></input>
+      <icon class="iconfont icon-duanxin"></icon>
+      <label>验证码</label>
+      <button class='{{!codes ? "form-button-right" : "none"}}' form-type='submit'>发送</button>
+    </view>
 
-</view>
+    <button form-type='submit'>绑定</button>
+
+  </form>
+
+<!-- </view> -->
 
 
 <msg data="{{toast}}"></msg>

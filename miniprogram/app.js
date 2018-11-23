@@ -5,7 +5,9 @@ App({
     url: {
       register: 'register/',
       login: 'login/',
-      accountData: 'getUserDetail/?token='
+      accountData: 'getUserDetail/?token=',
+      existAccount: 'bindExistAccount/',
+      finishBind: 'finishBind/'
     }
   },
   onLaunch: function () {
@@ -20,8 +22,7 @@ App({
       url: url,
       success: res => {
         callback && !res.error ? callback(res) : callback(false);
-      },
-      fail: err => new Error(err)
+      }
     });
   }
 });

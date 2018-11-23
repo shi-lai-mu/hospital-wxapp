@@ -31,12 +31,6 @@ Page({
   },
   onLoad: function () {
 
-    wx.request({
-      url: 'http://107.173.140.29/api/getUserDetail/1',
-      success: function (res) {
-        console.log(res)
-      }
-    })
   },
   searchFocus: function () {
     this.setData({

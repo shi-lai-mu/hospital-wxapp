@@ -68,7 +68,7 @@ function Message(data) {
   if (!data.text) throw Error('data.text 值不能为空!');
 
   // 隐藏时间或持续显示 否则 1500ms 后消失
-  data.hideTime = (data.hideTime || data.hideTime === false) ? data.hideTime : 1500;
+  data.hideTime = (data.hideTime || data.hideTime === false) ? data.hideTime : 2500;
 
   // 加入任务列队
   Task.push({
@@ -76,7 +76,6 @@ function Message(data) {
     icon: self.data[data.icon] || "",
     back: data.icon,
     hide: data.hideTime,
-    // layer: data.layer || 1,
     callback: data.callback
   });
 

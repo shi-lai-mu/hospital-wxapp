@@ -70,32 +70,40 @@ Page({
         complete: data => {
 
           // 拉取主系统数据 data.result.openId
-          let getLoginData = app.request(data.result.openId, 'login', login => {
+          data.result.openId = "test666"
+          let getLoginData = () => {
+            app.request(data.result.openId, 'login', login => {
 
-            // 用户是否注册
-            if (login.data.token) {
+              // 用户是否注册
+              if (login.data.token) {
 
-              // 获取账号数据
-              app.request(login.data.token, 'accountData', info => {
-                let user = Object.assign(res.userInfo, login.data, info.data);
-                
-                // 判断绑定
-                if (user.bind_id) {
-                  res.userInfo.endTime = user.token.split('-')[2] || (new Date()).valueOf() + 259200;
-                  this.setData({ userInfo: user });
-                  wx.setStorage({ key: 'userInfo', data: user });
-                } else {
-                  app.request('13345829695/?token=' + login.data.token, 'api/bindExistAccount/', res => {
-                    console.log(res)
-                  });
-                }
-              });
-            } else {
+                // 获取账号数据
+                app.request(login.data.token, 'accountData', info => {
+                  let user = Object.assign(res.userInfo, login.data, info.data);
+                  
+                  // 判断绑定
+                  if (user.bind_id) {
+                    res.userInfo.endTime = user.token.split('-')[2] || (new Date()).valueOf() + 259200;
+                    this.setData({ userInfo: user });
+                    wx.setStorage({ key: 'userInfo', data: user });
+                  } else {
+                    // app.request('13345829695/?token=' + login.data.token, 'api/bindExistAccount/', res => {
+                    //   console.log(res)
+                    // });
+                    wx.navigateTo({
+                      url: '../login/login?bindMode=true&token=' + login.data.token
+                    });
+                  }
+                });
+              } else {
 
-              // 注册账号
-              app.request(data.result.openId, 'register', getLoginData);
-            }
-          });
+                // 注册账号
+                app.request(data.result.openId, 'register', getLoginData);
+              }
+            });
+          };
+
+          getLoginData();
 
         }
       });

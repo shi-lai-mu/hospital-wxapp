@@ -20,23 +20,23 @@ page {
   margin-top: 250rpx;
 }
 
-.form {
+form {
+  display: block;
   width: 80vw;
   margin: 300rpx auto 0;
 }
 
-.form>view {
+form view {
   position: relative;
   padding: 50rpx 0;
 }
 
 input {
-  width: 80vw;
+  width: calc(80vw - 6em);
   padding: 0 3em 10rpx;
   margin: 0 auto;
   color: var(--main-icon-color);
   border-bottom: 2px solid #eee;
-  box-sizing: border-box;
   vertical-align: middle;
   transition: 0.5s linear;
 }
@@ -59,48 +59,48 @@ input~label {
   color: #ccc;
 }
 
-.form>.changed input {
+.changed input {
   color: var(--main-icon-color);
   border-bottom: 2px solid var(--main-icon-color);
 }
 
-.form>.changed .iconfont {
+.changed .iconfont {
   opacity: 0;
   transform: translateX(-100%);
 }
 
-.form>.changed>label {
+.changed>label {
   color: var(--main-icon-color);
   transform: translateX(calc(-100% - 10rpx));
 }
 
-.form>.changed>label::after {
+.changed>label::after {
   content: ':';
 }
 
-.form>.nick input {
+.nick input {
   border-bottom: 2px solid transparent;
 }
 
-.form > .nick label {
+.nick label {
   opacity: 0;
 }
 
-.form > button {
+button {
   width: 80vw;
   color: white;
   font-weight: bold;
   background-color: #2b6efb;
   box-shadow: 0 3px 5px rgba(0, 0, 0, .5);
-  transition: .1s;
 }
-.form > button:active {
+button:active {
   box-shadow: 0 5px 15px 2px rgba(0, 0, 0, .4);
 }
 
 .form-input-left {
   float: left;
-  width: 50vw;
+  width: calc(50vw - 6em);
+  transition: .1s;
 }
 .form-input-left ~ icon {
   left: 0;
@@ -111,4 +111,20 @@ input~label {
   padding: 0 20px;
   margin-top: -2px;
   box-sizing: content-box;
+}
+.form-button-right {
+  float: right;
+  width: 20vw;
+  margin-top: -30rpx;
+  color: #555;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .4);
+  box-sizing: content-box;
+  opacity: 1;
+  transition: .1s .15s;
+}
+.none {
+  opacity: 0;
+  max-height: 0;
+  transform: translateY(-100%);
 }
