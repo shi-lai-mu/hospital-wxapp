@@ -135,7 +135,7 @@ Page({
   },
 
   unSelect: function(e) {
-    if (e.target.dataset.i) {
+    if (e.target.dataset.i !== undefined) {
       this.setData({
         listSelect: e.target.dataset.i
       });
