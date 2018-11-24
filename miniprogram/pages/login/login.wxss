@@ -54,6 +54,7 @@ input~label {
   left: 3em;
   color: #ccc;
   transition: 0.5s linear;
+  pointer-events: none;
 }
 .placeholder {
   color: #ccc;
@@ -124,7 +125,14 @@ button:active {
   transition: .1s .15s;
 }
 .none {
-  opacity: 0;
   max-height: 0;
+  opacity: 0;
   transform: translateY(-100%);
+}
+.right-navigator {
+  display: block;
+  width: 80vw;
+  margin-top: 20rpx;
+  text-align: right;
+  font-size: .7em;
 }

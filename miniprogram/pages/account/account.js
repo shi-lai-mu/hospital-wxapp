@@ -70,7 +70,7 @@ Page({
         complete: data => {
 
           // 拉取主系统数据 data.result.openId
-          data.result.openId = "test7"
+          data.result.openId = "test8"
           let getLoginData = () => {
             app.request(data.result.openId, 'login', login => {
 
