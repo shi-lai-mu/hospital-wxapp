@@ -198,13 +198,12 @@ page {
 /* 字体图标 */
 @font-face {
   font-family: 'iconfont';  /* project id 906741 */
-  src: url('//at.alicdn.com/t/font_906741_bxxm3ktf3to.eot');
-  src: url('//at.alicdn.com/t/font_906741_bxxm3ktf3to.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_906741_bxxm3ktf3to.woff') format('woff'),
-  url('//at.alicdn.com/t/font_906741_bxxm3ktf3to.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_906741_bxxm3ktf3to.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_906741_lz2s1jv0ike.eot');
+  src: url('//at.alicdn.com/t/font_906741_lz2s1jv0ike.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_906741_lz2s1jv0ike.woff') format('woff'),
+  url('//at.alicdn.com/t/font_906741_lz2s1jv0ike.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_906741_lz2s1jv0ike.svg#iconfont') format('svg');
 }
-
 .iconfont {
   font-family: "iconfont" !important;
   font-size: 50rpx;
@@ -232,9 +231,11 @@ page {
 .icon-xiaoxi:before { content: "\e600"; }
 .icon-tuina:before { content: "\e749"; }
 .icon-yinhangqia:before { content: "\e64b"; }
+.icon-xingbie:before { content: "\e650"; }
 .icon-shouji:before { content: "\e634"; }
 .icon-guke:before { content: "\e628"; }
 .icon-anquan:before { content: "\e610"; }
+.icon-chusheng:before { content: "\e624"; }
 .icon-chenggong:before { content: "\e609"; }
 .icon-wrong:before { content: "\e615"; }
 .icon-tengtongke:before { content: "\e635"; }

@@ -1,6 +1,6 @@
 App({
   globalData: {
-    version: "0.5.1 [Alpha]",
+    version: "0.5.5 [Alpha]",
     ip: 'http://107.173.140.29/',
     url: {
       register: 'register/',

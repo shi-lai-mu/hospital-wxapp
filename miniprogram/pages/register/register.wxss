@@ -1,0 +1,47 @@
+@import "../login/login.wxss";
+
+.select-user {
+  display: block;
+  width: 50vw;
+  margin: 0 auto;
+  margin-top: 200rpx;
+  padding: 10rpx;
+  background-color: white;
+  border-radius: 100rpx;
+  box-shadow: -10rpx -5rpx 20rpx rgba(0, 0, 0, .3);
+}
+.select-user-type {
+  display: inline-block;
+  width: 50%;
+  padding: 10rpx 0;
+  text-align: center;
+  color: #333;
+}
+.select-user-type.on,.onL ,.onR {
+  color: white;
+  border-radius: 100rpx;
+  background-image: linear-gradient(90deg,#00c6fb, #005bea);
+  box-shadow: 3px 2px 5px rgba(0, 0, 0, .3);
+}
+
+.onL {
+  transform: translateX(-100%);
+  animation: onAnL .5s;
+  animation-fill-mode: forwards;
+}
+@keyframes onAnL {
+  to {
+    transform: translateX(0);
+  }
+}
+
+.onR {
+  transform: translateX(100%);
+  animation: onAnR .5s;
+  animation-fill-mode: forwards;
+}
+@keyframes onAnR {
+  to {
+    transform: translateX(0);
+  }
+}
