@@ -19,10 +19,12 @@ App({
       // 绑定到主系统[第一步]
       existAccount: 'bindExistAccount/',
       // 绑定到主系统[第二步]
-      finishBind: 'finishBind/'
+      finishBind: 'finishBind/',
+      // 搜索医生
+      searchDoctor: 'searchDoctor'
     }
   },
-  
+
   onLaunch: function () {
     wx.cloud.init();
   },
@@ -31,13 +33,17 @@ App({
    * 请求函数封装
    */
   request: function (data, type, callback) {
-    let url = this.globalData.ip + (this.globalData.url[type] ? 'api/' + this.globalData.url[type] : type) + data;
-    // console.log('发送请求 <' + (new Date().toTimeString()) + '>: ' + url);
-    wx.request({
-      url: url,
+    let url = this.globalData.ip + (this.globalData.url[type] ? 'api/' + this.globalData.url[type] : type),
+      post = (typeof data == 'string');
+    console.log(post)
+    let req = wx.request({
+      url: url + (post ? data : ""),
+      method: post ? 'GET' : 'POST',
+      data: post ? false : data,
       success: res => {
-        callback && !res.error ? callback(res) : callback(false);
+        callback && (!res.error ? callback(res) : callback(false));
       }
     });
+    console.log('发送请求 <' + (new Date().toTimeString()) + '>: ', req);
   }
 });

@@ -27,22 +27,41 @@ Page({
     }, {
       tag: "科室8",
       icon: "wrong color8"
-    }]
+    }],
+    searchDoctor: []
   },
-  onLoad: function () {
-
-  },
+  onLoad: function() {},
   /**
    * 搜索栏聚焦
    */
-  searchFocus: function () {
+  searchFocus: function() {
     this.setData({
       searchClass: 'inputFocus'
-    })
+    });
   },
-  searchBlur: function () {
+  searchBlur: function() {
     this.setData({
       searchClass: ''
     })
+  },
+  searchKey: function(e) {
+    let val = e.detail.value;
+    val && a.request({
+      "doc_name": val,
+      "depId": -1,
+      "subdepId": -1
+    }, 'searchDoctor', data => {
+      data = data.data;
+      if (typeof data == 'object') {
+        data.map && data.map(res => {
+          res.split = res.name.split(val);
+          res.key = val;
+          return res;
+        });
+        this.setData({
+          searchDoctor: data
+        });
+      }
+    });
   }
 });

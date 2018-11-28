@@ -3,17 +3,12 @@
 
 
 <view class="search-box row-box {{searchClass}}">
-  <input placeholder="按专家名字搜索" placeholderClass="search-placeholder" bindtap='searchFocus' bindblur='searchBlur'></input>
+  <input placeholder="按专家名字搜索" placeholderClass="search-placeholder" bindtap='searchFocus' bindblur='searchBlur' confirm-type='search' bindinput="searchKey"></input>
   <icon class="iconfont icon-sousuo"></icon>
   <view class='search-list'>
-    <view><text>mm</text>xxxaassss 医院</view>
-    <view><text>mmmmm</text>ssss 医院</view>
-    <view>xxx 医院</view>
-    <view>sss 医院</view>
-    <view>cxcxasd 医院</view>
-    <view>xxxss 医院</view>
-    <view>xxxsaas 医院</view>
-    <view>cc 医院</view>
+    <view wx:for="{{searchDoctor}}">
+      {{item.split[0]}}<text>{{item.key}}</text>{{item.split[1]}}
+    </view>
   </view>
 </view>
 
@@ -44,7 +39,7 @@
       <icon class="iconfont icon-fangxiangyou"></icon>
     </view>
   </view>
-  
+
   <view class="four-list-icon">
     <view wx:for="{{department}}" wx:key="**this">
       <navigator url='../search/search?tag={{item.tag}}'>
