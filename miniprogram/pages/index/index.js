@@ -32,6 +32,9 @@ Page({
   onLoad: function () {
 
   },
+  /**
+   * 搜索栏聚焦
+   */
   searchFocus: function () {
     this.setData({
       searchClass: 'inputFocus'

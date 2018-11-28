@@ -1,12 +1,15 @@
 const app = getApp();
+// 手机号返回的mssion_id
 let mssion_id = null;
 Page({
   data: {
+    /* 输入状态数据 */
     shouji: '',
     suo: '',
     phone: '',
     codes: '',
-    bindMode: true,
+    // 是否为绑定状态
+    bindMode: false,
     token: '',
     inputValue: {
       code: false,
@@ -24,51 +27,69 @@ Page({
       }
     });
   },
+
+  /**
+   * 聚焦事件
+   */
   inputFocus: function(t) {
     var a = {};
     a[t.target.dataset.id] = 'changed', this.setData(a);
   },
+
+  /**
+   * 失焦事件
+   */
   inputBlur: function(t) {
     var a = {};
     a[t.target.dataset.id] = t.detail.value ? 'nick' : '', this.setData(a);
   },
-  login: function() {
-    this.setData({
-      toast: {text: '正在为您绑定微信...',icon: 'warning'}
-    }), this.setData({
-      toast: {
-        text: '绑定成功!',
-        icon: 'success',
-        callback: function() {
-          wx.switchTab({
-            url: '/pages/account/account'
-          });
-        }
-      }
-    });
-  },
+
+  /**
+   * 登录事件
+   */
+  // login: function() {
+  //   this.setData({
+  //     toast: {text: '正在为您绑定微信...',icon: 'warning'}
+  //   }), this.setData({
+  //     toast: {
+  //       text: '绑定成功!',
+  //       icon: 'success',
+  //       callback: function() {
+  //         wx.switchTab({
+  //           url: '/pages/account/account'
+  //         });
+  //       }
+  //     }
+  //   });
+  // },
+
+  /**
+   * 绑定账号事件
+   */
   bind: function(e) {
     let value = e.detail.value;
+    // 判断 手机号和验证码 是否输入
     if (value.phone) {
       if (value.codes) {
+        // 判断是否存在验证码
         if (!mssion_id) return this.setData({
           toast: { text: '未找到验证信息!', icon: 'error' }
         });
+        // 请求验证码是否正确 销毁mssion_id
+        mssion_id = null;
         app.request(`${mssion_id}/${value.codes}/?token=${this.data.token}`, 'finishBind', res => {
           if (res.error) {
             this.setData({
               toast: { text: '验证码错误!', icon: 'error' }
             });
           } else {
-            this.setData({
-              toast: { text: '验证码错误!', icon: 'error' }
-            });
             wx.navigateBack({
               delta: 1
             });
           }
         });
       } else {
+        // 如果未输入验证码 则 发送验证码
         app.request(`${value.phone}/?token=${this.data.token}`, 'existAccount', res => {
           if (res.data) {
             mssion_id = res.data.mssion_id;

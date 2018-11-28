@@ -6,21 +6,6 @@
 
 <image class="logo" src="/images/logo2.jpg"></image>
 
-
-<!-- <view class="form"> -->
-
-  <!-- <view class="{{shouji}}" wx:if="{{!bindMode}}">
-    <input bindblur="inputBlur" bindtap="inputFocus" data-id="shouji" type="text"></input>
-    <icon class="iconfont icon-shouji"></icon>
-    <label>手机</label>
-  </view>
-  <view class="{{suo}}" wx:if="{{!bindMode}}">
-    <input bindblur="inputBlur" bindtap="inputFocus" data-id="suo" type="password"></input>
-    <icon class="iconfont icon-suo"></icon>
-    <label>密码</label>
-  </view> -->
-  <!-- <button bindtap="login" wx:if="{{!bindMode}}">登录</button> -->
-
   <form bindsubmit='bind' wx:if="{{bindMode}}">
     <view class="{{phone}}">
       <input bindblur="inputBlur" bindtap="inputFocus" data-id="phone" type="number" name="phone"></input>

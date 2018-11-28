@@ -1,19 +1,32 @@
 Page({
   data: {
+    /* 输入状态数据 */
     csrq: "",
     sex: "",
     name: "",
     sex: "",
     userType: -1, // 【0: 用户/1：医生】
   },
+
+  /**
+   * 聚焦函数
+   */
   inputFocus: function (t) {
     var a = {};
     a[t.target.dataset.id] = 'changed', this.setData(a);
   },
+
+  /**
+   * 失焦函数
+   */
   inputBlur: function (t) {
     var a = {};
     a[t.target.dataset.id] = t.detail.value ? 'nick' : '', this.setData(a);
   },
+
+  /**
+   * 用户提交注册事件
+   */
   userRegister: function(e) {
     let error = "";
     let val = e.detail.value;

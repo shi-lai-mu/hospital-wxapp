@@ -2,7 +2,11 @@ var app = getApp();
 
 Page({
   data: {
+
+    // 小程序版本
     version: "1.0.0",
+
+    // 用户信息
     userInfo: {
       nickName: "点击登录",
       avatarUrl: "/images/avatar_1.jpg",
@@ -11,7 +15,9 @@ Page({
       }
     }
   },
+
   onLoad: function(a) {
+    // 初始化版本
     this.setData({ version: app.globalData.version });
 
     wx.getSetting({
@@ -30,6 +36,8 @@ Page({
       }
     });
   },
+
+  // 页面不存在
   PageErrorNot: function() {
     this.setData({
       toast: {
@@ -61,8 +69,8 @@ Page({
     if (res.userInfo) {
 
       // 如果本地已存储数据且没过期则用本地的
-      // let storage = wx.getStorageSync('userInfo');
-      // if (storage && storage.endTime > new Date() / 1000) return this.setData({ userInfo: storage });
+      let storage = wx.getStorageSync('userInfo');
+      if (storage && storage.endTime > new Date() / 1000) return this.setData({ userInfo: storage });
 
       // 获取openid
       wx.cloud.callFunction({
@@ -100,6 +108,7 @@ Page({
             });
           };
 
+          // 主动执行一次
           getLoginData();
 
         }
