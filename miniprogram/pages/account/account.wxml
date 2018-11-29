@@ -7,7 +7,8 @@
 
   <view>
     <text class="nickName">{{userInfo.nickName}}</text>
-    <text>病号: {{userInfo.bind_account.zxyy_id}}</text>
+    <text wx:if="{{userInfo.bind_account.ysdm}}">医生代码: {{userInfo.bind_account.ysdm}}</text>
+    <text wx:else>病号: {{userInfo.bind_account.zxyy_id}}</text>
   </view>
 
   <button class="get-user-info" open-type="getUserInfo" bindgetuserinfo="settingAccount">s</button>
