@@ -11,7 +11,7 @@ Page({
       nickName: "点击登录",
       avatarUrl: "/images/avatar_1.jpg",
       bind_account: {
-        zxyy_id: '------'
+        zxyy_id: "------"
       }
     }
   },
@@ -22,14 +22,14 @@ Page({
 
     wx.getSetting({
       success: setting => {
-        if (setting.authSetting['scope.userInfo']) {
+        if (setting.authSetting["scope.userInfo"]) {
           wx.getUserInfo({ success: this.settingAccount });
         }
       }
     });
 
     // 监听数据 同步全局
-    Object.defineProperty(this.data, 'userInfo', {
+    Object.defineProperty(this.data, "userInfo", {
       set: data => {
         app.globalData.userInfo = data;
         console.log(data);
@@ -69,41 +69,41 @@ Page({
     if (res.userInfo) {
 
       // 如果本地已存储数据且没过期则用本地的
-      let storage = wx.getStorageSync('userInfo');
+      let storage = wx.getStorageSync("userInfo");
       if (storage && storage.endTime > new Date() / 1000) return this.setData({ userInfo: storage });
 
       // 获取openid
       wx.cloud.callFunction({
-        name: 'getOpenId',
+        name: "getOpenId",
         complete: data => {
 
           // 拉取主系统数据 data.result.openId
           data.result.openId = "test8"
           let getLoginData = () => {
-            app.request(data.result.openId, 'login', login => {
+            app.request(data.result.openId, "login", login => {
 
               // 用户是否注册
               if (login.data.token) {
 
                 // 获取账号数据
-                app.request(login.data.token, 'accountData', info => {
+                app.request(login.data.token, "accountData", info => {
                   let user = Object.assign(res.userInfo, login.data, info.data);
                   
                   // 判断绑定
                   if (user.bind_id) {
-                    res.userInfo.endTime = user.token.split('-')[2] || (new Date()).valueOf() + 259200;
+                    res.userInfo.endTime = user.token.split("-")[2] || (new Date()).valueOf() + 259200;
                     this.setData({ userInfo: user });
-                    wx.setStorage({ key: 'userInfo', data: user });
+                    wx.setStorage({ key: "userInfo", data: user });
                   } else {
                     wx.redirectTo({
-                      url: '../login/login?bindMode=true&token=' + login.data.token
+                      url: "../login/login?bindMode=true&token=" + login.data.token
                     });
                   }
                 });
               } else {
 
                 // 注册账号
-                app.request(data.result.openId, 'register', getLoginData);
+                app.request(data.result.openId, "register", getLoginData);
               }
             });
           };

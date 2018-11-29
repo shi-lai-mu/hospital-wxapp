@@ -1,4 +1,4 @@
-<view class='backgroundColor'></view>
+<view class="backgroundColor"></view>
 
 
 <view class="account row-box">
@@ -10,7 +10,7 @@
     <text>病号: {{userInfo.bind_account.zxyy_id}}</text>
   </view>
 
-  <button class='get-user-info' open-type='getUserInfo' bindgetuserinfo='settingAccount'>s</button>
+  <button class="get-user-info" open-type="getUserInfo" bindgetuserinfo="settingAccount">s</button>
 
 </view>
 
@@ -45,7 +45,7 @@
       <text>登录界面</text>
     </navigator>
   </view>
-  <view bindtap="PageErrorNot" class='notPage'>
+  <view bindtap="PageErrorNot" class="notPage">
     <icon class="iconfont icon-location"></icon>
     <text>身份证 [上传]</text>
   </view>
@@ -63,7 +63,7 @@
     </navigator>
   </view>
 
-  <view bindtap="PageErrorNot" class='notPage'>
+  <view bindtap="PageErrorNot" class="notPage">
     <icon class="iconfont icon-yaodian"></icon>
     <text>我的药店</text>
     <icon class="iconfont icon-fangxiangyou"></icon>

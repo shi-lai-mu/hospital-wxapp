@@ -13,7 +13,7 @@ Page({
    */
   inputFocus: function (t) {
     var a = {};
-    a[t.target.dataset.id] = 'changed', this.setData(a);
+    a[t.target.dataset.id] = "changed", this.setData(a);
   },
 
   /**
@@ -21,7 +21,7 @@ Page({
    */
   inputBlur: function (t) {
     var a = {};
-    a[t.target.dataset.id] = t.detail.value ? 'nick' : '', this.setData(a);
+    a[t.target.dataset.id] = t.detail.value ? "nick" : "", this.setData(a);
   },
 
   /**
@@ -42,7 +42,7 @@ Page({
       error = "姓名 格式错误!";
 
     if (error) return this.setData({
-      toast: { text: error, icon: 'error' }
+      toast: { text: error, icon: "error" }
     });
   },
   selectUserType: function(e) {

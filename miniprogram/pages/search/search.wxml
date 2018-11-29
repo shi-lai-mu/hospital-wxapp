@@ -7,9 +7,9 @@
   <view class="type-list-left">
     <view
       wx:for="{{all}}"
+      wx:key="key"
       class="{{index == listSelect ? 'select' : '' }}"
       data-i="{{index}}"
-      wx:key="**this"
       bindtap="unSelect"
     >
       <icon class="iconfont {{item.icon}}"></icon>

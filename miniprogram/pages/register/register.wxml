@@ -2,12 +2,12 @@
 
 <image class="background" src="/images/456.jpg"></image>
 
-<view class='select-user' bindtap='selectUserType'>
-  <text class='select-user-type {{ userType == 0 ? "onR" : userType == -1 ? "on" : "" }}' data-i="0">用户</text>
-  <text class='select-user-type {{ userType == 1 ? "onL" : "" }}' data-i="1">医生</text>
+<view class="select-user" bindtap="selectUserType">
+  <text class="select-user-type {{ userType == 0 ? 'onR' : userType == -1 ? 'on' : '' }}" data-i="0">用户</text>
+  <text class="select-user-type {{ userType == 1 ? 'onL' : '' }}" data-i="1">医生</text>
 </view>
 
-<form bindsubmit='userRegister'>
+<form bindsubmit="userRegister">
 
   <view class="{{name}}">
     <input bindblur="inputBlur" bindtap="inputFocus" data-id="name" type="number" name="name"></input>
@@ -33,6 +33,6 @@
     <label>出生日期</label>
   </view>
 
-  <button form-type='submit'>注册</button>
+  <button form-type="submit">注册</button>
 </form>
 <msg data="{{toast}}"></msg>

@@ -15,12 +15,12 @@ Component({
 
   data: {
     // icon图标
-    error: 'wrong',
-    success: 'chenggong',
-    warning: 'jinggao',
-    loading: 'loading',
-    zhiwen: 'zhiwen',
-    saoma: 'saoma',
+    error: "wrong",
+    success: "chenggong",
+    warning: "jinggao",
+    loading: "loading",
+    zhiwen: "zhiwen",
+    saoma: "saoma",
   },
   methods: {
     selectClick: function (e) {
@@ -31,7 +31,7 @@ Component({
   },
   ready: function () {
     // 监听 data 数据变化
-    Object.defineProperty(this.data, 'data', {
+    Object.defineProperty(this.data, "data", {
       // 当数据被改变时 被设置
       set: function (data) {
         let Toast = new Message(data);
@@ -54,7 +54,7 @@ Component({
 });
 
 function Message(data) {
-  if (typeof data !== 'object') throw Error('data 必须为 Object!');
+  if (typeof data !== "object") throw Error("data 必须为 Object!");
   // 隐藏时间或持续显示 否则 1500ms 后消失
   data.hideTime = (data.hideTime || data.hideTime === false) ? data.hideTime : 2500;
   // 修复耦合度 短时间内最多重复两条相同消息
@@ -80,21 +80,21 @@ Message.prototype = {
     let after = Task[0];
     if (after && !show) {
       // 记录触发函数
-      for (let key in after['select']) {
-        let val = after['select'][key];
-        after['select'][key]._fn = val.click ? fn.push(val.click) : false
+      for (let key in after["select"]) {
+        let val = after["select"][key];
+        after["select"][key]._fn = val.click ? fn.push(val.click) : false
       }
       // 触发驱动
       self.setData({
         msg: {
-          _text: after['text'],
-          _type: after['back'],
-          _icon: after['icon'],
-          select: after['select']
+          _text: after["text"],
+          _type: after["back"],
+          _icon: after["icon"],
+          select: after["select"]
         }
       });
       // 如果Toast不是false则有消失时间
-      after['hide'] && (hide = setTimeout(this.hide, after['hide']));
+      after["hide"] && (hide = setTimeout(this.hide, after["hide"]));
       this.data = after;
       show = this;
       Task.shift();

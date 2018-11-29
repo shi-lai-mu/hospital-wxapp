@@ -6,7 +6,7 @@
 
 <image class="logo" src="/images/logo2.jpg"></image>
 
-  <form bindsubmit='bind' wx:if="{{bindMode}}">
+  <form bindsubmit="bind" wx:if="{{bindMode}}">
     <view class="{{phone}}">
       <input bindblur="inputBlur" bindtap="inputFocus" data-id="phone" type="number" name="phone"></input>
       <icon class="iconfont icon-shouji"></icon>
@@ -19,18 +19,15 @@
         bindtap="inputFocus"
         data-id="codes"
         name="codes"
-        class='{{!codes ? "form-input-left" : ""}}'
+        class="{{!codes ? 'form-input-left' : ''}}"
       ></input>
       <icon class="iconfont icon-duanxin"></icon>
       <label>验证码</label>
-      <button class='{{!codes ? "form-button-right" : "none"}}' form-type='submit'>发送</button>
+      <button class="{{!codes ? 'form-button-right' : 'none'}}" form-type="submit">发送</button>
     </view>
 
-    <button form-type='submit'>绑定到主账号</button>
-    <navigator class='right-navigator' url='../register/register' redirect>还未注册</navigator>
+    <button form-type="submit">绑定到主账号</button>
+    <navigator class="right-navigator" url="../register/register" redirect>还未注册</navigator>
   </form>
-
-<!-- </view> -->
-
 
 <msg data="{{toast}}"></msg>

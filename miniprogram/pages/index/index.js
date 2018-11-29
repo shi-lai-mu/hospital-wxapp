@@ -2,7 +2,7 @@ var a = getApp();
 
 Page({
   data: {
-    searchClass: '',
+    searchClass: "",
     department: [{
       tag: "皮肤科",
       icon: "pifuke color1"
@@ -36,12 +36,12 @@ Page({
    */
   searchFocus: function() {
     this.setData({
-      searchClass: 'inputFocus'
+      searchClass: "inputFocus"
     });
   },
   searchBlur: function() {
     this.setData({
-      searchClass: ''
+      searchClass: ""
     })
   },
   searchKey: function(e) {
@@ -50,9 +50,9 @@ Page({
       "doc_name": val,
       "depId": -1,
       "subdepId": -1
-    }, 'searchDoctor', data => {
+    }, "searchDoctor", data => {
       data = data.data;
-      if (typeof data == 'object') {
+      if (typeof data == "object") {
         data.map && data.map(res => {
           res.split = res.name.split(val);
           res.key = val;

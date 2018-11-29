@@ -7,7 +7,7 @@ Page({
   
   onShow: function() {
     wx.setNavigationBarTitle({
-      title: '家庭成员'
+      title: "家庭成员"
     });
   },
 
