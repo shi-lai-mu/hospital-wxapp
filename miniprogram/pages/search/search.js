@@ -6,11 +6,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    listSelect: 0
+    listSelect: 0,
+    results: []
   },
 
   onShow: function() {
-    console.log(app.globalData)
+
+    // 整理部门
     let all = [],
       dept = app.globalData.dept,
       icon = {
@@ -24,15 +26,19 @@ Page({
         "耳鼻咽喉科": "erbihouke",
         "儿科": "erke",
       };
+    // 主部门
     for (let id in dept) {
       let value = {
         tag: dept[id].name,
         icon: icon[dept[id].name] || 'wrong',
         list: []
       };
-      for (let subId in dept[id].subDept) {
+      // 子部门
+      let subDrpt = dept[id].subDept;
+      for (let subId in subDrpt) {
         value.list.push({
-          name: dept[id].subDept[subId].name
+          name: subDrpt[subId].name,
+          id: subDrpt[subId].id
         });
       }
       all.push(value);
@@ -40,11 +46,42 @@ Page({
     this.setData({all});
   },
 
+  // 大类选择
   unSelect: function(e) {
     if (e.target.dataset.i !== undefined) {
       this.setData({
         listSelect: e.target.dataset.i
       });
     }
+  },
+
+  // 搜索子部门医生
+  search: function (e, data = {}) {
+
+    // 兼容非事件
+    let tar = e.target ? e.target.dataset : {};
+
+    // 搜索请求
+    app.request({
+      "doc_name": data.name || tar.name || "",
+      "depId": data.depId || tar.depid || -1,
+      "subdepId": data.subdepId || tar.subdepid || -1
+    }, 'searchDoctor', res => {
+      let data = res.data,
+        dept = app.globalData.dept;
+
+      // 写入 子部门ID
+      let results = data.map(value => {
+        let sub = dept[value.dept_id].subDept;
+        for (let subId in sub) {
+          if(sub[subId].id == value.sub_dept_id) {
+            value.tag = sub[subId].name;
+            break;
+          }
+        }
+        return value;
+      });
+      this.setData({ results });
+    });
   }
 })

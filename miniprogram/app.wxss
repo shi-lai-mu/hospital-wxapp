@@ -95,7 +95,8 @@ page {
   }
 
   .four-list-icon icon:nth-child(1),
-   .four-list-icon image {
+   .four-list-icon image,
+   .user-icon {
     display: block;
     width: 50rpx;
     height: 50rpx;
@@ -116,7 +117,8 @@ page {
     box-shadow: 0 3px 10px rgba(0, 0, 0, .3)
   }
 
-  .four-list > view image {
+  .four-list > view image,
+  .user-icon {
     padding: 0;
     width: 90rpx;
     height: 90rpx;

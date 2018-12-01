@@ -2,24 +2,41 @@
   <input placeholder="搜索医生" placeholderClass="search-placeholder"></input>
   <icon class="iconfont icon-sousuo"></icon>
 </view>
-<view class="type-list-tag row-box">按照科室查找</view>
+<view class="type-list-tag row-box">{{ !results[0] ? "按照科室查找" : "查找结果（" + results.length + "）" }}</view>
 <view class="row-box type-list">
-  <view class="type-list-left">
-    <view
-      wx:for="{{all}}"
-      wx:key="key"
-      class="{{index == listSelect ? 'select' : '' }}"
-      data-i="{{index}}"
-      bindtap="unSelect"
-    >
-      <icon class="iconfont icon-{{item.icon}}"></icon>
-      <text>{{item.tag}}</text>
+  <block wx:if="{{!results[0]}}">
+    <view class="type-list-left">
+      <view
+        wx:for="{{all}}"
+        wx:key="key"
+        class="{{index == listSelect ? 'select' : '' }}"
+        data-i="{{index}}"
+        bindtap="unSelect"
+      >
+        <icon class="iconfont icon-{{item.icon}}"></icon>
+        <text>{{item.tag}}</text>
+      </view>
     </view>
-  </view>
-  
-  <block wx:for="{{all}}" wx:if="{{index == listSelect}}" wx:key="key">
-    <view class="type-list-right">
-      <view wx:for="{{item.list}}" wx:key="key">{{item.name}}</view>
-    </view>
+    
+    <block wx:for="{{all}}" wx:if="{{index == listSelect}}" wx:key="key">
+      <view class="type-list-right" bindtap="search">
+        <view wx:for="{{item.list}}" wx:key="key" data-subdepId="{{item.id}}">{{item.name}}</view>
+      </view>
+    </block>
   </block>
+
+  <block wx:else>
+
+    <scroll-view scroll-y class='doctor-scroll'>
+    
+      <view class="doctor" wx:for="{{results}}" wx:key="key">
+        <image src="/images/avatar_1.jpg" class="user-icon"></image>
+        <text class="doctor-name">{{item.name}}</text>
+        <text class="doctor-tag">{{item.tag}}</text>
+      </view>
+      
+    </scroll-view>
+
+  </block>
+  
 </view>

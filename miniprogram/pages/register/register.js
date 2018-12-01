@@ -124,7 +124,7 @@ Page({
       let dept = this.data.bmObject[this.data.bmIndex[0]];
       val.hospital_id = "";
       val.dept_id = dept.uid;
-      val.sub_dept_id = this.data.bmIndex[1];
+      val.sub_dept_id = dept.subDept[this.data.bmIndex[1]].id;
       val.ksdm = dept.ksdm;
       delete val.ysbm;
       app.request(val, 'doctorRegister', console.log, app.globalData.token);

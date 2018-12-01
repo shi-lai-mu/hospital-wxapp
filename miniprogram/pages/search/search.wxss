@@ -82,3 +82,28 @@ view.select {
   transform: translateY(-100%);
   pointer-events: none;
 }
+/* 搜索结果医生 */
+.doctor-scroll {
+  height: 100%;
+}
+.doctor {
+  width: 90%;
+  padding: 2%;
+  margin: 10rpx auto;
+  background-color: #eee;
+  border-radius: 5px;
+}
+.user-icon {
+  display: inline-block;
+  margin-right: 2%;
+  vertical-align: middle;
+}
+.doctor-name {
+  display: inline-block;
+  width: 40%;
+  text-indent: .5em;
+  font-weight: 500;
+}
+.doctor-tag {
+  color: #888;
+}
