@@ -98,7 +98,7 @@ Page({
    * 选择用户类型事件
    */
   selectUserType: function(e) {
-    this.setData({
+    e.target.dataset.i && this.setData({
       userType: e.target.dataset.i
     });
   },
