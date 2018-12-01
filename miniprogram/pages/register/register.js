@@ -1,21 +1,6 @@
 const app = getApp();
 Page({
   data: {
-    /* 输入状态数据 */
-    // 用户
-    user: {
-      csrq: "",
-      sex: "",
-      name: "",
-      sex: ""
-    },
-    // 医生
-    doctor: {
-      csrq: "",
-      sex: "",
-      name: "",
-      sex: ""
-    },
     // 【0: 用户/1：医生】
     userType: 1,
     // 部门列表
@@ -63,7 +48,7 @@ Page({
    */
   select: function(e) {
     this.setData({
-      bmIndex: e.detail.value
+      [e.target.dataset.key]: e.detail.value
     });
     this.inputBlur(e);
   },

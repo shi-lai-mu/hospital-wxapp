@@ -24,17 +24,25 @@
         </view>
 
         <view class="{{user.csrq}}">
-          <input bindblur="inputBlur" bindtap="inputFocus" data-id="user.csrq" type="number" name="csrq"></input>
-          <icon class="iconfont icon-chusheng"></icon>
-          <label>出生日期</label>
+          <picker mode="date" bindchange="select" data-id="user.csrq" data-key="user.cs">
+            <input
+              bindblur="inputBlur"
+              bindtap="inputFocus"
+              name="csrq"
+              value="{{ user.cs }}"
+              disabled
+            ></input>
+            <icon class="iconfont icon-chusheng"></icon>
+            <label>出生日期</label>
+          </picker>
         </view>
 
-        <radio-group>
+        <radio-group name="sex">
           <label>
-            <radio color="#005bea" checked />男
+            <radio color="#005bea" value='男' checked />男
           </label>
           <label>
-            <radio color="#005bea" />女
+            <radio color="#005bea" value='女' />女
           </label>
         </radio-group>
 
@@ -60,9 +68,17 @@
         </view>
 
         <view class="{{doctor.csrq}}">
-          <input bindblur="inputBlur" bindtap="inputFocus" data-id="doctor.csrq" type="number" name="csrq"></input>
-          <icon class="iconfont icon-chusheng"></icon>
-          <label>出生日期</label>
+          <picker mode="date" bindchange="select" data-id="doctor.csrq" data-key="doctor.cs">
+            <input
+              bindblur="inputBlur"
+              bindtap="inputFocus"
+              name="csrq"
+              value="{{ doctor.cs }}"
+              disabled
+            ></input>
+            <icon class="iconfont icon-chusheng"></icon>
+            <label>出生日期</label>
+          </picker>
         </view>
 
         <view class="{{doctor.ysdm}}">
@@ -72,7 +88,7 @@
         </view>
 
         <view class="{{doctor.ysbm}}">
-          <picker mode="multiSelector" range="{{bmArray}}" bindchange="select" data-id="doctor.ysbm" bindcolumnchange="updateSelect">
+          <picker mode="multiSelector" range="{{bmArray}}" bindchange="select" data-id="doctor.ysbm" bindcolumnchange="updateSelect" data-key="bmIndex">
             <input
               bindblur="inputBlur"
               bindtap="inputFocus"

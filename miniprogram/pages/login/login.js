@@ -3,11 +3,6 @@ const app = getApp();
 let mssion_id = null;
 Page({
   data: {
-    /* 输入状态数据 */
-    shouji: "",
-    suo: "",
-    phone: "",
-    codes: "",
     // 是否为绑定状态
     bindMode: false,
     token: "",
