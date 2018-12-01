@@ -8,6 +8,8 @@ App({
 
     // 域名
     ip: "http://107.173.140.29/",
+    // 全部部门列表
+    dept: [],
 
     // 接口
     url: {
@@ -22,12 +24,33 @@ App({
       // 绑定到主系统[第二步]
       finishBind: "finishBind/",
       // 搜索医生
-      searchDoctor: "searchDoctor"
+      searchDoctor: "searchDoctor",
+      // 获取所有部门列表
+      getAllDept: "getAllDept"
     }
   },
 
   onLaunch: function() {
     wx.cloud.init();
+
+    // 获取全部部门列表 [读取本地,超过一小时则重新获取]
+    let data = wx.getStorageSync('dept');
+
+    if (data && data.time < new Date().getTime()) {
+      this.globalData.dept = data.data;
+    } else {
+      this.request("", "getAllDept", res => {
+        // 过期时间 
+        wx.setStorage({
+          key: 'dept',
+          data: {
+            data: res.data,
+            time: new Date().getTime() + 3600
+          },
+        })
+        this.globalData.dept = res.data;
+      });
+    }
   },
 
   /**
@@ -65,5 +88,6 @@ App({
           backgroundColor: val,
         });
     }
-  }
+  },
+  
 });

@@ -16,21 +16,42 @@ Page({
       name: "",
       sex: ""
     },
-    userType: 1, // 【0: 用户/1：医生】
-    bmArray: [
-      ['部门ID1', '部门ID2', '部门ID3', '部门ID4', '部门ID5'], 
-      ['子部门ID1', '子部门ID2', '子部门ID3', '子部门IDID4', '子部门IDID5'],
-      ['科室代码', '科室代码']
-    ],
-
-    bmIndex: [-1, 0, 0]// + bmSelect[1][bmIndex[1]] + bmSelect[2][bmIndex[2]] 
+    // 【0: 用户/1：医生】
+    userType: 1,
+    // 部门列表
+    bmArray: [],
+    // 部门选择器 [已选择]
+    bmIndex: [-1, 0],
+    // 部门选择器 [对象]
+    bmObject: []
   },
 
   onShow: function() {
+    // 设置标题
     app.bar({
       title: '注册',
       bgColor: '#3285FF'
-    })
+    });
+
+    // 整理部门数据
+    let dept  = app.globalData.dept,
+      bmArray = [[], []],
+      bmObject = [];
+
+    for (let id in dept) {
+      // 存入主部门ID
+      dept[id].uid = id;
+      bmObject.push(dept[id]);
+      bmArray[0].push(dept[id].name);
+
+    }
+    for (let id in dept[1].subDept) {
+      bmArray[1].push(dept[1].subDept[id].name);
+    }
+    this.setData({
+      bmArray,
+      bmObject
+    });
   },
 
   /**
@@ -47,7 +68,7 @@ Page({
    * 更新选择内容
    */
   updateSelect: function(e) {
-
+console.log(e)
   },
 
   /**
