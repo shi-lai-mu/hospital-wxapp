@@ -2,7 +2,7 @@ const app = getApp();
 Page({
   data: {
     // 【0: 用户/1：医生】
-    userType: 1,
+    userType: 0,
     // 部门列表
     bmArray: [],
     // 部门选择器 [已选择]
@@ -17,7 +17,6 @@ Page({
       title: '注册',
       bgColor: '#3285FF'
     });
-    console.log(app.globalData)
 
     // 整理部门数据
     let dept  = app.globalData.dept,

@@ -101,7 +101,7 @@ button:active {
 
 .form-input-left {
   float: left;
-  width: calc(50vw - 6em);
+  width: calc(50vw - 3em);
   transition: .1s;
 }
 .form-input-left ~ icon {

@@ -12,14 +12,14 @@
       data-i="{{index}}"
       bindtap="unSelect"
     >
-      <icon class="iconfont {{item.icon}}"></icon>
+      <icon class="iconfont icon-{{item.icon}}"></icon>
       <text>{{item.tag}}</text>
     </view>
   </view>
   
-  <block wx:for="{{all}}" wx:if="{{index == listSelect}}" wx:key="**this">
+  <block wx:for="{{all}}" wx:if="{{index == listSelect}}" wx:key="key">
     <view class="type-list-right">
-      <view wx:for="{{item.list}}" wx:key="**this">{{item.name}}</view>
+      <view wx:for="{{item.list}}" wx:key="key">{{item.name}}</view>
     </view>
   </block>
 </view>

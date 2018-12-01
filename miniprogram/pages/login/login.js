@@ -15,12 +15,15 @@ Page({
     t.bindMode && this.setData(t);
   },
   onReady: function() {
-    this.data.bindMode && this.setData({
+    this.data.bindMode && (this.setData({
       toast: {
         text: "请完成手机绑定...",
         icon: "zhiwen"
       }
-    });
+    }), app.bar({
+      title: '绑定账号',
+      bgColor: '#3285FF'
+    }));
   },
 
   /**
@@ -40,25 +43,6 @@ Page({
   },
 
   /**
-   * 登录事件
-   */
-  // login: function() {
-  //   this.setData({
-  //     toast: {text: "正在为您绑定微信...",icon: "warning"}
-  //   }), this.setData({
-  //     toast: {
-  //       text: "绑定成功!",
-  //       icon: "success",
-  //       callback: function() {
-  //         wx.switchTab({
-  //           url: "/pages/account/account"
-  //         });
-  //       }
-  //     }
-  //   });
-  // },
-
-  /**
    * 绑定账号事件
    */
   bind: function(e) {
@@ -68,14 +52,20 @@ Page({
       if (value.codes) {
         // 判断是否存在验证码
         if (!mssion_id) return this.setData({
-          toast: { text: "未找到验证信息!", icon: "error" }
+          toast: {
+            text: "未找到验证信息!",
+            icon: "error"
+          }
         });
         // 请求验证码是否正确 销毁mssion_id
         mssion_id = null;
         app.request(`${mssion_id}/${value.codes}/?token=${this.data.token}`, "finishBind", res => {
           if (res.error) {
             this.setData({
-              toast: { text: "验证码错误!", icon: "error" }
+              toast: {
+                text: "验证码错误!",
+                icon: "error"
+              }
             });
           } else {
             wx.navigateBack({
@@ -89,15 +79,25 @@ Page({
           if (res.data) {
             mssion_id = res.data.mssion_id;
             this.setData({
-              toast: { text: "验证码已发送!请输入...", icon: "success", hideTime: 3000 }
+              toast: {
+                text: "验证码已发送!请输入...",
+                icon: "success",
+                hideTime: 3000
+              }
             });
           } else this.setData({
-            toast: {text: "验证码发送失败:" + res.data.error, icon: "error"}
+            toast: {
+              text: "验证码发送失败:" + res.data.error,
+              icon: "error"
+            }
           });
         });
       }
     } else return this.setData({
-      toast: {text: "手机信息为空!",icon: "error"}
+      toast: {
+        text: "手机信息为空!",
+        icon: "error"
+      }
     });
   }
 });
