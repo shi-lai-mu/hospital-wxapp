@@ -1,38 +1,44 @@
-<view class="bgColor"></view>
+<scroll-view scroll-y>
 
-<image class="background" src="/images/456.jpg"></image>
+  <image class="background" src="/images/account_bg.png"></image>
 
-<view class="select-user" bindtap="selectUserType">
-  <text class="select-user-type {{ userType == 0 ? 'onR' : userType == -1 ? 'on' : '' }}" data-i="0">用户</text>
-  <text class="select-user-type {{ userType == 1 ? 'onL' : '' }}" data-i="1">医生</text>
-</view>
-
-<form bindsubmit="userRegister">
-
-  <view class="{{name}}">
-    <input bindblur="inputBlur" bindtap="inputFocus" data-id="name" type="number" name="name"></input>
-    <icon class="iconfont icon-wode"></icon>
-    <label>姓名</label>
+  <view class="select-user" bindtap="selectUserType">
+    <text class="select-user-type {{ userType == 0 ? 'onR' : userType == -1 ? 'on' : '' }}" data-i="0">用户 </text>
+    <text class="select-user-type {{ userType == 1 ? 'onL' : '' }}" data-i="1">医生</text>
   </view>
 
-  <view class="{{phone}}">
-    <input bindblur="inputBlur" bindtap="inputFocus" data-id="phone" type="number" name="phone"></input>
-    <icon class="iconfont icon-shouji"></icon>
-    <label>手机</label>
-  </view>
+  <swiper>
+    <swiper-item>
+      <form bindsubmit="userRegister">
 
-  <view class="{{sex}}">
-    <input bindblur="inputBlur" bindtap="inputFocus" data-id="sex" type="number" name="sex"></input>
-    <icon class="iconfont icon-xingbie"></icon>
-    <label>性别</label>
-  </view>
+        <view class="{{name}}">
+          <input bindblur="inputBlur" bindtap="inputFocus" data-id="name" type="number" name="name"></input>
+          <icon class="iconfont icon-wode"></icon>
+          <label>姓名</label>
+        </view>
 
-  <view class="{{csrq}}">
-    <input bindblur="inputBlur" bindtap="inputFocus" data-id="csrq" type="number" name="csrq"></input>
-    <icon class="iconfont icon-chusheng"></icon>
-    <label>出生日期</label>
-  </view>
+        <view class="{{phone}}">
+          <input bindblur="inputBlur" bindtap="inputFocus" data-id="phone" type="number" name="phone"></input>
+          <icon class="iconfont icon-shouji"></icon>
+          <label>手机</label>
+        </view>
 
-  <button form-type="submit">注册</button>
-</form>
+        <view class="{{sex}}">
+          <input bindblur="inputBlur" bindtap="inputFocus" data-id="sex" type="number" name="sex"></input>
+          <icon class="iconfont icon-xingbie"></icon>
+          <label>性别</label>
+        </view>
+
+        <view class="{{csrq}}">
+          <input bindblur="inputBlur" bindtap="inputFocus" data-id="csrq" type="number" name="csrq"></input>
+          <icon class="iconfont icon-chusheng"></icon>
+          <label>出生日期</label>
+        </view>
+        <button form-type="submit">注册</button>
+      </form>
+    </swiper-item>
+
+  </swiper>
+
+</scroll-view>
 <msg data="{{toast}}"></msg>

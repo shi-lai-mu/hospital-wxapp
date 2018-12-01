@@ -1,5 +1,13 @@
 @import "../login/login.wxss";
-
+form {
+  margin-top: 150rpx;
+}
+scroll-view {
+  height: 100vh;
+}
+swiper {
+  height: 100%;
+}
 .select-user {
   display: block;
   width: 50vw;
