@@ -85,6 +85,7 @@ Page({
               // 用户是否注册
               if (login.data.token) {
 
+                app.globalData.token = login.data.token;
                 // 获取账号数据
                 app.request(login.data.token, "accountData", info => {
                   let user = Object.assign(res.userInfo, login.data, info.data);

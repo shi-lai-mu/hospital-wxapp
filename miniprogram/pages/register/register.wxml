@@ -9,7 +9,7 @@
 
   <swiper current="{{userType == -1 ? 0 : userType}}" bindchange="pageChange">
     <swiper-item>
-      <form bindsubmit="userRegister">
+      <form bindsubmit="register">
 
         <view class="{{user.name}}">
           <input bindblur="inputBlur" bindtap="inputFocus" data-id="user.name" name="name"></input>
@@ -45,7 +45,7 @@
     <!-- 医生 -->
 
     <swiper-item>
-      <form bindsubmit="userRegister" class='swiper-list'>
+      <form bindsubmit="register" class='swiper-list'>
 
         <view class="{{doctor.name}}">
           <input bindblur="inputBlur" bindtap="inputFocus" data-id="doctor.name" name="name"></input>
@@ -71,26 +71,26 @@
           <label>医生代码</label>
         </view>
 
-        <view class="{{doctor.csbm}}">
-          <picker mode="multiSelector" range="{{bmArray}}" bindchange="select" data-id="doctor.csbm" bindcolumnchange="updateSelect">
+        <view class="{{doctor.ysbm}}">
+          <picker mode="multiSelector" range="{{bmArray}}" bindchange="select" data-id="doctor.ysbm" bindcolumnchange="updateSelect">
             <input
               bindblur="inputBlur"
               bindtap="inputFocus"
-              name="csbm"
-              value="{{ bmIndex[0] == -1 ? '' : bmArray[0][bmIndex[0]] + '-' + bmArray[1][bmIndex[1]] + '-'  + bmArray[2][bmIndex[2]] }}"
+              name="ysbm"
+              value="{{ bmIndex[0] == -1 ? '' : bmArray[0][bmIndex[0]] + '-' + bmArray[1][bmIndex[1]] }}"
               disabled
             ></input>
             <icon class="iconfont icon-bumen"></icon>
-            <label>部门</label>
+            <label>所在部门</label>
           </picker>
         </view>
 
-        <radio-group>
+        <radio-group name="sex">
           <label>
-            <radio color="#005bea" checked />男
+            <radio color="#005bea" value='男' checked />男
           </label>
           <label>
-            <radio color="#005bea" />女
+            <radio color="#005bea" value='女' />女
           </label>
         </radio-group>
 

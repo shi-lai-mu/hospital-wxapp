@@ -13,9 +13,9 @@ App({
 
     // 接口
     url: {
-      // 登录
+      // 小程序登录
       login: "login/",
-      // 注册
+      // 小程序注册
       register: "register/",
       // 获取用户信息
       accountData: "getUserDetail/?token=",
@@ -26,7 +26,11 @@ App({
       // 搜索医生
       searchDoctor: "searchDoctor",
       // 获取所有部门列表
-      getAllDept: "getAllDept"
+      getAllDept: "getAllDept",
+      // 医生注册
+      doctorRegister: "bindAndRegMainSysAccountDoc/?token=",
+      // 用户注册
+      userRegister: "bindAndRegMainSysAccountPat/?token="
     }
   },
 
@@ -56,18 +60,18 @@ App({
   /**
    * 请求函数封装
    */
-  request: function(data, type, callback) {
+  request: function(data, type, callback, note) {
     let url = this.globalData.ip + (this.globalData.url[type] ? "api/" + this.globalData.url[type] : type),
       post = (typeof data == "string");
     let req = wx.request({
-      url: url + (post ? data : ""),
+      url: url + (post ? data : "") + (note ? note : ""),
       method: post ? "GET" : "POST",
       data: post ? false : data,
       success: res => {
         callback && (!res.error ? callback(res) : callback(false));
       }
     });
-    console.log("发送请求 <" + (new Date().toTimeString()) + ">: ", req);
+    console.log("发送请求 <" + (new Date().toTimeString()) + ">: " + url + (post ? data : "") + (note ? note : ""));
   },
 
   /**

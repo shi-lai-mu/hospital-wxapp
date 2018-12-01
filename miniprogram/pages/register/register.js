@@ -32,26 +32,30 @@ Page({
       title: '注册',
       bgColor: '#3285FF'
     });
+    console.log(app.globalData)
 
     // 整理部门数据
     let dept  = app.globalData.dept,
       bmArray = [[], []],
       bmObject = [];
 
-    for (let id in dept) {
-      // 存入主部门ID
-      dept[id].uid = id;
-      bmObject.push(dept[id]);
-      bmArray[0].push(dept[id].name);
+    if (dept[1]) {
+      for (let id in dept) {
+        // 存入主部门ID
+        dept[id].uid = id;
+        bmObject.push(dept[id]);
+        bmArray[0].push(dept[id].name);
+      }
+      // 写入第一个部门的子部门
+      for (let id in dept[1].subDept) {
+        bmArray[1].push(dept[1].subDept[id].name);
+      }
+      this.setData({
+        bmArray,
+        bmObject
+      });
+    }
 
-    }
-    for (let id in dept[1].subDept) {
-      bmArray[1].push(dept[1].subDept[id].name);
-    }
-    this.setData({
-      bmArray,
-      bmObject
-    });
   },
 
   /**
@@ -68,14 +72,23 @@ Page({
    * 更新选择内容
    */
   updateSelect: function(e) {
-console.log(e)
+    // 滑动子部门 不更新
+    if (e.detail.column) return;
+    
+    let dept = this.data.bmObject[e.detail.value]
+    if (dept) {
+      let arr = [];
+      for (let id in dept.subDept) arr.push(dept.subDept[id].name);
+      this.setData({
+        bmArray: [this.data.bmArray[0], arr]
+      })
+    }
   },
 
   /**
    * 聚焦函数
    */
   inputFocus: function(t) {
-    console.log('focus')
     this.setData({
       [t.target.dataset.id]: "changed"
     });
@@ -93,18 +106,24 @@ console.log(e)
   /**
    * 用户提交注册事件
    */
-  userRegister: function(e) {
+  register: function(e) {
     let error = "";
     let val = e.detail.value;
 
+    // 倒序检查!!!
+
+    // 医生注册
+    if ('ysdm' in val) {
+      !val.ysbm && (error = "所在部门 不能为空!");
+      !val.ysdm && (error = "医生代码 不能为空!");
+    }
+    console.log(val.ysbm)
     // 条件判断
-    if (!val.csrq || !(/^(\d){4}-(\d){1,2}-(\d){1,2}$/g).test(val.phone))
+    if (!val.csrq || !(/^(\d){4}-(\d){1,2}-(\d){1,2}$/g).test(val.csrq))
       error = "出生日期 格式错误: 1999-01-01!"
-    // if (!val.sex || !(/[男女]/g).test(val.phone))
-    //   error = "性别 格式错误: 男/女";
-    if (!val.phone || !(/^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/g))
-      error = "姓名 格式错误!";
-    if (!val.phone || !(/^[\u4E00-\u9FA5\uf900-\ufa2d]{2,4}$/g).test(val.phone))
+    if (!val.phone || !(/^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/g).test(val.phone))
+      error = "手机号 格式错误!";
+    if (!val.name || !(/^[\u4E00-\u9FA5\uf900-\ufa2d]{2,4}$/g).test(val.name))
       error = "姓名 格式错误!";
 
     if (error) return this.setData({
@@ -113,6 +132,20 @@ console.log(e)
         icon: "error"
       }
     });
+
+    // 都没问题开始注册
+    if (!('ysdm' in val)) {
+      app.request(val, 'userRegister', console.log, app.globalData.token);
+    } else {
+      let dept = this.data.bmObject[this.data.bmIndex[0]];
+      val.hospital_id = "";
+      val.dept_id = dept.uid;
+      val.sub_dept_id = this.data.bmIndex[1];
+      val.ksdm = dept.ksdm;
+      delete val.ysbm;
+      app.request(val, 'doctorRegister', console.log, app.globalData.token);
+    }
+    console.log(val)
   },
 
   /**
