@@ -1,7 +1,7 @@
 <view class="bgColor"></view>
 
 
-<image class="background" src="/images/456.jpg"></image>
+<image class="background" src="/images/account_bg.png"></image>
 
 
 <image class="logo" src="/images/logo2.jpg"></image>

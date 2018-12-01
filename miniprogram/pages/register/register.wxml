@@ -7,33 +7,94 @@
     <text class="select-user-type {{ userType == 1 ? 'onL' : '' }}" data-i="1">医生</text>
   </view>
 
-  <swiper>
+  <swiper current="{{userType == -1 ? 0 : userType}}" bindchange="pageChange">
     <swiper-item>
       <form bindsubmit="userRegister">
 
-        <view class="{{name}}">
-          <input bindblur="inputBlur" bindtap="inputFocus" data-id="name" type="number" name="name"></input>
+        <view class="{{user.name}}">
+          <input bindblur="inputBlur" bindtap="inputFocus" data-id="user.name" name="name"></input>
           <icon class="iconfont icon-wode"></icon>
           <label>姓名</label>
         </view>
 
-        <view class="{{phone}}">
-          <input bindblur="inputBlur" bindtap="inputFocus" data-id="phone" type="number" name="phone"></input>
+        <view class="{{user.phone}}">
+          <input bindblur="inputBlur" bindtap="inputFocus" data-id="user.phone" type="number" name="phone"></input>
           <icon class="iconfont icon-shouji"></icon>
           <label>手机</label>
         </view>
 
-        <view class="{{sex}}">
-          <input bindblur="inputBlur" bindtap="inputFocus" data-id="sex" type="number" name="sex"></input>
-          <icon class="iconfont icon-xingbie"></icon>
-          <label>性别</label>
-        </view>
-
-        <view class="{{csrq}}">
-          <input bindblur="inputBlur" bindtap="inputFocus" data-id="csrq" type="number" name="csrq"></input>
+        <view class="{{user.csrq}}">
+          <input bindblur="inputBlur" bindtap="inputFocus" data-id="user.csrq" type="number" name="csrq"></input>
           <icon class="iconfont icon-chusheng"></icon>
           <label>出生日期</label>
         </view>
+
+        <radio-group>
+          <label>
+            <radio color="#005bea" checked />男
+          </label>
+          <label>
+            <radio color="#005bea" />女
+          </label>
+        </radio-group>
+
+        <button form-type="submit">注册</button>
+      </form>
+    </swiper-item>
+
+    <!-- 医生 -->
+
+    <swiper-item>
+      <form bindsubmit="userRegister" class='swiper-list'>
+
+        <view class="{{doctor.name}}">
+          <input bindblur="inputBlur" bindtap="inputFocus" data-id="doctor.name" name="name"></input>
+          <icon class="iconfont icon-wode"></icon>
+          <label>姓名</label>
+        </view>
+
+        <view class="{{doctor.phone}}">
+          <input bindblur="inputBlur" bindtap="inputFocus" data-id="doctor.phone" type="number" name="phone"></input>
+          <icon class="iconfont icon-shouji"></icon>
+          <label>手机</label>
+        </view>
+
+        <view class="{{doctor.csrq}}">
+          <input bindblur="inputBlur" bindtap="inputFocus" data-id="doctor.csrq" type="number" name="csrq"></input>
+          <icon class="iconfont icon-chusheng"></icon>
+          <label>出生日期</label>
+        </view>
+
+        <view class="{{doctor.ysdm}}">
+          <input bindblur="inputBlur" bindtap="inputFocus" data-id="doctor.ysdm" name="ysdm"></input>
+          <icon class="iconfont icon-code"></icon>
+          <label>医生代码</label>
+        </view>
+
+        <view class="{{doctor.csbm}}">
+          <picker mode="multiSelector" range="{{bmArray}}" bindchange="select" data-id="doctor.csbm" bindcolumnchange="updateSelect">
+            <input
+              bindblur="inputBlur"
+              bindtap="inputFocus"
+              name="csbm"
+              value="{{ bmIndex[0] == -1 ? '' : bmArray[0][bmIndex[0]] + '-' + bmArray[1][bmIndex[1]] + '-'  + bmArray[2][bmIndex[2]] }}"
+              disabled
+            ></input>
+            <icon class="iconfont icon-bumen"></icon>
+            <label>部门</label>
+          </picker>
+        </view>
+
+        <radio-group>
+          <label>
+            <radio color="#005bea" checked />男
+          </label>
+          <label>
+            <radio color="#005bea" />女
+          </label>
+        </radio-group>
+
+
         <button form-type="submit">注册</button>
       </form>
     </swiper-item>

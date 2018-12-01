@@ -2,11 +2,13 @@
 form {
   margin-top: 150rpx;
 }
-scroll-view {
+scroll-view,
+swiper {
   height: 100vh;
 }
-swiper {
-  height: 100%;
+radio-group {
+  display: flex;
+  justify-content: space-around;
 }
 .select-user {
   display: block;

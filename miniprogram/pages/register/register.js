@@ -1,27 +1,72 @@
+const app = getApp();
 Page({
   data: {
     /* 输入状态数据 */
-    csrq: "",
-    sex: "",
-    name: "",
-    sex: "",
-    userType: -1, // 【0: 用户/1：医生】
+    // 用户
+    user: {
+      csrq: "",
+      sex: "",
+      name: "",
+      sex: ""
+    },
+    // 医生
+    doctor: {
+      csrq: "",
+      sex: "",
+      name: "",
+      sex: ""
+    },
+    userType: 1, // 【0: 用户/1：医生】
+    bmArray: [
+      ['部门ID1', '部门ID2', '部门ID3', '部门ID4', '部门ID5'], 
+      ['子部门ID1', '子部门ID2', '子部门ID3', '子部门IDID4', '子部门IDID5'],
+      ['科室代码', '科室代码']
+    ],
+
+    bmIndex: [-1, 0, 0]// + bmSelect[1][bmIndex[1]] + bmSelect[2][bmIndex[2]] 
+  },
+
+  onShow: function() {
+    app.bar({
+      title: '注册',
+      bgColor: '#3285FF'
+    })
+  },
+
+  /**
+   * 选择结束
+   */
+  select: function(e) {
+    this.setData({
+      bmIndex: e.detail.value
+    });
+    this.inputBlur(e);
+  },
+
+  /**
+   * 更新选择内容
+   */
+  updateSelect: function(e) {
+
   },
 
   /**
    * 聚焦函数
    */
-  inputFocus: function (t) {
-    var a = {};
-    a[t.target.dataset.id] = "changed", this.setData(a);
+  inputFocus: function(t) {
+    console.log('focus')
+    this.setData({
+      [t.target.dataset.id]: "changed"
+    });
   },
 
   /**
    * 失焦函数
    */
   inputBlur: function (t) {
-    var a = {};
-    a[t.target.dataset.id] = t.detail.value ? "nick" : "", this.setData(a);
+    this.setData({
+      [t.target.dataset.id]: t.detail.value.length ? "nick" : ""
+    });
   },
 
   /**
@@ -42,12 +87,28 @@ Page({
       error = "姓名 格式错误!";
 
     if (error) return this.setData({
-      toast: { text: error, icon: "error" }
+      toast: {
+        text: error,
+        icon: "error"
+      }
     });
   },
+
+  /**
+   * 选择用户类型事件
+   */
   selectUserType: function(e) {
     this.setData({
       userType: e.target.dataset.i
     });
-  }
+  },
+
+  /**
+   * 页面滑动事件
+   */
+  pageChange: function(e) {
+    this.setData({
+      userType: e.detail.current
+    });
+  },
 })

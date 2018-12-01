@@ -26,14 +26,15 @@ form {
   margin: 300rpx auto 0;
 }
 
-form view {
+form view,
+form radio-group {
   position: relative;
-  padding: 50rpx 0;
+  padding: 40rpx 0;
 }
 
 input {
-  width: calc(80vw - 6em);
-  padding: 0 3em 10rpx;
+  width: calc(80vw - 3em);
+  padding: 0 0 10rpx 3em;
   margin: 0 auto;
   color: var(--main-icon-color);
   border-bottom: 2px solid #eee;
@@ -43,14 +44,14 @@ input {
 
 input+.iconfont {
   position: absolute;
-  top: 40rpx;
+  top: 25rpx;
   color: var(--main-icon-color);
   transition: 0.5s linear;
 }
 
 input~label {
   position: absolute;
-  top: 45rpx;
+  top: 35rpx;
   left: 3em;
   color: #ccc;
   transition: 0.5s linear;

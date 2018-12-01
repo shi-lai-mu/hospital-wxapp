@@ -199,11 +199,11 @@ page {
 /* 字体图标 */
 @font-face {
   font-family: 'iconfont';  /* project id 906741 */
-  src: url('//at.alicdn.com/t/font_906741_lz2s1jv0ike.eot');
-  src: url('//at.alicdn.com/t/font_906741_lz2s1jv0ike.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_906741_lz2s1jv0ike.woff') format('woff'),
-  url('//at.alicdn.com/t/font_906741_lz2s1jv0ike.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_906741_lz2s1jv0ike.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_906741_wp3f3vkd1b8.eot');
+  src: url('//at.alicdn.com/t/font_906741_wp3f3vkd1b8.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_906741_wp3f3vkd1b8.woff') format('woff'),
+  url('//at.alicdn.com/t/font_906741_wp3f3vkd1b8.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_906741_wp3f3vkd1b8.svg#iconfont') format('svg');
 }
 .iconfont {
   font-family: "iconfont" !important;
@@ -215,6 +215,8 @@ page {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-bumen:before { content: "\e7d4"; }
+.icon-code:before { content: "\e616"; }
 .icon-qianbao:before { content: "\e637"; }
 .icon-yaodian:before { content: "\e668"; }
 .icon-aixin-copy:before { content: "\e60e"; }
