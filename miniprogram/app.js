@@ -3,7 +3,7 @@ App({
    * 公共数据
    */
   globalData: {
-    version: "0.5.7 [Alpha]",
+    version: "0.5.8 [Alpha]",
     title: "康达互联网医院",
 
     // 域名

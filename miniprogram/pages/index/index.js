@@ -40,11 +40,17 @@ Page({
       searchClass: "inputFocus"
     });
   },
+  /**
+   * 搜索栏失焦
+   */
   searchBlur: function() {
     this.setData({
       searchClass: ""
     })
   },
+  /**
+   * 搜索关键词
+   */
   searchKey: function(e) {
 
     // 节流算法

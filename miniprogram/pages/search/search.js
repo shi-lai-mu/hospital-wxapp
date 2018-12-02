@@ -117,6 +117,7 @@ Page({
       this.setData({
         results
       });
+      console.log(results)
     });
   },
 

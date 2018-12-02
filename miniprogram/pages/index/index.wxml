@@ -8,7 +8,8 @@
   <view class="search-list">
     <view wx:for="{{searchDoctor}}" wx:key="key" bind="">
       <navigator url="../search/search?name={{item.name}}">
-        {{item.split[0]}}<text>{{item.key}}</text>{{item.split[1]}}
+        {{item.split[0]}}
+        <text>{{item.key}}</text>{{item.split[1]}}
       </navigator>
     </view>
   </view>
@@ -36,10 +37,10 @@
 
   <view class="four-list-tag">
     <text>按科室选择</text>
-    <view class="four-list-all">
+    <navigator url="../search/search?name={{item.name}}" class="four-list-all">
       <text>更多</text>
       <icon class="iconfont icon-fangxiangyou"></icon>
-    </view>
+    </navigator>
   </view>
 
   <view class="four-list-icon">
