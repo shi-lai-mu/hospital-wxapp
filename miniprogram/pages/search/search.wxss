@@ -9,10 +9,10 @@
   padding: 10rpx 20rpx;
   text-align: center;
   color: #6d6d6d;
+  vertical-align: middle;
   background-color: #f8f8f8;
   border-radius: 5px 5px 0 0;
   box-sizing: border-box;
-  z-index: -1;
 }
 .type-list {
   position: relative;

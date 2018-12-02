@@ -57,9 +57,12 @@ Page({
 
   // 搜索子部门医生
   search: function (e, data = {}) {
-
+    console.log(e)
     // 兼容非事件
     let tar = e.target ? e.target.dataset : {};
+
+    // 不允许全局[无条件]搜索
+    if (!Object.keys(tar).length && !Object.keys(data).length) return;
 
     // 搜索请求
     app.request({
@@ -67,8 +70,16 @@ Page({
       "depId": data.depId || tar.depid || -1,
       "subdepId": data.subdepId || tar.subdepid || -1
     }, 'searchDoctor', res => {
+
       let data = res.data,
         dept = app.globalData.dept;
+
+      if (data.error) return this.setData({
+        toast: {
+          text: "未找到属于此部门的医生...",
+          icon: "error"
+        }
+      });
 
       // 写入 子部门ID
       let results = data.map(value => {
@@ -83,5 +94,13 @@ Page({
       });
       this.setData({ results });
     });
-  }
+  },
+
+  /**
+   * 【返回】清空搜索结果
+   */
+  clearResults: function () {
+    console.log(123456)
+    this.setData({ results: [] });
+  },
 })

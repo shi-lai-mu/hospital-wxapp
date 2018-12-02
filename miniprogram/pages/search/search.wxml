@@ -2,7 +2,11 @@
   <input placeholder="搜索医生" placeholderClass="search-placeholder"></input>
   <icon class="iconfont icon-sousuo"></icon>
 </view>
-<view class="type-list-tag row-box">{{ !results[0] ? "按照科室查找" : "查找结果（" + results.length + "）" }}</view>
+<view class="type-list-tag row-box" wx:if="{{!results[0]}}">按照科室查找</view>
+<view class="type-list-tag row-box" bindtap="clearResults"  wx:else>
+  <button size="mini" type="primary" style="float:left">返回</button>
+  查找结果（{{ results.length }}）
+</view>
 <view class="row-box type-list">
   <block wx:if="{{!results[0]}}">
     <view class="type-list-left">
@@ -27,7 +31,7 @@
 
   <block wx:else>
 
-    <scroll-view scroll-y class='doctor-scroll'>
+    <scroll-view class='doctor-scroll' scroll-y>
     
       <view class="doctor" wx:for="{{results}}" wx:key="key">
         <image src="/images/avatar_1.jpg" class="user-icon"></image>
@@ -40,3 +44,4 @@
   </block>
   
 </view>
+<msg data="{{toast}}"></msg>
