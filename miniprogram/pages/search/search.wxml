@@ -1,11 +1,20 @@
-<view class="search-box row-box {{searchClass}}">
-  <input placeholder="搜索医生" placeholderClass="search-placeholder"></input>
-  <icon class="iconfont icon-sousuo"></icon>
-</view>
+<form class="search-box row-box {{searchClass}}" bindsubmit="searchName">
+  <input
+    placeholder="搜索医生"
+    placeholderClass="search-placeholder"
+    name="name"
+    type="text"
+    confirm-type="search"
+    bindconfirm="searchName"
+  ></input>
+  <icon class="iconfont icon-sousuo">
+    <button form-type='submit'>x</button>
+  </icon>
+</form>
 <view class="type-list-tag row-box" wx:if="{{!results[0]}}">按照科室查找</view>
 <view class="type-list-tag row-box" bindtap="clearResults"  wx:else>
   <button size="mini" type="primary" style="float:left">返回</button>
-  查找结果（{{ results.length }}）
+  <text>查找结果（{{ results.length }}）</text>
 </view>
 <view class="row-box type-list">
   <block wx:if="{{!results[0]}}">

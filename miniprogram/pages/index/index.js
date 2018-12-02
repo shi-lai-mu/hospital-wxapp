@@ -1,4 +1,5 @@
-var a = getApp();
+var a = getApp(),
+  change = null;
 
 Page({
   data: {
@@ -45,23 +46,30 @@ Page({
     })
   },
   searchKey: function(e) {
-    let val = e.detail.value;
-    val && a.request({
-      "doc_name": val,
-      "depId": -1,
-      "subdepId": -1
-    }, "searchDoctor", data => {
-      data = data.data;
-      if (typeof data == "object") {
-        data.map && data.map(res => {
-          res.split = res.name.split(val);
-          res.key = val;
-          return res;
-        });
-        this.setData({
-          searchDoctor: data
-        });
-      }
-    });
+
+    // 节流算法
+    change && clearTimeout(change);
+
+    change = setTimeout(() => {
+      change = null;
+      let val = e.detail.value;
+      val && a.request({
+        "doc_name": val,
+        "depId": -1,
+        "subdepId": -1
+      }, "searchDoctor", data => {
+        data = data.data;
+        if (typeof data == "object") {
+          data.map && data.map(res => {
+            res.split = res.name.split(val);
+            res.key = val;
+            return res;
+          });
+          this.setData({
+            searchDoctor: data
+          });
+        }
+      });
+    }, 500);
   }
 });

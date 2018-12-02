@@ -7,7 +7,16 @@ Page({
    */
   data: {
     listSelect: 0,
-    results: []
+    results: [],
+    tag: ''
+  },
+  onLoad: function(e) {
+
+    // 选中 指定的部门
+    e.tag && this.setData(e);
+
+    // 搜索 指定的医生
+    e.name && this.search({}, e);
   },
 
   onShow: function() {
@@ -17,7 +26,7 @@ Page({
       dept = app.globalData.dept,
       icon = {
         '疼痛科': 'tengtongke',
-        '其他':"qitake",
+        '其他': "qitake",
         "皮肤科": "pifuke",
         "内科": "neike",
         "口腔科": "kouqiangke",
@@ -25,12 +34,22 @@ Page({
         "妇产科": "fuchanke",
         "耳鼻咽喉科": "erbihouke",
         "儿科": "erke",
-      };
+      },
+      tag = this.data.tag,
+      i = 0;
+
     // 主部门
     for (let id in dept) {
+      let name = dept[id].name;
+
+      // 外面图标点入时 自动选中部门
+      (name == tag) && this.setData({
+        listSelect: i
+      });
+
       let value = {
-        tag: dept[id].name,
-        icon: icon[dept[id].name] || 'wrong',
+        tag: name,
+        icon: icon[name] || 'wrong',
         list: []
       };
       // 子部门
@@ -42,8 +61,11 @@ Page({
         });
       }
       all.push(value);
+      i++;
     }
-    this.setData({all});
+    this.setData({
+      all
+    });
   },
 
   // 大类选择
@@ -56,8 +78,8 @@ Page({
   },
 
   // 搜索子部门医生
-  search: function (e, data = {}) {
-    console.log(e)
+  search: function(e, data = {}) {
+
     // 兼容非事件
     let tar = e.target ? e.target.dataset : {};
 
@@ -85,22 +107,38 @@ Page({
       let results = data.map(value => {
         let sub = dept[value.dept_id].subDept;
         for (let subId in sub) {
-          if(sub[subId].id == value.sub_dept_id) {
+          if (sub[subId].id == value.sub_dept_id) {
             value.tag = sub[subId].name;
             break;
           }
         }
         return value;
       });
-      this.setData({ results });
+      this.setData({
+        results
+      });
     });
   },
 
   /**
    * 【返回】清空搜索结果
    */
-  clearResults: function () {
-    console.log(123456)
-    this.setData({ results: [] });
+  clearResults: function() {
+    this.setData({
+      results: []
+    });
   },
+
+  /**
+   * 按 医生名字 搜索
+   */
+  searchName: function(e) {
+    let val = e.detail.value;
+
+    // 兼容 键盘按下搜索
+    (typeof val == 'string') && (val = {
+      name: val
+    });
+    this.search({}, val);
+  }
 })

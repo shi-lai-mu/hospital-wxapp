@@ -6,8 +6,10 @@
   <input placeholder="按专家名字搜索" placeholderClass="search-placeholder" bindtap="searchFocus" bindblur="searchBlur" confirm-type="search" bindinput="searchKey"></input>
   <icon class="iconfont icon-sousuo"></icon>
   <view class="search-list">
-    <view wx:for="{{searchDoctor}}" wx:key="key">
-      {{item.split[0]}}<text>{{item.key}}</text>{{item.split[1]}}
+    <view wx:for="{{searchDoctor}}" wx:key="key" bind="">
+      <navigator url="../search/search?name={{item.name}}">
+        {{item.split[0]}}<text>{{item.key}}</text>{{item.split[1]}}
+      </navigator>
     </view>
   </view>
 </view>
