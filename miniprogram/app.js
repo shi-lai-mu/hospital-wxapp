@@ -31,7 +31,7 @@ App({
       doctorRegister: "bindAndRegMainSysAccountDoc/?token=",
       // 用户注册
       userRegister: "bindAndRegMainSysAccountPat/?token="
-    }
+    },
   },
 
   onLaunch: function() {
@@ -58,10 +58,14 @@ App({
   },
 
   /**
-   * 请求函数封装
+   * 请求函数封装：
+   * @param {string/object} data 传入字符串为get请求 反之 post 请求
+   * @param {string} api 调用设定好的url接口,如果不存在则会被当成url
+   * @param {function} callback 当得到请求内容时的回调
+   * @param {string} note 当为post请求时，url需要额外添加的参数
    */
-  request: function(data, type, callback, note) {
-    let url = this.globalData.ip + (this.globalData.url[type] ? "api/" + this.globalData.url[type] : type),
+  request: function(data, api, callback, note) {
+    let url = this.globalData.ip + (this.globalData.url[api] ? "api/" + this.globalData.url[api] : api),
       post = (typeof data == "string");
     let req = wx.request({
       url: url + (post ? data : "") + (note ? note : ""),
@@ -71,11 +75,13 @@ App({
         callback && (!res.error ? callback(res) : callback(false));
       }
     });
-    console.log("发送请求 <" + (new Date().toTimeString()) + ">: " + url + (post ? data : "") + (note ? note : ""));
+    //console.log("发送请求 <" + (new Date().toTimeString()) + ">: " + url + (post ? data : "") + (note ? note : ""));
   },
 
   /**
    * 设置顶部封装
+   * @param {string/object} data 传入string为单项属性设置 反之 多项设定
+   * @param {string} value 单项设定时调用
    */
   bar: function(json, value) {
     value ? setBar(value, json) : Object.keys(json).forEach((val, key) =>
