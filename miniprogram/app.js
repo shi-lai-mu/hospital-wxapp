@@ -72,7 +72,20 @@ App({
       method: post ? "GET" : "POST",
       data: post ? false : data,
       success: res => {
-        callback && (!res.error ? callback(res) : callback(false));
+        if (res.statusCode == 200 || res.statusCode == 304) {
+          callback && (!res.error ? callback(res) : callback(false));
+        } else {
+          wx.showToast({
+            title: `内部服务器出现问题!请稍后再试[ERROR: ${api}]`,
+            icon: "none",
+            mask: true,
+            duration: 2000
+          });
+          console.error(res);
+        }
+      },
+      fail: err => {
+        console.log('请求调用出错: ' + err);
       }
     });
     //console.log("发送请求 <" + (new Date().toTimeString()) + ">: " + url + (post ? data : "") + (note ? note : ""));
