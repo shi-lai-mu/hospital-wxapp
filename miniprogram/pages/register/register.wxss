@@ -1,6 +1,6 @@
 @import "../login/login.wxss";
 form {
-  margin-top: 150rpx;
+  margin-top: 180rpx;
 }
 scroll-view,
 swiper {

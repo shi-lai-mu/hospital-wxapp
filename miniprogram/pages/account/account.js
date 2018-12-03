@@ -18,12 +18,18 @@ Page({
 
   onLoad: function(a) {
     // 初始化版本
-    this.setData({ version: app.globalData.version });
+    this.setData({
+      version: app.globalData.version
+    });
 
     wx.getSetting({
       success: setting => {
         if (setting.authSetting["scope.userInfo"]) {
-          wx.getUserInfo({ success: this.settingAccount });
+          wx.getUserInfo({
+            success: res => {
+              this.settingAccount(res, true);
+            }
+          });
         }
       }
     });
@@ -60,8 +66,9 @@ Page({
   },
 
   // 设置账号
-  settingAccount: function (res) {
-    if(this.data.userInfo) return;
+  settingAccount: function(res, load) {
+    if (this.data.userInfo) return;
+
     // 兼容事件处理
     res.detail && (res = res.detail);
 
@@ -70,7 +77,9 @@ Page({
 
       // 如果本地已存储数据且没过期则用本地的
       let storage = wx.getStorageSync("userInfo");
-      if (storage && storage.endTime > new Date() / 1000) return this.setData({ userInfo: storage });
+      if (storage && storage.endTime > new Date() / 1000) return this.setData({
+        userInfo: storage
+      });
 
       // 获取openid
       wx.cloud.callFunction({
@@ -89,14 +98,19 @@ Page({
                 // 获取账号数据
                 app.request(login.data.token, "accountData", info => {
                   let user = Object.assign(res.userInfo, login.data, info.data);
-                  
+
                   // 判断绑定
                   if (user.bind_id) {
                     res.userInfo.endTime = user.token.split("-")[2] || (new Date()).valueOf() + 259200;
-                    this.setData({ userInfo: user });
-                    wx.setStorage({ key: "userInfo", data: user });
+                    this.setData({
+                      userInfo: user
+                    });
+                    wx.setStorage({
+                      key: "userInfo",
+                      data: user
+                    });
                   } else {
-                    wx.redirectTo({
+                    wx.navigateTo({
                       url: "../login/login?bindMode=true&token=" + login.data.token
                     });
                   }
@@ -110,7 +124,7 @@ Page({
           };
 
           // 主动执行一次
-          getLoginData();
+          !load && getLoginData();
 
         }
       });

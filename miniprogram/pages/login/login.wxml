@@ -27,7 +27,7 @@
     </view>
 
     <button form-type="submit">绑定到主账号</button>
-    <navigator class="right-navigator" url="../register/register" redirect>还未注册</navigator>
+    <navigator class="right-navigator" url="../register/register">还未注册</navigator>
   </form>
 
 <msg data="{{toast}}"></msg>

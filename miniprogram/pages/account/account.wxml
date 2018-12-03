@@ -40,12 +40,12 @@
 
 <view class="row-box row-list clearfix">
 
-  <view>
+  <!-- <view>
     <navigator url="../login/login">
       <icon class="iconfont icon-location"></icon>
       <text>登录界面</text>
     </navigator>
-  </view>
+  </view> -->
   <view bindtap="PageErrorNot" class="notPage">
     <icon class="iconfont icon-location"></icon>
     <text>身份证 [上传]</text>
