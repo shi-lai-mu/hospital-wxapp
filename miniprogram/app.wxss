@@ -125,7 +125,7 @@ page {
     background-color: #fff;
     border: 1px solid #eee;
   }
-  .loading {
+  button .loading {
     width: 100%;
     text-align: center;
     color: #555;

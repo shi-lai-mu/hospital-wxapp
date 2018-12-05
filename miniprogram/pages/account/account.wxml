@@ -50,25 +50,25 @@
 
 <view class="row-box row-list clearfix">
 
-  <view bindtap="PageErrorNot" class="notPage">
+  <view bindtap="PageErrorNot">
     <icon class="iconfont icon-zongjie"></icon>
     <text>预约</text>
     <icon class="iconfont icon-fangxiangyou"></icon>
   </view>
 
-  <view bindtap="PageErrorNot" class="notPage">
+  <view bindtap="PageErrorNot">
     <icon class="iconfont icon-chufang"></icon>
     <text>处方</text>
     <icon class="iconfont icon-fangxiangyou"></icon>
   </view>
 
-  <view bindtap="PageErrorNot" class="notPage">
+  <view bindtap="PageErrorNot">
     <icon class="iconfont icon-yaodian"></icon>
     <text>我的药店</text>
     <icon class="iconfont icon-fangxiangyou"></icon>
   </view>
 
-  <view bindtap="PageErrorNot" class="notPage">
+  <view bindtap="PageErrorNot">
     <icon class="iconfont icon-qiyejianchadan"></icon>
     <text>检查单</text>
     <icon class="iconfont icon-fangxiangyou"></icon>

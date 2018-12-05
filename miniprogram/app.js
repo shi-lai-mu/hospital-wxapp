@@ -76,8 +76,6 @@ App({
    */
   request: function(data, api, callback, note) {
 
-    if (!data) return;
-
     let post = (typeof data == "string"),
 
       url = this.globalData.ip +
