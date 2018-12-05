@@ -7,14 +7,12 @@ Page({
   
   onShow: function() {
     app.bar("title", "家庭成员");
-
-    console.log(`token=${app.globalData.userInfo.token}`)
+    // 读取家庭成员列表
     app.request(`token=${app.globalData.userInfo.token}`, "getFamilyList", res => {
       console.log(res)
       if (res.data.length) this.setData({
         familyList: res.data
       });
-      console.log(this.data)
     });
   },
 
@@ -24,5 +22,9 @@ Page({
       let slef = this;
 
     }
+  },
+
+  addFamily: function(e) {
+    console.log('add')
   }
 })

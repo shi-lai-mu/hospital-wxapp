@@ -3,8 +3,10 @@
 
   <view class="title clearfix">
     <text class="tag">家庭成员 ( {{familyList.length}} / 5 )</text>
-    <icon class="iconfont icon-add"></icon>
+    <icon class="iconfont icon-add" bindtap='addFamily'></icon>
   </view>
+
+  <view class='loading' wx:if="{{!familyList.length}}">获取中...</view>
 
   <view wx:for="{{familyList}}" wx:key="key">
     <image src="/images/avatar_user_0.png" />
@@ -21,66 +23,9 @@
       <text>{{item.phone}}</text>
     </view>
     <view class="button-list">
-      <button bindtap="click" data-name="小明">删除</button>
+      <button bindtap="click" data-name="小明" wx:if="{{item.isLord == 0}}">删除</button>
     </view>
   </view>
-
-  <!-- <view>
-    <image src="/images/avatar_user_0.png" />
-    <view>
-      <text>姓名:</text>
-      <text>小明</text>
-    </view>
-    <view>
-      <text>出生:</text>
-      <text>2018-11-12</text>
-    </view>
-    <view>
-      <text>手机号:</text>
-      <text>13345829695</text>
-    </view>
-    <view class="button-list">
-      <button bindtap="click" data-name="小明">删除</button>
-    </view>
-  </view>
-
-  <view>
-    <image src="/images/avatar_user_0.png" />
-    <view>
-      <text>姓名:</text>
-      <text>小明</text>
-    </view>
-    <view>
-      <text>出生:</text>
-      <text>2018-11-12</text>
-    </view>
-    <view>
-      <text>手机号:</text>
-      <text>13345829695</text>
-    </view>
-    <view class="button-list">
-      <button>删除</button>
-    </view>
-  </view>
-
-  <view>
-    <image src="/images/avatar_user_0.png" />
-    <view>
-      <text>姓名:</text>
-      <text>小明</text>
-    </view>
-    <view>
-      <text>出生:</text>
-      <text>2018-11-12</text>
-    </view>
-    <view>
-      <text>手机号:</text>
-      <text>13345829695</text>
-    </view>
-    <view class="button-list">
-      <button>删除</button>
-    </view>
-  </view> -->
 
 </view>
 <msg data="{{toast}}" />
