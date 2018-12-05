@@ -20,8 +20,8 @@
   float: left;
   overflow: hidden;
   position: relative;
-  width: calc(50% - 20rpx);
-  height: 40vw;
+  width: calc(100% - 20rpx);
+  height: 50vw;
   margin: 10rpx;
   padding: 20rpx;
   border-radius: 20rpx;

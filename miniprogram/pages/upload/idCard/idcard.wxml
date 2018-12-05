@@ -3,16 +3,17 @@
 
 <view class="row-box mar-top clearfix">
 
-  <view class="upload-box" bindtap="camera">
+  <view class="upload-box" bindtap="camera" data-name="isId">
     <icon class="iconfont icon-shenfenzhengzheng"></icon>
+    <image wx:if="{{isId}}" src='{{isId}}' mode="aspectFit"></image>
     <text class="upload-tag">拍摄正面</text>
   </view>
 
-  <view class="upload-box" bindtap="camera">
+  <!-- <view class="upload-box" bindtap="camera" data-name="theId">
     <icon class="iconfont icon-shenfenzhengfan"></icon>
-    <!-- <image src='/images/beta.jpg' mode="aspectFit"></image> -->
+    <image wx:if="{{theId}}" src='{{theId}}' mode="aspectFit"></image>
     <text class="upload-tag">拍摄反面</text>
-  </view>
+  </view> -->
 
 </view>
 
