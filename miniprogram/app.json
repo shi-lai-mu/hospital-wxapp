@@ -3,9 +3,10 @@
     "pages/account/account",
     "pages/index/index",
     "pages/family/family",
-    "pages/register/register",
     "pages/search/search",
-    "pages/login/login"
+    "pages/account/register/register",
+    "pages/account/login/login",
+    "pages/upload/idCard/idcard"
   ],
   "window": {
     "backgroundTextStyle": "light",

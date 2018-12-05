@@ -87,7 +87,7 @@ Page({
         complete: data => {
 
           // 拉取主系统数据 data.result.openId
-          // data.result.openId = "test8"
+          data.result.openId = "test8"
           let getLoginData = () => {
             app.request(data.result.openId, "login", login => {
 
@@ -111,7 +111,7 @@ Page({
                     });
                   } else {
                     wx.navigateTo({
-                      url: "../login/login?bindMode=true&token=" + login.data.token
+                      url: "login/login?bindMode=true&token=" + login.data.token
                     });
                   }
                 });

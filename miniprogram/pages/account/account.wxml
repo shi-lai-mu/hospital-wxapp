@@ -40,9 +40,11 @@
 
 <view class="row-box row-list clearfix">
 
-  <view bindtap="PageErrorNot" class="notPage">
-    <icon class="iconfont icon-location"></icon>
-    <text>身份证 [上传]</text>
+  <view bindtap="PageErrorNot">
+    <navigator url='../upload/idCard/idcard'>
+      <icon class="iconfont icon-location"></icon>
+      <text>身份证 [上传]</text>
+    </navigator>
   </view>
 
 </view>
