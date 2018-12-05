@@ -23,29 +23,23 @@
     <text>消息</text>
   </view>
   <view>
-    <icon class="iconfont icon-qianbao color2"></icon>
-    <text>挂号</text>
+    <icon class="iconfont icon-xiaoxi color2"></icon>
+    <text>我的消息</text>
   </view>
   <view>
-    <icon class="iconfont icon-zongjie color7"></icon>
-    <text>处方</text>
+    <icon class="iconfont icon-chengyuan color7"></icon>
+    <text>家庭成员</text>
   </view>
-  <view>
+  <!-- <view>
     <icon class="iconfont icon-aixin-copy color1"></icon>
     <text>送心意</text>
-  </view>
+  </view> -->
 
 </view>
 
 
 <view class="row-box row-list clearfix">
 
-  <!-- <view>
-    <navigator url="../login/login">
-      <icon class="iconfont icon-location"></icon>
-      <text>登录界面</text>
-    </navigator>
-  </view> -->
   <view bindtap="PageErrorNot" class="notPage">
     <icon class="iconfont icon-location"></icon>
     <text>身份证 [上传]</text>
@@ -56,17 +50,27 @@
 
 <view class="row-box row-list clearfix">
 
-  <view>
-    <navigator url="../family/family">
-      <icon class="iconfont icon-chengyuan"></icon>
-      <text>家庭成员</text>
-      <icon class="iconfont icon-fangxiangyou"></icon>
-    </navigator>
+  <view bindtap="PageErrorNot" class="notPage">
+    <icon class="iconfont icon-zongjie"></icon>
+    <text>预约</text>
+    <icon class="iconfont icon-fangxiangyou"></icon>
+  </view>
+
+  <view bindtap="PageErrorNot" class="notPage">
+    <icon class="iconfont icon-chufang"></icon>
+    <text>处方</text>
+    <icon class="iconfont icon-fangxiangyou"></icon>
   </view>
 
   <view bindtap="PageErrorNot" class="notPage">
     <icon class="iconfont icon-yaodian"></icon>
     <text>我的药店</text>
+    <icon class="iconfont icon-fangxiangyou"></icon>
+  </view>
+
+  <view bindtap="PageErrorNot" class="notPage">
+    <icon class="iconfont icon-qiyejianchadan"></icon>
+    <text>检查单</text>
     <icon class="iconfont icon-fangxiangyou"></icon>
   </view>
 
