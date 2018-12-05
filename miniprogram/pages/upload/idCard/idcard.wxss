@@ -1,1 +1,80 @@
-/* miniprogram/pages/upload/idCard/idcard.wxss */
+.row-box {
+  margin-top: 30rpx;
+  padding: 10rpx;
+}
+
+.mar-top {
+  margin-top: 90rpx;
+}
+
+.tag {
+  display: block;
+  font-weight: bold;
+}
+
+.upload-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  float: left;
+  overflow: hidden;
+  position: relative;
+  width: calc(50% - 20rpx);
+  height: 40vw;
+  margin: 10rpx;
+  padding: 20rpx;
+  border-radius: 20rpx;
+  border: 3px dashed #ccc;
+  box-sizing: border-box;
+}
+
+.upload-box image {
+  position: absolute;
+  margin-top: -30rpx;
+  width: 100%;
+}
+
+.icon-tianjia {
+  position: relative;
+  display: block;
+  color: #999;
+  text-align: center;
+  font-size: 3em;
+}
+
+.icon-shenfenzhengfan, .icon-shenfenzhengzheng {
+  position: absolute;
+  transform: translateY(-35rpx);
+  color: #eee;
+  font-size: 25vw;
+  z-index: 0;
+}
+
+.upload-tag {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 5rpx 0;
+  text-align: center;
+  color: #fff;
+  background-color: #437ff9;
+}
+.content {
+  text-indent: 2em;
+  color: #888;
+  font-size: .8em;
+}
+.content text {
+  color: #e64340;
+}
+
+.button-blue {
+  position: absolute;
+  bottom: 50rpx;
+  width: 90vw;
+  margin-left: 5vw;
+  color: #fff;
+  background-color: #437ff9;
+  box-shadow: 4rpx 6rpx 9rpx rgba(0, 0, 0, .3);
+}

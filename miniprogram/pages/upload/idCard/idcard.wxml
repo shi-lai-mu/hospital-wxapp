@@ -1,2 +1,27 @@
-<!--miniprogram/pages/upload/idCard/idcard.wxml-->
-<text>miniprogram/pages/upload/idCard/idcard.wxml</text>
+<view class="backgroundColor"></view>
+
+
+<view class="row-box mar-top clearfix">
+
+  <view class="upload-box" bindtap="camera">
+    <icon class="iconfont icon-shenfenzhengzheng"></icon>
+    <text class="upload-tag">拍摄正面</text>
+  </view>
+
+  <view class="upload-box" bindtap="camera">
+    <icon class="iconfont icon-shenfenzhengfan"></icon>
+    <!-- <image src='/images/beta.jpg' mode="aspectFit"></image> -->
+    <text class="upload-tag">拍摄反面</text>
+  </view>
+
+</view>
+
+
+<view class="row-box">
+  <text class="tag">拍摄身份证要求:</text>
+  <view class="content">拍摄时确保身份证
+    <text>边框完整，字体清晰，亮度均匀</text>
+  </view>
+</view>
+
+<button class="button-blue">身份认证</button>

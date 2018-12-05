@@ -4,16 +4,6 @@
   padding: 20rpx 0;
 }
 
-.backgroundColor {
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 120rpx;
-  background-color: #b5cfff;
-}
-
 .notPage, .notPage icon {
   color: #ddd !important;
 }

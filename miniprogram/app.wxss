@@ -16,6 +16,16 @@ page {
   z-index: -1;
 }
 
+.backgroundColor {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 120rpx;
+  background-color: #b5cfff;
+}
+
 
 /* LOGO */
 .logo {
@@ -206,11 +216,11 @@ page {
 /* 字体图标 */
 @font-face {
   font-family: 'iconfont';  /* project id 906741 */
-  src: url('//at.alicdn.com/t/font_906741_06o1qae5xlm.eot');
-  src: url('//at.alicdn.com/t/font_906741_06o1qae5xlm.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_906741_06o1qae5xlm.woff') format('woff'),
-  url('//at.alicdn.com/t/font_906741_06o1qae5xlm.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_906741_06o1qae5xlm.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_906741_aet2sb9dr4b.eot');
+  src: url('//at.alicdn.com/t/font_906741_aet2sb9dr4b.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_906741_aet2sb9dr4b.woff') format('woff'),
+  url('//at.alicdn.com/t/font_906741_aet2sb9dr4b.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_906741_aet2sb9dr4b.svg#iconfont') format('svg');
 }
 .iconfont {
   font-family: "iconfont" !important;
@@ -222,6 +232,10 @@ page {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-tianjia:before { content: "\e60a"; }
+.icon-shenfenzhengzheng:before { content: "\e60f"; }
+.icon-shenfenzhengfan:before { content: "\e611"; }
+.icon-shangchuan:before { content: "\e6b7"; }
 .icon-qiyejianchadan:before { content: "\e8d6"; }
 .icon-chufang:before { content: "\e651"; }
 .icon-bumen:before { content: "\e7d4"; }
