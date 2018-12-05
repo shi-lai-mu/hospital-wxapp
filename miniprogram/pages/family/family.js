@@ -1,13 +1,20 @@
-// pages/family/family.js
+const app = getApp();
 Page({
 
   data: {
-
+    familyList: []
   },
   
   onShow: function() {
-    wx.setNavigationBarTitle({
-      title: "家庭成员"
+    app.bar("title", "家庭成员");
+
+    console.log(`token=${app.globalData.userInfo.token}`)
+    app.request(`token=${app.globalData.userInfo.token}`, "getFamilyList", res => {
+      console.log(res)
+      if (res.data.length) this.setData({
+        familyList: res.data
+      });
+      console.log(this.data)
     });
   },
 

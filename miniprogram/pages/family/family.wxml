@@ -2,11 +2,30 @@
 <view class="family row-box" bindtap="click">
 
   <view class="title clearfix">
-    <text class="tag">家庭成员 ( 3 / 5 )</text>
+    <text class="tag">家庭成员 ( {{familyList.length}} / 5 )</text>
     <icon class="iconfont icon-add"></icon>
   </view>
 
-  <view>
+  <view wx:for="{{familyList}}" wx:key="key">
+    <image src="/images/avatar_user_0.png" />
+    <view>
+      <text>姓名:</text>
+      <text>{{item.patientname}}</text>
+    </view>
+    <view>
+      <text>出生:</text>
+      <text>{{item.csrq}}</text>
+    </view>
+    <view>
+      <text>手机号:</text>
+      <text>{{item.phone}}</text>
+    </view>
+    <view class="button-list">
+      <button bindtap="click" data-name="小明">删除</button>
+    </view>
+  </view>
+
+  <!-- <view>
     <image src="/images/avatar_user_0.png" />
     <view>
       <text>姓名:</text>
@@ -61,7 +80,7 @@
     <view class="button-list">
       <button>删除</button>
     </view>
-  </view>
+  </view> -->
 
 </view>
 <msg data="{{toast}}" />

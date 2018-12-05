@@ -23,7 +23,13 @@
       ></input>
       <icon class="iconfont icon-duanxin"></icon>
       <label>验证码</label>
-      <button class="{{!codes ? 'form-button-right' : 'none'}}" form-type="submit">发送</button>
+      <button
+        class="{{!codes ? 'form-button-right' : 'none'}} {{sendState > 0 ? 'code-cooling' : ''}}"
+        form-type="submit"
+      >
+      {{ sendState }}
+      {{ sendState > 0 ? 's' : ''}}
+      </button>
     </view>
 
     <button form-type="submit">绑定到主账号</button>

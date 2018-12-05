@@ -1,6 +1,8 @@
 const app = getApp();
 // 手机号返回的mssion_id
-let mssion_id = null;
+let mssion_id = null,
+  outInter = null,
+  outTime = 0;
 Page({
   data: {
     // 是否为绑定状态
@@ -9,7 +11,8 @@ Page({
     inputValue: {
       code: false,
       codePhone: false
-    }
+    },
+    sendState: "发送",
   },
   onLoad: function(t) {
     t.bindMode && this.setData(t);
@@ -58,7 +61,6 @@ Page({
           }
         });
         // 请求验证码是否正确 销毁mssion_id
-        mssion_id = null;
         app.request(`${mssion_id}/${value.codes}/?token=${this.data.token}`, "finishBind", res => {
           if (res.error) {
             this.setData({
@@ -68,14 +70,37 @@ Page({
               }
             });
           } else {
-            wx.navigateBack({
-              delta: 1
+            wx.redirectTo({
+              url: '../account/account',
             });
           }
         });
+        mssion_id = null;
       } else {
+        // 检测冷却
+        let cooling = wx.getStorageSync('sendTime');
+        if (!cooling || cooling > new Date().getTime()) {
+
+          // 减少读取
+          if (outTime) return;
+
+          // 计算秒数
+          cooling = outTime = ((cooling - new Date().getTime()) / 1000).toFixed(0);
+          let outInter = setInterval(() => {
+            if (!cooling) {
+              clearInterval(outInter);
+              cooling = "发送";
+            }
+            this.setData({
+              sendState: cooling
+            });
+            cooling--;
+          }, 1000);
+          return;
+        }
+
         // 如果未输入验证码 则 发送验证码
-        app.request(`${value.phone}/?token=${this.data.token}`, "existAccount", res => {
+        app.request(`${value.phone} /?token=${this.data.token}`, "existAccount", res => {
           if (res.data) {
             mssion_id = res.data.mssion_id;
             this.setData({
@@ -85,6 +110,21 @@ Page({
                 hideTime: 3000
               }
             });
+            wx.setStorage({
+              key: 'sendTime',
+              data: new Date().getTime() + (60 * 1000),
+            });
+            outTime = 60;
+            outInter = setInterval(() => {
+              if (!outTime) {
+                clearInterval(outInter);
+                outTime = "发送";
+              }
+              this.setData({
+                sendState: outTime
+              });
+              outTime--;
+            }, 1000);
           } else this.setData({
             toast: {
               text: "验证码发送失败:" + res.data.error,

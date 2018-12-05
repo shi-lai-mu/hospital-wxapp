@@ -56,7 +56,7 @@
 
 <view class="row-box row-list clearfix">
 
-  <view bindtap="PageErrorNot">
+  <view>
     <navigator url="../family/family">
       <icon class="iconfont icon-chengyuan"></icon>
       <text>家庭成员</text>

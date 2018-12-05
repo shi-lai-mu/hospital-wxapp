@@ -3,7 +3,7 @@ App({
    * 公共数据
    */
   globalData: {
-    version: "0.5.9 [Alpha]",
+    version: "0.6.0 [Alpha]",
     title: "康达互联网医院",
 
     // 域名
@@ -30,12 +30,20 @@ App({
       // 医生注册
       doctorRegister: "bindAndRegMainSysAccountDoc/?token=",
       // 用户注册
-      userRegister: "bindAndRegMainSysAccountPat/?token="
+      userRegister: "bindAndRegMainSysAccountPat/?token=",
+      // 获取家庭成员列表
+      getFamilyList: "getFamilyList?"
     },
   },
 
   onLaunch: function() {
     wx.cloud.init();
+
+    // 内测版代码区域 //
+
+    this.globalData.userInfo = wx.getStorageSync('userInfo') || [];
+    console.log(this.globalData.userInfo)
+    /////////////////
 
     // 获取全部部门列表 [读取本地,超过一小时则重新获取]
     let data = wx.getStorageSync('dept');
@@ -51,7 +59,7 @@ App({
             data: res.data,
             time: new Date().getTime() + 3600
           },
-        })
+        });
         this.globalData.dept = res.data;
       });
     }
@@ -59,21 +67,55 @@ App({
 
   /**
    * 请求函数封装：
-   * @param {string/object} data 传入字符串为get请求 反之 post 请求
+   * @param {string} data get请求
+   *        {object} data post 请求
    * @param {string} api 调用设定好的url接口,如果不存在则会被当成url
    * @param {function} callback 当得到请求内容时的回调
    * @param {string} note 当为post请求时，url需要额外添加的参数
+   *        {number} note 缓存过期时间/下次在过期时间内读取直接返回缓存数据
    */
   request: function(data, api, callback, note) {
-    let url = this.globalData.ip + (this.globalData.url[api] ? "api/" + this.globalData.url[api] : api),
-      post = (typeof data == "string");
+
+    if (!data) return;
+
+    let post = (typeof data == "string"),
+
+      url = this.globalData.ip +
+      (this.globalData.url[api] ? "api/" + this.globalData.url[api] : api) +
+      (post ? data : "") +
+      (note && isNaN(note) ? note : "");
+
+    // 查看是否存在缓存,有则直接返回[GET]
+    if (post) {
+      let storage = wx.getStorageSync(url);
+      // 存在数据 && url相等 && 数据未过期
+      if (storage &&
+        storage.url == url &&
+        storage.end >= new Date().getTime()
+      ) return storage.data;
+    }
+
     let req = wx.request({
-      url: url + (post ? data : "") + (note ? note : ""),
+      url,
       method: post ? "GET" : "POST",
       data: post ? false : data,
       success: res => {
+
         if (res.statusCode == 200 || res.statusCode == 304) {
           callback && (!res.error ? callback(res) : callback(false));
+
+          // 设置了缓存过期时间 [只缓存GET|且正常请求]
+          // ps: 过期请求会被直接覆盖
+          if (post && !res.error && !isNaN(note)) {
+            wx.setStorage({
+              key: api,
+              data: {
+                url,
+                end: new Date().getTime() + (note * 1000),
+                data: res
+              },
+            });
+          }
         } else {
           wx.showToast({
             title: `内部服务器出现问题!请稍后再试[ERROR: ${api}]`,
@@ -85,7 +127,7 @@ App({
         }
       },
       fail: err => {
-        console.log('请求调用出错: ' + err);
+        console.log('请求调用出错: ', err);
       }
     });
     //console.log("发送请求 <" + (new Date().toTimeString()) + ">: " + url + (post ? data : "") + (note ? note : ""));
@@ -97,11 +139,8 @@ App({
    * @param {string} value 单项设定时调用
    */
   bar: function(json, value) {
-    value ? setBar(value, json) : Object.keys(json).forEach((val, key) =>
-      setBar.apply(this, [val, json[val]])
-    );
 
-    function setBar(key, val) {
+    let setBar = (key, val) => {
       key == 'title' ?
         wx.setNavigationBarTitle({
           title: `${this.globalData.title} - ${val}`
@@ -111,6 +150,10 @@ App({
           backgroundColor: val,
         });
     }
+
+    value ? setBar(json, value) : Object.keys(json).forEach((val, key) =>
+      setBar(val, json[val])
+    );
   },
-  
+
 });

@@ -26,8 +26,7 @@ form {
   margin: 300rpx auto 0;
 }
 
-form view,
-form radio-group {
+form view, form radio-group {
   position: relative;
   padding: 40rpx 0;
 }
@@ -57,6 +56,7 @@ input~label {
   transition: 0.5s linear;
   pointer-events: none;
 }
+
 .placeholder {
   color: #ccc;
 }
@@ -93,20 +93,23 @@ button {
   color: white;
   font-weight: bold;
   background-color: #2b6efb;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, .5);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
 }
+
 button:active {
-  box-shadow: 0 5px 15px 2px rgba(0, 0, 0, .4);
+  box-shadow: 0 5px 15px 2px rgba(0, 0, 0, 0.4);
 }
 
 .form-input-left {
   float: left;
   width: calc(50vw - 3em);
-  transition: .1s;
+  transition: 0.1s;
 }
+
 .form-input-left ~ icon {
   left: 0;
 }
+
 .form-input-right {
   float: right;
   width: calc(20vw - 20px);
@@ -114,25 +117,32 @@ button:active {
   margin-top: -2px;
   box-sizing: content-box;
 }
+
 .form-button-right {
   float: right;
   width: 20vw;
   margin-top: -30rpx;
   color: #555;
   background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, .4);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   box-sizing: content-box;
   opacity: 1;
-  transition: .1s .15s;
+  transition: 0.1s 0.15s;
 }
+
 .none {
   max-height: 0;
   opacity: 0;
   transform: translateY(-100%);
 }
+
 .right-navigator {
   display: block;
   width: 80vw;
   margin-top: 20rpx;
   text-align: right;
+}
+
+.code-cooling {
+  color: #ccc;
 }
