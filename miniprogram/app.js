@@ -89,7 +89,7 @@ App({
     if (post) {
       let storage = wx.getStorageSync(api);
       // 存在数据 && url相等 && 数据未过期
-      console.log('调用了本地缓存!')
+      console.log(api + '调用了本地缓存!')
       if (storage &&
         storage.url == url &&
         storage.end >= new Date().getTime()

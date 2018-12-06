@@ -20,8 +20,10 @@
 <view class="consulting-type row-box clearfix">
 
   <view>
+    <navigator url="../search/search?expertDoc">
     <icon class="iconfont icon-zhuanjia"></icon>
     <text>专家咨询</text>
+    </navigator>
   </view>
 
   <view>

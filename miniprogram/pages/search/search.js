@@ -17,6 +17,13 @@ Page({
 
     // 搜索 指定的医生
     e.name && this.search({}, e);
+
+    // 显示 专家列表
+    e.expertDoc && app.request("", "getExpertDoc", res => {
+      this.setData({
+        results: res.data
+      });
+    }, 360);
   },
 
   onShow: function() {
