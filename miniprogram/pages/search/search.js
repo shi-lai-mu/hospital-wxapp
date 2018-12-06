@@ -11,6 +11,11 @@ Page({
     tag: ''
   },
   onLoad: function(e) {
+    
+    app.bar({
+      title: "查找",
+      bcColor: "#F7F7F7,000"
+    });
 
     // 选中 指定的部门
     e.tag && this.setData(e);

@@ -17,6 +17,12 @@ Page({
   },
 
   onLoad: function(a) {
+
+    app.bar({
+      title: "我的",
+      bgColor: "#b5cfff"
+    });
+
     // 初始化版本
     this.setData({
       version: app.globalData.version

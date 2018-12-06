@@ -31,7 +31,6 @@ Page({
     }],
     searchDoctor: []
   },
-  onLoad: function() {},
   /**
    * 搜索栏聚焦
    */

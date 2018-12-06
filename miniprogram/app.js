@@ -38,7 +38,7 @@ App({
     },
   },
 
-  onLaunch: function() {
+  onLaunch: function () {
     wx.cloud.init();
 
     // 内测版代码区域 //
@@ -76,14 +76,14 @@ App({
    * @param {string} note 当为post请求时，url需要额外添加的参数
    *        {number} note 缓存过期时间/下次在过期时间内读取直接返回缓存数据
    */
-  request: function(data, api, callback, note) {
+  request: function (data, api, callback, note) {
 
     let post = (typeof data == "string"),
 
       url = this.globalData.ip +
-      (this.globalData.url[api] ? "api/" + this.globalData.url[api] : api) +
-      (post ? data : "") +
-      (note && isNaN(note) ? note : "");
+        (this.globalData.url[api] ? "api/" + this.globalData.url[api] : api) +
+        (post ? data : "") +
+        (note && isNaN(note) ? note : "");
 
     // 查看是否存在缓存,有则直接返回[GET]
     if (post) {
@@ -138,9 +138,9 @@ App({
   /**
    * 设置顶部封装
    * @param {string/object} data 传入string为单项属性设置 反之 多项设定
-   * @param {string} value 单项设定时调用
+   * @param {string} value 单项设定时调用,当包含","文字将会是黑色反之白色[格式 "#ffffff,000"]
    */
-  bar: function(json, value) {
+  bar: function (json, value) {
 
     let setBar = (key, val) => {
       key == 'title' ?
@@ -148,8 +148,8 @@ App({
           title: `${this.globalData.title} - ${val}`
         }) :
         wx.setNavigationBarColor({
-          frontColor: "#ffffff",
-          backgroundColor: val,
+          frontColor: val.indexOf(',') == -1 ? "#ffffff" : "#000000",
+          backgroundColor: val.split(',')[0],
         });
     }
 

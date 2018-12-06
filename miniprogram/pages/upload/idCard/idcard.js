@@ -1,11 +1,15 @@
 const app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
+  
   data: {
     isId: ""
+  },
+
+  onShow: function() {
+    app.bar({
+      title: "身份认证",
+      bgColor: "#b5cfff"
+    });
   },
 
   /**
