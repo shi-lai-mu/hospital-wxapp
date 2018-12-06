@@ -23,7 +23,7 @@ Page({
       this.setData({
         results: res.data
       });
-    }, 360);
+    }, 3600);
   },
 
   onShow: function() {

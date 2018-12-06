@@ -9,7 +9,6 @@ Page({
     app.bar("title", "家庭成员");
     // 读取家庭成员列表
     app.request(`token=${app.globalData.userInfo.token}`, "getFamilyList", res => {
-      console.log(res)
       if (res.data.length) this.setData({
         familyList: res.data
       });

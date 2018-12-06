@@ -5,7 +5,8 @@
 <view class="search-box row-box {{searchClass}}">
   <input placeholder="按专家名字搜索" placeholderClass="search-placeholder" bindtap="searchFocus" bindblur="searchBlur" confirm-type="search" bindinput="searchKey"></input>
   <icon class="iconfont icon-sousuo"></icon>
-  <view class="search-list">
+
+  <view class="search-list" wx:if="{{searchDoctor.length}}">
     <view wx:for="{{searchDoctor}}" wx:key="key" bind="">
       <navigator url="../search/search?name={{item.name}}">
         {{item.split[0]}}
@@ -13,6 +14,13 @@
       </navigator>
     </view>
   </view>
+
+  <view class="search-list" wx:else>
+    <view wx:for="{{searchDoctor}}" wx:key="key" bind="">
+      未搜索到包含此关键词的专家!
+    </view>
+  </view>
+
 </view>
 
 
