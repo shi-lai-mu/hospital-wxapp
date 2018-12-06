@@ -90,3 +90,8 @@ page {
   margin-left: 10rpx;
   color: #555;
 }
+.loading {
+  width: 100%;
+  text-align: center;
+  color: #555;
+}

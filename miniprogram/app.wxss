@@ -135,11 +135,6 @@ page {
     background-color: #fff;
     border: 1px solid #eee;
   }
-  button .loading {
-    width: 100%;
-    text-align: center;
-    color: #555;
-  }
 
 
   /* 图标颜色 */

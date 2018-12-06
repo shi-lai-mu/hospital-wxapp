@@ -27,8 +27,10 @@
     <text>我的消息</text>
   </view>
   <view>
-    <icon class="iconfont icon-chengyuan color7"></icon>
-    <text>家庭成员</text>
+    <navigator url='family/family'>
+      <icon class="iconfont icon-chengyuan color7"></icon>
+      <text>家庭成员</text>
+    </navigator>
   </view>
   <!-- <view>
     <icon class="iconfont icon-aixin-copy color1"></icon>
