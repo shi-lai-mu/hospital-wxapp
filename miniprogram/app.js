@@ -32,7 +32,9 @@ App({
       // 用户注册
       userRegister: "bindAndRegMainSysAccountPat/?token=",
       // 获取家庭成员列表
-      getFamilyList: "getFamilyList?"
+      getFamilyList: "getFamilyList?",
+      // 获取专家列表
+      getExpertDoc: "getExpertDoc",
     },
   },
 
@@ -87,10 +89,11 @@ App({
     if (post) {
       let storage = wx.getStorageSync(api);
       // 存在数据 && url相等 && 数据未过期
+      console.log('调用了本地缓存!')
       if (storage &&
         storage.url == url &&
         storage.end >= new Date().getTime()
-      ) return storage.data;
+      ) return callback(storage.data);
     }
 
     let req = wx.request({
@@ -113,6 +116,7 @@ App({
                 data: res
               },
             });
+            console.log(api + '存入了本地!')
           }
         } else {
           wx.showToast({
