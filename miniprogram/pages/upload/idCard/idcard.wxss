@@ -71,7 +71,7 @@
 
 .button-blue {
   position: absolute;
-  bottom: 50rpx;
+  bottom: 150rpx;
   width: 90vw;
   margin-left: 5vw;
   color: #fff;

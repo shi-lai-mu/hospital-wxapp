@@ -3,7 +3,7 @@
 
 <view class="row-box mar-top clearfix">
 
-  <view class="upload-box" bindtap="camera" data-name="isId">
+  <view class="upload-box" bindtap="camera">
     <icon class="iconfont icon-shenfenzhengzheng"></icon>
     <image wx:if="{{isId}}" src='{{isId}}' mode="aspectFit"></image>
     <text class="upload-tag">拍摄正面</text>
@@ -21,8 +21,10 @@
 <view class="row-box">
   <text class="tag">拍摄身份证要求:</text>
   <view class="content">拍摄时确保身份证
-    <text>边框完整，字体清晰，亮度均匀</text>
+    <text>边框完整，字体清晰，亮度均匀，无涂抹遮盖</text>
   </view>
 </view>
 
-<button class="button-blue">身份认证</button>
+<button class="button-blue" bindtap="upload">身份认证</button>
+
+<msg data="{{toast}}"></msg>
