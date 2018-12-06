@@ -46,3 +46,22 @@
 | 用户数据[账号/token/主账号] | account | settingAccount | 无数据/数据过期 | 3天 |
 | 部门信息[主部门/子部门/科室] | app | onLaunch | 无数据/数据过期 | 1小时 |
 | 专家列表[专家信息] | search | onLoad | 专家咨询 | 1小时 |
+
+
++---cloud
+|   \---getOpenId
++---miniprogram
+|   +---component
+|   |   \---Toast
+|   +---images
+|   |   \---tagbar
+|   \---pages
+|       +---account
+|       |   +---family
+|       |   +---login
+|       |   \---register
+|       +---index
+|       +---search
+|       \---upload
+|           \---idCard
+\---流程图
