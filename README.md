@@ -1,5 +1,5 @@
 # 微信小程序-前端 [开发版]
-> `文档更新： 2018-12-2`
+> `文档更新： 2018-12-6`
 > `体验版本： v0.5.9 [Alpha]`
 ### 内部原创组件说明
 >`Toast` 组件: [查看 说明/源码](https://gitee.com/slm47888/wechat_applet__component_toast)
@@ -47,22 +47,29 @@
 | 部门信息[主部门/子部门/科室] | app | onLaunch | 无数据/数据过期 | 1小时 |
 | 专家列表[专家信息] | search | onLoad | 专家咨询 | 1小时 |
 
-```javascript
-+---cloud
-|   \---getOpenId
-+---miniprogram
-|   +---component
-|   |   \---Toast
-|   +---images
-|   |   \---tagbar
-|   \---pages
-|       +---account
-|       |   +---family
-|       |   +---login
-|       |   \---register
-|       +---index
-|       +---search
-|       \---upload
-|           \---idCard
 
+```javascript
+// 以下为小程序页面目录注释[方便快速查找]
+/*
++---cloud [云函数]
+|   \---getOpenId [获取openId]
+|
++---miniprogram [主目录]
+|   +---component [组件]
+|   |   \---Toast [Toast 消息组件]
+|   |
+|   +---images [图片库]
+|   |   \---tagbar [底部选项卡]
+|   |
+|   \---pages       [页面]
+|       +---account [账号]
+|       |   +---family   [我的家庭]
+|       |   +---login    [登录]
+|       |   \---register [注册]
+|       +---index   [首页]
+|       +---search  [搜索]
+|       \---upload  [上传]
+|           \---idCard   [身份证]
+
+*/
 ```
