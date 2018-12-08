@@ -44,7 +44,7 @@
 
   <view bindtap="PageErrorNot">
     <navigator url='../upload/idCard/idcard'>
-      <icon class="iconfont icon-location"></icon>
+      <icon class="iconfont icon-shenfenzhengzheng"></icon>
       <text>身份证 [上传]</text>
     </navigator>
   </view>

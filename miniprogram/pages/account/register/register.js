@@ -162,7 +162,7 @@ Page({
         icon: "error"
       }
     });
-    app.request(`${mssion}/${code}`, "finishBindAndRegMssion", res => {
+    app.request(`${mssion}/${code}/token=${app.globalData.token}`, "finishBindAndRegMssion", res => {
       console.log(res)
       if (res.data.status) {
         wx.navigateBack({

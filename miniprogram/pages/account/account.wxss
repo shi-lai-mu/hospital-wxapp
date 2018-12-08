@@ -56,3 +56,7 @@
   color: transparent;
   background-color: transparent;
 }
+.icon-shenfenzhengzheng {
+  font-size: 1em;
+  margin-top: -10px;
+}

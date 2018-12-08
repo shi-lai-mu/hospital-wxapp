@@ -65,7 +65,7 @@
     <!-- 医生 -->
 
     <swiper-item>
-      <form bindsubmit="register" class='swiper-list'>
+      <form bindsubmit="register" class='swiper-list' wx:if="{{!showCode}}">
 
         <view class="{{doctor.name}}">
           <input bindblur="inputBlur" bindtap="inputFocus" data-id="doctor.name" name="name"></input>
@@ -131,6 +131,24 @@
 
         <button form-type="submit">注册</button>
       </form>
+
+      <form bindsubmit="sendCode" wx:else>
+        <view class="{{doctor.code}} clearfix">
+          <input
+            bindblur="inputBlur"
+            bindtap="inputFocus"
+            data-id="doctor.code"
+            name="codes"
+          ></input>
+          <icon class="iconfont icon-duanxin"></icon>
+          <label>验证码</label>
+        </view>
+        <view class="row-two">
+          <button bindtap="hideCode">返回</button>
+          <button form-type="submit">验证</button>
+        </view>
+      </form>
+
     </swiper-item>
 
   </swiper>
