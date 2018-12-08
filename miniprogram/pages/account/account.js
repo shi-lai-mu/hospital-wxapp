@@ -49,16 +49,6 @@ Page({
       set: data => {
         app.globalData.userInfo = data;
         
-        // 功能受限检测
-        if (data.bind_account.zxyy_id === null) {
-          this.setData({
-            toast: {
-              text: "大部分功能受限!请尽快上传身份证...",
-              icon: "error",
-              hideTime: 4000
-            }
-          });
-        }
       }
     });
   },
@@ -107,7 +97,7 @@ Page({
         complete: data => {
 
           // 拉取主系统数据 data.result.openId
-          // data.result.openId = "test9"
+          data.result.openId = "test9"
           let getLoginData = () => {
             app.request(data.result.openId, "login", login => {
 

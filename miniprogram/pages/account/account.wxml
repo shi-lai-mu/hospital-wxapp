@@ -11,7 +11,7 @@
     <text wx:if="{{userInfo.bind_account.ysdm}}">医生代码: {{ userInfo.bind_account.ysdm }}</text>
     <block wx:else>
       <text wx:if="{{userInfo.bind_account.zxyy_id}}">病号: {{userInfo.bind_account.zxyy_id}}</text>
-      <text wx:else class="account-error">[大部分功能受限!请尽快上传身份证]</text>
+      <text wx:else class="account-error">未上传身份证</text>
     </block>
 
   </view>
