@@ -132,6 +132,10 @@ button:active {
   transition: .7s;
 }
 
+.row-two {
+  display: flex;
+}
+
 .none {
   position: absolute;
   right: 0;

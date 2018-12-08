@@ -1,4 +1,7 @@
 const app = getApp();
+let sendState = null,
+  colling = 0,
+  mssion = 0;
 Page({
   data: {
     // 【0: 用户/1：医生】
@@ -119,21 +122,56 @@ Page({
     });
 
     // 都没问题开始注册
-    if (!('ysdm' in val)) {
-      app.request(val, 'userRegister', res => {
-        console.log(res)
-      }, app.globalData.token);
-    } else {
+    let api = 'userRegister';
+    if ('ysdm' in val) {
       let dept = this.data.bmObject[this.data.bmIndex[0]];
       val.hospital_id = "";
       val.dept_id = dept.uid;
       val.sub_dept_id = dept.subDept[this.data.bmIndex[1]].id;
       val.ksdm = dept.ksdm;
       delete val.ysbm;
-      app.request(val, 'doctorRegister', console.log, app.globalData.token);
+      api = 'doctorRegister';
     }
+
+    app.request(val, api, res => {
+      console.log(res)
+      if (res.data.mssion_id) {
+        this.setData({
+          showCode: 1
+        });
+        mssion = res.data.mssion_id;
+      } else this.setData({
+        toast: {
+          text: res.data.error,
+          icon: "error"
+        }
+      });
+    }, app.globalData.token);
     
     console.log(val)
+  },
+
+  /**
+   * 发送验证码
+   */
+  sendCode: function(e) {
+    let code = e.detail.value.codes;
+    if(!code) return this.setData({
+      toast: {
+        text: '验证码不能为空!',
+        icon: "error"
+      }
+    });
+    app.request(`${mssion}/${code}`, "finishBindAndRegMssion",)
+  },
+
+  /**
+   * 隐藏验证码界面
+   */
+  hideCode: function() {
+    this.setData({
+      showCode: 0
+    });
   },
 
   /**

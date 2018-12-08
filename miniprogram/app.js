@@ -31,6 +31,8 @@ App({
       doctorRegister: "bindAndRegMainSysAccountDoc/?token=",
       // 用户注册
       userRegister: "bindAndRegMainSysAccountPat/?token=",
+      // 注册 [验证 验证码]
+      finishBindAndRegMssion: "finishBindAndRegMssion",
       // 获取家庭成员列表
       getFamilyList: "getFamilyList?",
       // 获取专家列表
