@@ -17,17 +17,17 @@
           <label>姓名</label>
         </view>
 
-        <!-- <view class="{{user.phone}}">
+        <view class="{{user.phone}}">
           <input bindblur="inputBlur" bindtap="inputFocus" data-id="user.phone" type="number" name="phone"></input>
           <icon class="iconfont icon-shouji"></icon>
           <label>手机</label>
-        </view> -->
+        </view>
 
         <view class="{{codes}} clearfix">
           <input
             bindblur="inputBlur"
             bindtap="inputFocus"
-            data-id="codes"
+            data-id="user.phone"
             name="codes"
             class="{{!codes ? 'form-input-left' : ''}}"
           ></input>
@@ -77,6 +77,24 @@
           <input bindblur="inputBlur" bindtap="inputFocus" data-id="doctor.phone" type="number" name="phone"></input>
           <icon class="iconfont icon-shouji"></icon>
           <label>手机</label>
+        </view>
+
+        <view class="{{codes}} clearfix">
+          <input
+            bindblur="inputBlur"
+            bindtap="inputFocus"
+            data-id="doctor.phone"
+            name="codes"
+            class="{{!codes ? 'form-input-left' : ''}}"
+          ></input>
+          <icon class="iconfont icon-duanxin"></icon>
+          <label>验证码</label>
+          <button
+            class="{{!codes ? 'form-button-right' : 'none'}} {{sendState > 0 ? 'code-cooling' : ''}}"
+            form-type="submit"
+          >
+          {{ sendState }}
+          </button>
         </view>
 
         <view class="{{doctor.csrq}}">

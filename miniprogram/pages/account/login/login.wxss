@@ -129,7 +129,7 @@ button:active {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   box-sizing: content-box;
   opacity: 1;
-  transition: 0.1s .3s;
+  transition: .7s;
 }
 
 .none {
