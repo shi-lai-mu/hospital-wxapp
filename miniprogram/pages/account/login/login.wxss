@@ -117,23 +117,26 @@ button:active {
   margin-top: -2px;
   box-sizing: content-box;
 }
-
+.clearfix button {
+  background-color: #fff;
+}
 .form-button-right {
-  float: right;
+  position: absolute;
+  right: 0;
   width: 20vw;
   margin-top: -30rpx;
   color: #555;
-  background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   box-sizing: content-box;
   opacity: 1;
-  transition: 0.1s 0.15s;
+  transition: 0.1s .3s;
 }
 
 .none {
-  max-height: 0;
+  position: absolute;
+  right: 0;
+  width: 20vw;
   opacity: 0;
-  transform: translateY(-100%);
 }
 
 .right-navigator {

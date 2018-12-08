@@ -8,7 +8,9 @@ Page({
     // 部门选择器 [已选择]
     bmIndex: [-1, 0],
     // 部门选择器 [对象]
-    bmObject: []
+    bmObject: [],
+    // 验证码冷却时间
+    sendState: '发送'
   },
 
   onShow: function() {
@@ -101,7 +103,6 @@ Page({
       !val.ysbm && (error = "所在部门 不能为空!");
       !val.ysdm && (error = "医生代码 不能为空!");
     }
-    console.log(val.ysbm)
     // 条件判断
     if (!val.csrq || !(/^(\d){4}-(\d){1,2}-(\d){1,2}$/g).test(val.csrq))
       error = "出生日期 格式错误: 1999-01-01!"
@@ -119,7 +120,9 @@ Page({
 
     // 都没问题开始注册
     if (!('ysdm' in val)) {
-      app.request(val, 'userRegister', console.log, app.globalData.token);
+      app.request(val, 'userRegister', res => {
+        console.log(res)
+      }, app.globalData.token);
     } else {
       let dept = this.data.bmObject[this.data.bmIndex[0]];
       val.hospital_id = "";
@@ -129,6 +132,7 @@ Page({
       delete val.ysbm;
       app.request(val, 'doctorRegister', console.log, app.globalData.token);
     }
+    
     console.log(val)
   },
 

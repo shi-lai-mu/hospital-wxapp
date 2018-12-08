@@ -28,7 +28,6 @@
         form-type="submit"
       >
       {{ sendState }}
-      {{ sendState > 0 ? 's' : ''}}
       </button>
     </view>
 

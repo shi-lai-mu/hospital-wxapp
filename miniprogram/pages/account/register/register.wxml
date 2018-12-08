@@ -17,21 +17,33 @@
           <label>姓名</label>
         </view>
 
-        <view class="{{user.phone}}">
+        <!-- <view class="{{user.phone}}">
           <input bindblur="inputBlur" bindtap="inputFocus" data-id="user.phone" type="number" name="phone"></input>
           <icon class="iconfont icon-shouji"></icon>
           <label>手机</label>
+        </view> -->
+
+        <view class="{{codes}} clearfix">
+          <input
+            bindblur="inputBlur"
+            bindtap="inputFocus"
+            data-id="codes"
+            name="codes"
+            class="{{!codes ? 'form-input-left' : ''}}"
+          ></input>
+          <icon class="iconfont icon-duanxin"></icon>
+          <label>验证码</label>
+          <button
+            class="{{!codes ? 'form-button-right' : 'none'}} {{sendState > 0 ? 'code-cooling' : ''}}"
+            form-type="submit"
+          >
+          {{ sendState }}
+          </button>
         </view>
 
         <view class="{{user.csrq}}">
           <picker mode="date" bindchange="select" data-id="user.csrq" data-key="user.cs" value="2000-01-01">
-            <input
-              bindblur="inputBlur"
-              bindtap="inputFocus"
-              name="csrq"
-              value="{{ user.cs }}"
-              disabled
-            ></input>
+            <input bindblur="inputBlur" bindtap="inputFocus" name="csrq" value="{{ user.cs }}" disabled></input>
             <icon class="iconfont icon-chusheng"></icon>
             <label>出生日期</label>
           </picker>
@@ -69,13 +81,7 @@
 
         <view class="{{doctor.csrq}}">
           <picker mode="date" bindchange="select" data-id="doctor.csrq" data-key="doctor.cs" value="2000-01-01">
-            <input
-              bindblur="inputBlur"
-              bindtap="inputFocus"
-              name="csrq"
-              value="{{ doctor.cs }}"
-              disabled
-            ></input>
+            <input bindblur="inputBlur" bindtap="inputFocus" name="csrq" value="{{ doctor.cs }}" disabled></input>
             <icon class="iconfont icon-chusheng"></icon>
             <label>出生日期</label>
           </picker>
@@ -89,13 +95,7 @@
 
         <view class="{{doctor.ysbm}}">
           <picker mode="multiSelector" range="{{bmArray}}" bindchange="select" data-id="doctor.ysbm" bindcolumnchange="updateSelect" data-key="bmIndex">
-            <input
-              bindblur="inputBlur"
-              bindtap="inputFocus"
-              name="ysbm"
-              value="{{ bmIndex[0] == -1 ? '' : bmArray[0][bmIndex[0]] + '-' + bmArray[1][bmIndex[1]] }}"
-              disabled
-            ></input>
+            <input bindblur="inputBlur" bindtap="inputFocus" name="ysbm" value="{{ bmIndex[0] == -1 ? '' : bmArray[0][bmIndex[0]] + '-' + bmArray[1][bmIndex[1]] }}" disabled></input>
             <icon class="iconfont icon-bumen"></icon>
             <label>所在部门</label>
           </picker>

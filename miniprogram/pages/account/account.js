@@ -44,7 +44,6 @@ Page({
     Object.defineProperty(this.data, "userInfo", {
       set: data => {
         app.globalData.userInfo = data;
-        console.log(data);
       }
     });
   },
@@ -93,7 +92,7 @@ Page({
         complete: data => {
 
           // 拉取主系统数据 data.result.openId
-          // data.result.openId = "test8"
+          data.result.openId = "test8"
           let getLoginData = () => {
             app.request(data.result.openId, "login", login => {
 
