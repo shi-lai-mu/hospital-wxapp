@@ -60,3 +60,6 @@
   font-size: 1em;
   margin-top: -10px;
 }
+.account-error {
+  font-size: .8rem;
+}

@@ -44,6 +44,17 @@ Page({
     Object.defineProperty(this.data, "userInfo", {
       set: data => {
         app.globalData.userInfo = data;
+        
+        // 功能受限检测
+        if (data.bind_account.zxyy_id === null) {
+          this.setData({
+            toast: {
+              text: "大部分功能受限!请尽快上传身份证...",
+              icon: "error",
+              hideTime: 4000
+            }
+          });
+        }
       }
     });
   },

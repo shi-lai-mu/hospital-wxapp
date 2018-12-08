@@ -162,11 +162,11 @@ Page({
         icon: "error"
       }
     });
-    app.request(`${mssion}/${code}/token=${app.globalData.token}`, "finishBindAndRegMssion", res => {
+    app.request(`${mssion}/${code}?token=${app.globalData.token}`, "finishBindAndRegMssion", res => {
       console.log(res)
       if (res.data.status) {
         wx.navigateBack({
-          delta: 2
+          delta: 3
         });
       } this.setData({
         toast: {

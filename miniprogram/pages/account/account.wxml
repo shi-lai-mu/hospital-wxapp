@@ -6,9 +6,14 @@
   <image src="{{userInfo.avatarUrl}}"></image>
 
   <view>
-    <text class="nickName">{{userInfo.nickName}}</text>
-    <text wx:if="{{userInfo.bind_account.ysdm}}">医生代码: {{userInfo.bind_account.ysdm}}</text>
-    <text wx:else>病号: {{userInfo.bind_account.zxyy_id}}</text>
+    <text class="nickName">{{userInfo.bind_account.patientname}}</text>
+    
+    <text wx:if="{{userInfo.bind_account.ysdm}}">医生代码: {{ userInfo.bind_account.ysdm }}</text>
+    <block wx:else>
+      <text wx:if="{{userInfo.bind_account.zxyy_id}}">病号: {{userInfo.bind_account.zxyy_id}}</text>
+      <text wx:else class="account-error">[大部分功能受限!请尽快上传身份证]</text>
+    </block>
+
   </view>
 
   <button class="get-user-info" open-type="getUserInfo" bindgetuserinfo="settingAccount">s</button>
