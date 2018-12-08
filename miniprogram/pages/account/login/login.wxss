@@ -135,6 +135,9 @@ button:active {
 .row-two {
   display: flex;
 }
+.row-two button {
+  margin: 0 30rpx;
+}
 
 .none {
   position: absolute;

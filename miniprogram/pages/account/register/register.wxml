@@ -9,7 +9,7 @@
 
   <swiper current="{{userType == -1 ? 0 : userType}}" bindchange="pageChange">
     <swiper-item>
-      <form bindsubmit="register">
+      <form bindsubmit="register" wx:if="{{!showCode}}">
 
         <view class="{{user.name}}">
           <input bindblur="inputBlur" bindtap="inputFocus" data-id="user.name" name="name"></input>
@@ -22,23 +22,6 @@
           <icon class="iconfont icon-shouji"></icon>
           <label>手机</label>
         </view>
-
-        <form bindsubmit="sendCode" wx:if="{{showCode}}">
-          <view class="{{codes}} clearfix">
-            <input
-              bindblur="inputBlur"
-              bindtap="inputFocus"
-              data-id="user.code"
-              name="codes"
-            ></input>
-            <icon class="iconfont icon-duanxin"></icon>
-            <label>验证码</label>
-          </view>
-          <view class="row-two">
-            <button bindtap="hideCode">返回</button>
-            <button form-type="submit">验证</button>
-          </view>
-        </form>
 
         <view class="{{user.csrq}}">
           <picker mode="date" bindchange="select" data-id="user.csrq" data-key="user.cs" value="2000-01-01">
@@ -59,6 +42,24 @@
 
         <button form-type="submit">注册</button>
       </form>
+
+      <form bindsubmit="sendCode" wx:else>
+        <view class="{{user.code}} clearfix">
+          <input
+            bindblur="inputBlur"
+            bindtap="inputFocus"
+            data-id="user.code"
+            name="codes"
+          ></input>
+          <icon class="iconfont icon-duanxin"></icon>
+          <label>验证码</label>
+        </view>
+        <view class="row-two">
+          <button bindtap="hideCode">返回</button>
+          <button form-type="submit">验证</button>
+        </view>
+      </form>
+
     </swiper-item>
 
     <!-- 医生 -->

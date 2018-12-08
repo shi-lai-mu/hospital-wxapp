@@ -162,7 +162,19 @@ Page({
         icon: "error"
       }
     });
-    app.request(`${mssion}/${code}`, "finishBindAndRegMssion",)
+    app.request(`${mssion}/${code}`, "finishBindAndRegMssion", res => {
+      console.log(res)
+      if (res.data.status) {
+        wx.navigateBack({
+          delta: 2
+        });
+      } this.setData({
+        toast: {
+          text: res.data.error,
+          icon: "error"
+        }
+      });
+    });
   },
 
   /**
