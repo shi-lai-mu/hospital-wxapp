@@ -16,17 +16,7 @@ Page({
     }
   },
 
-  onLoad: function(a) {
-
-    app.bar({
-      title: "我的",
-      bgColor: "#b5cfff"
-    });
-
-    // 初始化版本
-    this.setData({
-      version: app.globalData.version
-    });
+  onShow: function () {
 
     wx.getSetting({
       success: setting => {
@@ -38,6 +28,20 @@ Page({
           });
         }
       }
+    });
+
+  },
+
+  onLoad: function(a) {
+
+    app.bar({
+      title: "我的",
+      bgColor: "#b5cfff"
+    });
+
+    // 初始化版本
+    this.setData({
+      version: app.globalData.version
     });
 
     // 监听数据 同步全局
@@ -103,7 +107,7 @@ Page({
         complete: data => {
 
           // 拉取主系统数据 data.result.openId
-          data.result.openId = "test8"
+          // data.result.openId = "test9"
           let getLoginData = () => {
             app.request(data.result.openId, "login", login => {
 
@@ -126,7 +130,7 @@ Page({
                       data: user
                     });
                   } else {
-                    wx.navigateTo({
+                    !load && wx.navigateTo({
                       url: "login/login?bindMode=true&token=" + login.data.token
                     });
                   }
@@ -140,7 +144,7 @@ Page({
           };
 
           // 主动执行一次
-          !load && getLoginData();
+          getLoginData();
 
         }
       });
