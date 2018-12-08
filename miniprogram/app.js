@@ -52,7 +52,7 @@ App({
     // 获取全部部门列表 [读取本地,超过一小时则重新获取]
     let data = wx.getStorageSync('dept');
 
-    if (data && data.time < new Date().getTime()) {
+    if (data && data.time < Date.now()) {
       this.globalData.dept = data.data;
     } else {
       this.request("", "getAllDept", res => {
@@ -61,7 +61,7 @@ App({
           key: 'dept',
           data: {
             data: res.data,
-            time: new Date().getTime() + 3600
+            time: Date.now() + 3600
           },
         });
         this.globalData.dept = res.data;
@@ -94,7 +94,7 @@ App({
       
       if (storage &&
         storage.url == url &&
-        storage.end >= new Date().getTime()
+        storage.end >= Date.now()
       ) return callback(storage.data);
     }
 
@@ -114,7 +114,7 @@ App({
               key: api,
               data: {
                 url,
-                end: new Date().getTime() + (note * 1000),
+                end: Date.now() + (note * 1000),
                 data: res
               },
             });

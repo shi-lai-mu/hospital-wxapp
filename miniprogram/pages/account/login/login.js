@@ -79,13 +79,13 @@ Page({
       } else {
         // 检测冷却
         let cooling = wx.getStorageSync('sendTime');
-        if (!cooling || cooling > new Date().getTime()) {
+        if (!cooling || cooling > Date.now()) {
 
           // 减少读取
           if (outTime) return;
 
           // 计算秒数
-          cooling = outTime = ((cooling - new Date().getTime()) / 1000).toFixed(0);
+          cooling = outTime = ((cooling - Date.now()) / 1000).toFixed(0);
           let outInter = setInterval(() => {
             if (!cooling) {
               clearInterval(outInter);
@@ -112,7 +112,7 @@ Page({
             });
             wx.setStorage({
               key: 'sendTime',
-              data: new Date().getTime() + (60 * 1000),
+              data: Date.now() + 60 * 1000,
             });
             outTime = 60;
             outInter = setInterval(() => {

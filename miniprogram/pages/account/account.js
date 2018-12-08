@@ -87,7 +87,7 @@ Page({
 
       // 如果本地已存储数据且没过期则用本地的
       let storage = wx.getStorageSync("userInfo");
-      if (storage && storage.endTime > new Date() / 1000) return this.setData({
+      if (storage && storage.endTime > Date.now() / 1000) return this.setData({
         userInfo: storage
       });
 
@@ -97,7 +97,7 @@ Page({
         complete: data => {
 
           // 拉取主系统数据 data.result.openId
-          data.result.openId = "test9"
+          // data.result.openId = "test9"
           let getLoginData = () => {
             app.request(data.result.openId, "login", login => {
 
@@ -111,7 +111,7 @@ Page({
 
                   // 判断绑定
                   if (user.bind_id) {
-                    res.userInfo.endTime = user.token.split("-")[2] || (new Date()).valueOf() + 259200;
+                    res.userInfo.endTime = user.token.split("-")[2] || Date.now() + 259200;
                     this.setData({
                       userInfo: user
                     });
