@@ -25,7 +25,7 @@ Page({
 
   addFamily: function(e) {
     wx.navigateTo({
-      url: '../../upload/idCard/idcard?addFamily',
+      url: '../../upload/idCard/idcard?addFamily=1',
     });
   }
 })

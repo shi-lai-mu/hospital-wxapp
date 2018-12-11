@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/upload/idCard/idcard",
     "pages/account/account",
     "pages/account/login/login",
     "pages/index/index",

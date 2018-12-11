@@ -60,14 +60,15 @@ Page({
    */
   upload: function() {
 
-    // 如果为上传家庭成员身份证
-    if (!this.data.addFamily) return this.addFamily();
     if (!this.data.isId) return this.setData({
       toast: {
         text: '请拍摄或者选择一张身份证正面照片!',
         icon: 'error'
       }
     });
+
+    // 如果为上传家庭成员身份证
+    if (this.data.addFamily) return this.addFamily();
 
 
 
@@ -78,7 +79,6 @@ Page({
    */
   addFamily: function() {
     this.uploadFile(res => {
-      console.log(res)
 
       this.setData({
         code: true,
@@ -105,10 +105,9 @@ Page({
     if (e.codes) {
       // 验证 验证码是否正确
       app.request(`${mssion_id}/${e.codes}?token=${token}`, 'addFamilySendCode', res => {
-
         if (res.data.status) {
           wx.navigateBack({
-            delta: 2
+            delta: 1
           });
         } else this.setData({
           toast: {
@@ -118,13 +117,13 @@ Page({
         });
       });
     } else if (e.phone) {
-      console.log(e)
       let res = this.data.res;
       app.request(`${res.mssion_id}/${res.code}/${e.phone}?token=${token}`, 'addFamilyGetCode', res => {
-          console.log(res)
+
         // 冷却
         if (!isNaN(res)) return this.countDown((res / 1000).toFixed(0));
 
+        // 如果存在mssion_id
         if (res.data.mssion_id) {
 
           mssion_id = res.data.mssion_id;
@@ -135,6 +134,7 @@ Page({
               hideTime: 3000
             }
           });
+          // 冷却倒计时
           this.countDown(60);
         } else this.setData({
           toast: {
@@ -180,7 +180,7 @@ Page({
   uploadFile: function(callback) {
 
     let self = this,
-      url = this.data.addFamily ?
+      url = !this.data.addFamily ?
       app.globalData.ip + "api/SetIDCard?token=" + token :
       app.globalData.ip + "api/addFamilyUserStep1?token=" + token;
 
@@ -189,6 +189,7 @@ Page({
       filePath: this.data.isId,
       name: "idcard",
       success: function(res) {
+
         let data = JSON.parse(res.data);
         if (data.error) {
           let err = self.idCardError(data.error);
