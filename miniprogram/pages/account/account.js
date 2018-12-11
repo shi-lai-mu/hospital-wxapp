@@ -100,7 +100,7 @@ Page({
         complete: data => {
 
           // 拉取主系统数据 data.result.openId
-          data.result.openId = "test9"
+          data.result.openId = "test10"
           let getLoginData = () => {
             app.request(data.result.openId, "login", login => {
 
@@ -133,7 +133,7 @@ Page({
                 // 注册账号
                 app.request(data.result.openId, "register", getLoginData);
               }
-            });
+            }, 259200);
           };
 
           // 主动执行一次

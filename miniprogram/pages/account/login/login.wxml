@@ -6,7 +6,7 @@
 
 <image class="logo" src="/images/logo2.jpg"></image>
 
-  <form bindsubmit="bind" wx:if="{{bindMode}}">
+  <form bindsubmit="bind">
     <view class="{{phone}}">
       <input bindblur="inputBlur" bindtap="inputFocus" data-id="phone" type="number" name="phone"></input>
       <icon class="iconfont icon-shouji"></icon>

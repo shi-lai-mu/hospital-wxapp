@@ -40,14 +40,21 @@ App({
     },
   },
 
-  onLaunch: function () {
+  onLaunch: function() {
     wx.cloud.init();
 
     // 内测版代码区域 //
 
     this.globalData.userInfo = wx.getStorageSync('userInfo') || [];
     console.log(this.globalData.userInfo)
-    /////////////////
+      /////////////////
+
+      // 初始化本地缓存
+      !wx.getStorageSync('colling') && wx.setStorage({
+        key: 'colling',
+        data: {},
+      });
+
 
     // 获取全部部门列表 [读取本地,超过一小时则重新获取]
     let data = wx.getStorageSync('dept');
@@ -78,24 +85,33 @@ App({
    * @param {string} note 当为post请求时，url需要额外添加的参数
    *        {number} note 缓存过期时间/下次在过期时间内读取直接返回缓存数据
    */
-  request: function (data, api, callback, note) {
+  request: function(data, api, callback, note, colling) {
 
     let post = (typeof data == "string"),
 
       url = this.globalData.ip +
-        (this.globalData.url[api] ? "api/" + this.globalData.url[api] : api) +
-        (post ? data : "") +
-        (note && isNaN(note) ? note : "");
+      (this.globalData.url[api] ? "api/" + this.globalData.url[api] : api) +
+      (post ? data : "") +
+      (note && isNaN(note) ? note : "");
+
+    let storage_coll = wx.getStorageSync('colling');
 
     // 查看是否存在缓存,有则直接返回[GET]
-    if (post) {
+    if (post && note) {
       let storage = wx.getStorageSync(api);
       // 存在数据 && url相等 && 数据未过期
-      
+
       if (storage &&
         storage.url == url &&
         storage.end >= Date.now()
       ) return callback(storage.data);
+    } else if (colling) {
+      // 非缓存数据 才有冷却
+      if (api in storage_coll) {
+        if (storage_coll[api] > Date.now()) {
+          return callback(storage_coll[api] - Date.now());
+        }
+      }
     }
 
     let req = wx.request({
@@ -109,16 +125,26 @@ App({
 
           // 设置了缓存过期时间 [只缓存GET|且正常请求]
           // ps: 过期请求会被直接覆盖
-          if (post && !res.error && !isNaN(note)) {
-            wx.setStorage({
-              key: api,
-              data: {
-                url,
-                end: Date.now() + (note * 1000),
-                data: res
-              },
-            });
-            console.log(api + '存入了本地!')
+          if (post && !res.error) {
+            if (!isNaN(note)) {
+              wx.setStorage({
+                key: api,
+                data: {
+                  url,
+                  end: Date.now() + note * 1000,
+                  data: res
+                },
+              });
+            }
+            if (colling) {
+              console.log(api in storage_coll)
+              storage_coll[api] = Date.now() + colling * 1000;
+              console.log(storage_coll, api)
+              wx.setStorage({
+                key: 'colling',
+                data: storage_coll,
+              });
+            }
           }
         } else {
           wx.showToast({
@@ -137,12 +163,13 @@ App({
     //console.log("发送请求 <" + (new Date().toTimeString()) + ">: " + url + (post ? data : "") + (note ? note : ""));
   },
 
+
   /**
    * 设置顶部封装
    * @param {string/object} data 传入string为单项属性设置 反之 多项设定
    * @param {string} value 单项设定时调用,当包含","文字将会是黑色反之白色[格式 "#ffffff,000"]
    */
-  bar: function (json, value) {
+  bar: function(json, value) {
 
     let setBar = (key, val) => {
       key == 'title' ?

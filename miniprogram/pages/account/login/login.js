@@ -5,17 +5,12 @@ let mssion_id = null,
   outTime = 0;
 Page({
   data: {
-    // 是否为绑定状态
-    bindMode: false,
     token: "",
     inputValue: {
       code: false,
       codePhone: false
     },
     sendState: "发送",
-  },
-  onLoad: function(t) {
-    t.bindMode && this.setData(t);
   },
   onReady: function() {
     this.data.bindMode && (this.setData({
@@ -78,30 +73,33 @@ Page({
         mssion_id = null;
       } else {
         // 检测冷却
-        let cooling = wx.getStorageSync('sendTime');
-        if (!cooling || cooling > Date.now()) {
+        // let cooling = wx.getStorageSync('sendTime');
+        // if (!cooling || cooling > Date.now()) {
 
-          // 减少读取
-          if (outTime) return;
+        //   // 减少读取
+        //   if (outTime) return;
 
-          // 计算秒数
-          cooling = outTime = ((cooling - Date.now()) / 1000).toFixed(0);
-          let outInter = setInterval(() => {
-            if (!cooling) {
-              clearInterval(outInter);
-              cooling = "发送";
-            }
-            this.setData({
-              sendState: cooling
-            });
-            cooling--;
-          }, 1000);
-          return;
-        }
+        //   // 计算秒数
+        //   cooling = outTime = ((cooling - Date.now()) / 1000).toFixed(0);
+        //   console.log('123456', cooling)
+        //   let outInter = setInterval(() => {
+        //     if (!cooling) {
+        //       clearInterval(outInter);
+        //       cooling = "发送";
+        //     }
+        //     this.setData({
+        //       sendState: cooling
+        //     });
+        //     cooling--;
+        //   }, 1000);
+        //   return;
+        // }
 
         // 如果未输入验证码 则 发送验证码
         app.request(`${value.phone} /?token=${this.data.token}`, "existAccount", res => {
-          console.log(res)
+          if (!isNaN(res)) {
+            
+          }
           if (res.data) {
             mssion_id = res.data.mssion_id;
             this.setData({
@@ -132,7 +130,7 @@ Page({
               icon: "error"
             }
           });
-        });
+        }, false, 60);
       }
     } else return this.setData({
       toast: {
