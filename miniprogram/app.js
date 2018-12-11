@@ -126,7 +126,7 @@ App({
           // 设置了缓存过期时间 [只缓存GET|且正常请求]
           // ps: 过期请求会被直接覆盖
           if (post && !res.error) {
-            if (!isNaN(note)) {
+            if (!isNaN(note) && note) {
               wx.setStorage({
                 key: api,
                 data: {
