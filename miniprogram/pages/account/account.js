@@ -17,7 +17,7 @@ Page({
   },
 
   onShow: function() {
-
+    
     wx.getSetting({
       success: setting => {
         if (setting.authSetting["scope.userInfo"]) {
@@ -100,44 +100,35 @@ Page({
         complete: data => {
 
           // 拉取主系统数据 data.result.openId
-          data.result.openId = "test10"
-          let getLoginData = () => {
-            app.request(data.result.openId, "login", login => {
+          data.result.openId = "test16"
+          app.request(data.result.openId, "login", login => {
 
-              // 用户是否注册
-              if (login.data.token) {
+            // 用户是否注册
+            if (login.data.token) {
 
-                app.globalData.token = login.data.token;
-                // 获取账号数据
-                app.request(login.data.token, "accountData", info => {
-                  let user = Object.assign(res.userInfo, login.data, info.data);
+              app.globalData.token = login.data.token;
+              // 获取账号数据
+              app.request(login.data.token, "accountData", info => {
+                let user = Object.assign(res.userInfo, login.data, info.data);
 
-                  // 判断绑定
-                  if (user.bind_id) {
-                    res.userInfo.endTime = user.token.split("-")[2] || Date.now() + 259200;
-                    this.setData({
-                      userInfo: user
-                    });
-                    wx.setStorage({
-                      key: "userInfo",
-                      data: user
-                    });
-                  } else {
-                    !load && wx.navigateTo({
-                      url: "login/login?bindMode=true&token=" + login.data.token
-                    });
-                  }
-                });
-              } else {
-
-                // 注册账号
-                app.request(data.result.openId, "register", getLoginData);
-              }
-            }, 259200);
-          };
-
-          // 主动执行一次
-          getLoginData();
+                // 判断绑定
+                if (user.bind_id) {
+                  res.userInfo.endTime = user.token.split("-")[2] || Date.now() + 259200;
+                  this.setData({
+                    userInfo: user
+                  });
+                  wx.setStorage({
+                    key: "userInfo",
+                    data: user
+                  });
+                } else {
+                  !load && wx.navigateTo({
+                    url: "login/login?bindMode=true&token=" + login.data.token
+                  });
+                }
+              });
+            }
+          }, 259200);
 
         }
       });

@@ -61,8 +61,8 @@ Page({
               }
             });
           } else {
-            wx.redirectTo({
-              url: '../account',
+            wx.navigateBack({
+              delta: 1
             });
           }
         });
