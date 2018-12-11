@@ -94,7 +94,7 @@ Page({
 
     } else {
       let res = this.data.res;
-      app.request(`${res.mssion_id}/${res.code}/${e.phone}?token=${app.globalData.userInfo.token}`,'addFamilyUser',res => {
+      app.request(`${res.mssion_id}/${res.code}/${e.phone}?token=${app.globalData.userInfo.token}`,'addFamilyGetCode',res => {
 
         // 冷却
         if (!isNaN(res)) {

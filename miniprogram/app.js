@@ -37,8 +37,10 @@ App({
       getFamilyList: "getFamilyList?",
       // 获取专家列表
       getExpertDoc: "getExpertDoc",
-      // 添加家庭成员[短信验证码]
-      addFamilyUser: "addFamilyUserStep2"
+      // 添加家庭成员[发送验证码]
+      addFamilyGetCode: "addFamilyUserStep2/",
+      // 添加家庭成员[验证码验证]
+      addFamilySendCode: "addFamilyUserStep3/"
     },
   },
 
