@@ -1,6 +1,6 @@
 const app = getApp();
 Page({
-  
+
   data: {
     isId: ""
   },
@@ -36,7 +36,6 @@ Page({
    */
   upload: function() {
 
-    let self = this;
     if (!this.data.isId) return this.setData({
       toast: {
         text: '请拍摄或者选择一张身份证正面照片!',
@@ -45,29 +44,9 @@ Page({
     });
 
     // 如果为上传家庭成员身份证
-    if(this.data.addFamily) return this.addFamily();
+    if (this.data.addFamily) return this.addFamily();
 
-    wx.uploadFile({
-      url: app.globalData.ip + "api/SetIDCard?token=" + app.globalData.userInfo.token,
-      filePath: this.data.isId,
-      name: "idcard",
-      success: function(res) {
-        let data = JSON.parse(res.data);
-        if(data.error) {
-          let err = this.idCardError(data.error);
-          return self.setData({
-            toast: {
-              text: err,
-              icon: 'error',
-              hideTime: 4000
-            }
-          });
-        } else if (data.status == "ok") {
 
-        }
-      },
-      fail: console.error
-    });
   },
 
   /**
@@ -106,5 +85,33 @@ Page({
         break;
     }
     return err;
+  },
+
+  uploadFile: function(callback) {
+
+    let self = this,
+      url = !this.data.addFamily ?
+      app.globalData.ip + "api/SetIDCard?token=" + app.globalData.userInfo.token :
+      app.globalData.ip + "api/addFamilyUserStep1?token=" + app.globalData.userInfo.token;
+
+    wx.uploadFile({
+      url,
+      filePath: this.data.isId,
+      name: "idcard",
+      success: function(res) {
+        let data = JSON.parse(res.data);
+        if (data.error) {
+          let err = this.idCardError(data.error);
+          return self.setData({
+            toast: {
+              text: err,
+              icon: 'error',
+              hideTime: 4000
+            }
+          });
+        } else callback(data);
+      },
+      fail: console.error
+    });
   }
 })
