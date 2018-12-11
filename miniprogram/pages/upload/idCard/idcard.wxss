@@ -1,3 +1,5 @@
+@import "../../account/login/login.wxss";
+
 .row-box {
   margin-top: 30rpx;
   padding: 10rpx;
@@ -77,4 +79,8 @@
   color: #fff;
   background-color: #437ff9;
   box-shadow: 4rpx 6rpx 9rpx rgba(0, 0, 0, .3);
+}
+
+form {
+  margin: 170rpx auto 0;
 }

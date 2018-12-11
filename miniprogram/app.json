@@ -1,13 +1,13 @@
 {
   "pages": [
-    "pages/account/family/family",
+    "pages/upload/idCard/idcard",
     "pages/account/account",
     "pages/account/login/login",
     "pages/index/index",
-    "pages/upload/idCard/idcard",
     "pages/search/search",
     
-    "pages/account/register/register"
+    "pages/account/register/register",
+    "pages/account/family/family"
   ],
   "window": {
     "backgroundTextStyle": "light",

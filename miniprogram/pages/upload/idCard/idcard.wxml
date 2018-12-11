@@ -1,30 +1,51 @@
 <view class="backgroundColor"></view>
 
+<block wx:if="{{!code}}">
+  <view class="row-box mar-top clearfix">
 
-<view class="row-box mar-top clearfix">
+    <view class="upload-box" bindtap="camera">
+      <icon class="iconfont icon-shenfenzhengzheng"></icon>
+      <image wx:if="{{isId}}" src='{{isId}}' mode="aspectFit"></image>
+      <text class="upload-tag">拍摄正面</text>
+    </view>
 
-  <view class="upload-box" bindtap="camera">
-    <icon class="iconfont icon-shenfenzhengzheng"></icon>
-    <image wx:if="{{isId}}" src='{{isId}}' mode="aspectFit"></image>
-    <text class="upload-tag">拍摄正面</text>
+  </view>
+  <view class="row-box">
+    <text class="tag">拍摄身份证要求:</text>
+    <view class="content">拍摄时确保身份证
+      <text>边框完整，字体清晰，亮度均匀，无涂抹遮盖</text>
+    </view>
   </view>
 
-  <!-- <view class="upload-box" bindtap="camera" data-name="theId">
-    <icon class="iconfont icon-shenfenzhengfan"></icon>
-    <image wx:if="{{theId}}" src='{{theId}}' mode="aspectFit"></image>
-    <text class="upload-tag">拍摄反面</text>
-  </view> -->
+  <button class="button-blue" bindtap="upload">身份认证</button>
 
-</view>
+</block>
 
+<block wx:else>
 
-<view class="row-box">
-  <text class="tag">拍摄身份证要求:</text>
-  <view class="content">拍摄时确保身份证
-    <text>边框完整，字体清晰，亮度均匀，无涂抹遮盖</text>
+  <view class="row-box">
+
+    <form bindsubmit="sendCode">
+      <view class="{{phone}}">
+        <input bindblur="inputBlur" bindtap="inputFocus" data-id="phone" type="number" name="phone"></input>
+        <icon class="iconfont icon-shouji"></icon>
+        <label>手机</label>
+      </view>
+
+      <view class="{{codes}} clearfix">
+        <input bindblur="inputBlur" bindtap="inputFocus" data-id="codes" name="codes" class="{{!codes ? 'form-input-left' : ''}}"></input>
+        <icon class="iconfont icon-duanxin"></icon>
+        <label>验证码</label>
+        <button class="{{!codes ? 'form-button-right' : 'none'}} {{sendState > 0 ? 'code-cooling' : ''}}" form-type="submit">
+          {{ sendState }}
+        </button>
+      </view>
+      <view class="row-two">
+        <button bindtap="hideCode">返回</button>
+        <button form-type="submit">验证</button>
+      </view>
+    </form>
   </view>
-</view>
-
-<button class="button-blue" bindtap="upload">身份认证</button>
+</block>
 
 <msg data="{{toast}}"></msg>

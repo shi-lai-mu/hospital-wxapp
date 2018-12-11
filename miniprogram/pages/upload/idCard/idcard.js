@@ -2,7 +2,9 @@ const app = getApp();
 Page({
 
   data: {
-    isId: ""
+    isId: "",
+    sendState: "发送",
+    res: {}
   },
 
   onLoad: function(e) {
@@ -13,6 +15,24 @@ Page({
     app.bar({
       title: "身份认证",
       bgColor: "#b5cfff"
+    });
+  },
+
+  /**
+   * 聚焦函数
+   */
+  inputFocus: function (t) {
+    this.setData({
+      [t.target.dataset.id]: "changed"
+    });
+  },
+
+  /**
+   * 失焦函数
+   */
+  inputBlur: function (t) {
+    this.setData({
+      [t.target.dataset.id]: t.detail.value.length ? "nick" : ""
     });
   },
 
@@ -36,6 +56,8 @@ Page({
    */
   upload: function() {
 
+    // 如果为上传家庭成员身份证
+    if (!this.data.addFamily) return this.addFamily();
     if (!this.data.isId) return this.setData({
       toast: {
         text: '请拍摄或者选择一张身份证正面照片!',
@@ -43,8 +65,6 @@ Page({
       }
     });
 
-    // 如果为上传家庭成员身份证
-    if (this.data.addFamily) return this.addFamily();
 
 
   },
@@ -53,7 +73,26 @@ Page({
    * 上传家庭成员身份证
    */
   addFamily: function() {
+    this.uploadFile(res => {
+      console.log(res)
 
+      this.setData({
+        code: true,
+        res
+      });
+    });
+
+  },
+
+  /**
+   * 发送验证码
+   */
+  sendCode: function(e) {
+    if (e.codes) {
+
+    } else {
+      
+    }
   },
 
   /**
