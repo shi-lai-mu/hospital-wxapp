@@ -8,10 +8,10 @@ Page({
 
     // 用户信息
     userInfo: {
-      nickName: "点击登录",
       avatarUrl: "/images/avatar_1.jpg",
       bind_account: {
-        zxyy_id: "------"
+        zxyy_id: "------",
+        patientname: "点击授权"
       }
     }
   },
