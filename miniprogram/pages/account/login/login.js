@@ -5,23 +5,13 @@ let mssion_id = null,
   outTime = 0;
 Page({
   data: {
-    token: "",
-    inputValue: {
-      code: false,
-      codePhone: false
-    },
     sendState: "发送",
   },
   onReady: function() {
-    this.data.bindMode && (this.setData({
-      toast: {
-        text: "请完成手机绑定...",
-        icon: "zhiwen"
-      }
-    }), app.bar({
+    app.bar({
       title: '绑定账号',
       bgColor: '#3285FF'
-    }));
+    });
   },
 
   /**
@@ -45,6 +35,11 @@ Page({
    */
   bind: function(e) {
     let value = e.detail.value;
+
+    // 获取token
+    let token = wx.getStorageSync('login');
+    if (!token) return;
+
     // 判断 手机号和验证码 是否输入
     if (value.phone) {
       if (value.codes) {
@@ -55,8 +50,9 @@ Page({
             icon: "error"
           }
         });
+
         // 请求验证码是否正确 销毁mssion_id
-        app.request(`${mssion_id}/${value.codes}/?token=${this.data.token}`, "finishBind", res => {
+        app.request(`${mssion_id}/${value.codes}/?token=${token.data.data.token}`, "finishBind", res => {
           if (res.error) {
             this.setData({
               toast: {
@@ -66,41 +62,23 @@ Page({
             });
           } else {
             wx.redirectTo({
-              url: '../account/account',
+              url: '../account',
             });
           }
         });
         mssion_id = null;
       } else {
         // 检测冷却
-        // let cooling = wx.getStorageSync('sendTime');
-        // if (!cooling || cooling > Date.now()) {
-
-        //   // 减少读取
-        //   if (outTime) return;
-
-        //   // 计算秒数
-        //   cooling = outTime = ((cooling - Date.now()) / 1000).toFixed(0);
-        //   console.log('123456', cooling)
-        //   let outInter = setInterval(() => {
-        //     if (!cooling) {
-        //       clearInterval(outInter);
-        //       cooling = "发送";
-        //     }
-        //     this.setData({
-        //       sendState: cooling
-        //     });
-        //     cooling--;
-        //   }, 1000);
-        //   return;
-        // }
+        if (outTime) return;
 
         // 如果未输入验证码 则 发送验证码
-        app.request(`${value.phone} /?token=${this.data.token}`, "existAccount", res => {
+        app.request(`${value.phone}/?token=${token.data.data.token}`, "existAccount", res => {
           if (!isNaN(res)) {
-            
+            outTime = (res / 1000).toFixed(0);
+            this.countDown(outTime);
+            return
           }
-          if (res.data) {
+          if (res.data.mssion_id) {
             mssion_id = res.data.mssion_id;
             this.setData({
               toast: {
@@ -109,27 +87,14 @@ Page({
                 hideTime: 3000
               }
             });
-            wx.setStorage({
-              key: 'sendTime',
-              data: Date.now() + 60 * 1000,
-            });
-            outTime = 60;
-            outInter = setInterval(() => {
-              if (!outTime) {
-                clearInterval(outInter);
-                outTime = "发送";
-              }
-              this.setData({
-                sendState: outTime
-              });
-              outTime--;
-            }, 1000);
+            this.countDown(60);
           } else this.setData({
             toast: {
               text: "验证码发送失败:" + res.data.error,
               icon: "error"
             }
           });
+
         }, false, 60);
       }
     } else return this.setData({
@@ -138,5 +103,21 @@ Page({
         icon: "error"
       }
     });
+  },
+
+  /**
+   * 倒计时
+   */
+  countDown: function(outTime) {
+    outInter = setInterval(() => {
+      if (!outTime) {
+        clearInterval(outInter);
+        outTime = "发送";
+      }
+      this.setData({
+        sendState: outTime
+      });
+      outTime--;
+    }, 1000);
   }
 });

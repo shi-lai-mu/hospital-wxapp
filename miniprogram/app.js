@@ -139,7 +139,6 @@ App({
             if (colling) {
               console.log(api in storage_coll)
               storage_coll[api] = Date.now() + colling * 1000;
-              console.log(storage_coll, api)
               wx.setStorage({
                 key: 'colling',
                 data: storage_coll,
