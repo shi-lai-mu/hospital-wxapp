@@ -16,7 +16,7 @@ Page({
     }
   },
 
-  onShow: function () {
+  onShow: function() {
 
     wx.getSetting({
       success: setting => {
@@ -48,7 +48,7 @@ Page({
     Object.defineProperty(this.data, "userInfo", {
       set: data => {
         app.globalData.userInfo = data;
-        
+        console.log(data)
       }
     });
   },
@@ -84,6 +84,9 @@ Page({
 
     // 检测授权
     if (res.userInfo) {
+      this.setData({
+        userInfo: res.userInfo
+      });
 
       // 如果本地已存储数据且没过期则用本地的
       let storage = wx.getStorageSync("userInfo");
@@ -97,7 +100,7 @@ Page({
         complete: data => {
 
           // 拉取主系统数据 data.result.openId
-          // data.result.openId = "test9"
+          data.result.openId = "test9"
           let getLoginData = () => {
             app.request(data.result.openId, "login", login => {
 

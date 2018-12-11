@@ -101,6 +101,7 @@ Page({
 
         // 如果未输入验证码 则 发送验证码
         app.request(`${value.phone} /?token=${this.data.token}`, "existAccount", res => {
+          console.log(res)
           if (res.data) {
             mssion_id = res.data.mssion_id;
             this.setData({

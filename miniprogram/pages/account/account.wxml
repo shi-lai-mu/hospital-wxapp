@@ -6,12 +6,20 @@
   <image src="{{userInfo.avatarUrl}}"></image>
 
   <view>
-    <text class="nickName">{{userInfo.bind_account.patientname}}</text>
-    
+    <text class="nickName">{{
+      userInfo.bind_account.patientname ?
+      userInfo.bind_account.patientname :
+      userInfo.nickName ?
+      userInfo.nickName :
+      '点击授权'
+    }}</text>
+
     <text wx:if="{{userInfo.bind_account.ysdm}}">医生代码: {{ userInfo.bind_account.ysdm }}</text>
     <block wx:else>
       <text wx:if="{{userInfo.bind_account.zxyy_id}}">病号: {{userInfo.bind_account.zxyy_id}}</text>
-      <text wx:else class="account-error">未上传身份证</text>
+      <text wx:else class="account-error">{{
+        userInfo.bind_account.patientname ? '未上传身份证' : '点击绑定主账号'
+       }}</text>
     </block>
 
   </view>
