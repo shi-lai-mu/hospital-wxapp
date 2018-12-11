@@ -1,4 +1,6 @@
 const app = getApp();
+let outInter = null
+mssion_id = 0;
 Page({
 
   data: {
@@ -91,7 +93,41 @@ Page({
     if (e.codes) {
 
     } else {
-      app.request(``,'addFamilyUser',)
+      let res = this.data.res;
+      app.request(`${res.mssion_id}/${res.code}/${e.phone}?token=${app.globalData.userInfo.token}`,'addFamilyUser',res => {
+
+        // 冷却
+        if (!isNaN(res)) {
+          outTime = (res / 1000).toFixed(0);
+          outInter = setInterval(() => {
+            if (!outTime) {
+              clearInterval(outInter);
+              outTime = "发送";
+            }
+            this.setData({
+              sendState: outTime
+            });
+            outTime--;
+          }, 1000);
+        }
+
+        if (res.data.mssion_id) {
+
+          mssion_id = res.data.mssion_id;
+          this.setData({
+            toast: {
+              text: "验证码已发送!请输入...",
+              icon: "success",
+              hideTime: 3000
+            }
+          });
+        } else this.setData({
+          toast: {
+            text: "验证码发送失败:" + res.data.error,
+            icon: "error"
+          }
+        });
+      }, false, 60);
     }
   },
 
