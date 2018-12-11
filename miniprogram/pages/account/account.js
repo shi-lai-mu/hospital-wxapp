@@ -17,9 +17,8 @@ Page({
   },
 
   onShow: function() {
-    console.log(12456)
 
-    wx.getSetting({
+    !app.globalData.userInfo && wx.getSetting({
       success: setting => {
         if (setting.authSetting["scope.userInfo"]) {
           wx.getUserInfo({
