@@ -91,7 +91,7 @@ Page({
     if (e.codes) {
 
     } else {
-      
+      app.request(``,'addFamilyUser',)
     }
   },
 
