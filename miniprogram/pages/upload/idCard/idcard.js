@@ -1,6 +1,8 @@
 const app = getApp();
-let outInter = null
-mssion_id = 0;
+let outInter = null,
+  mssion_id = 0,
+  token = app.globalData.userInfo.token;
+
 Page({
 
   data: {
@@ -23,7 +25,7 @@ Page({
   /**
    * 聚焦函数
    */
-  inputFocus: function (t) {
+  inputFocus: function(t) {
     this.setData({
       [t.target.dataset.id]: "changed"
     });
@@ -32,7 +34,7 @@ Page({
   /**
    * 失焦函数
    */
-  inputBlur: function (t) {
+  inputBlur: function(t) {
     this.setData({
       [t.target.dataset.id]: t.detail.value.length ? "nick" : ""
     });
@@ -87,29 +89,41 @@ Page({
   },
 
   /**
+   * 返回按钮
+   */
+  hideCode: function() {
+    this.setData({
+      code: false
+    });
+  },
+
+  /**
    * 发送验证码
    */
-  sendCode: function(e) {
+  sendCode: function (e) {
+    e = e.detail.value;
     if (e.codes) {
+      // 验证 验证码是否正确
+      app.request(`${mssion_id}/${e.codes}?token=${token}`, 'addFamilySendCode', res => {
 
-    } else {
+        if (res.data.status) {
+          wx.navigateBack({
+            delta: 2
+          });
+        } else this.setData({
+          toast: {
+            text: "身份证验证失败:" + res.data.error,
+            icon: "error"
+          }
+        });
+      });
+    } else if (e.phone) {
+      console.log(e)
       let res = this.data.res;
-      app.request(`${res.mssion_id}/${res.code}/${e.phone}?token=${app.globalData.userInfo.token}`,'addFamilyGetCode',res => {
-
+      app.request(`${res.mssion_id}/${res.code}/${e.phone}?token=${token}`, 'addFamilyGetCode', res => {
+          console.log(res)
         // 冷却
-        if (!isNaN(res)) {
-          outTime = (res / 1000).toFixed(0);
-          outInter = setInterval(() => {
-            if (!outTime) {
-              clearInterval(outInter);
-              outTime = "发送";
-            }
-            this.setData({
-              sendState: outTime
-            });
-            outTime--;
-          }, 1000);
-        }
+        if (!isNaN(res)) return this.countDown((res / 1000).toFixed(0));
 
         if (res.data.mssion_id) {
 
@@ -121,6 +135,7 @@ Page({
               hideTime: 3000
             }
           });
+          this.countDown(60);
         } else this.setData({
           toast: {
             text: "验证码发送失败:" + res.data.error,
@@ -165,9 +180,9 @@ Page({
   uploadFile: function(callback) {
 
     let self = this,
-      url = !this.data.addFamily ?
-      app.globalData.ip + "api/SetIDCard?token=" + app.globalData.userInfo.token :
-      app.globalData.ip + "api/addFamilyUserStep1?token=" + app.globalData.userInfo.token;
+      url = this.data.addFamily ?
+      app.globalData.ip + "api/SetIDCard?token=" + token :
+      app.globalData.ip + "api/addFamilyUserStep1?token=" + token;
 
     wx.uploadFile({
       url,
@@ -176,7 +191,7 @@ Page({
       success: function(res) {
         let data = JSON.parse(res.data);
         if (data.error) {
-          let err = this.idCardError(data.error);
+          let err = self.idCardError(data.error);
           return self.setData({
             toast: {
               text: err,
@@ -188,5 +203,21 @@ Page({
       },
       fail: console.error
     });
+  },
+
+  /**
+   * 倒计时
+   */
+  countDown: function (outTime) {
+    outInter = setInterval(() => {
+      if (!outTime) {
+        clearInterval(outInter);
+        outTime = "发送";
+      }
+      this.setData({
+        sendState: outTime
+      });
+      outTime--;
+    }, 1000);
   }
 })
