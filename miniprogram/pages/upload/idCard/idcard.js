@@ -5,6 +5,10 @@ Page({
     isId: ""
   },
 
+  onLoad: function(e) {
+    e && this.setData(e);
+  },
+
   onShow: function() {
     app.bar({
       title: "身份认证",
@@ -40,6 +44,9 @@ Page({
       }
     });
 
+    // 如果为上传家庭成员身份证
+    if(this.data.addFamily) return this.addFamily();
+
     wx.uploadFile({
       url: app.globalData.ip + "api/SetIDCard?token=" + app.globalData.userInfo.token,
       filePath: this.data.isId,
@@ -47,30 +54,7 @@ Page({
       success: function(res) {
         let data = JSON.parse(res.data);
         if(data.error) {
-          let err = data.error;
-          switch (data.error) {
-            case "not a patient account":
-              err = "不是病人的账号!";
-              break;
-            case "Unbound main system account":
-              err = "未绑定的主系统账号!";
-              break;
-            case "no image file upload":
-              err = "图片上传程序错误!";
-              break;
-            case "recognize error":
-              err = "图片无法识别,请按要求拍摄!";
-              break;
-            case "Image type error":
-              err = "图片类型错误,无法识别为身份证!";
-              break;
-            case "please upload face side":
-              err = "请上传身份证正面的照片!";
-              break;
-            case "card number is empty":
-              err = "卡号为空!";
-              break;
-          }
+          let err = this.idCardError(data.error);
           return self.setData({
             toast: {
               text: err,
@@ -84,5 +68,43 @@ Page({
       },
       fail: console.error
     });
+  },
+
+  /**
+   * 上传家庭成员身份证
+   */
+  addFamily: function() {
+
+  },
+
+  /**
+   * 身份证错误信息翻译
+   */
+  idCardError: function(error) {
+    let err = error;
+    switch (error) {
+      case "not a patient account":
+        err = "不是病人的账号!";
+        break;
+      case "Unbound main system account":
+        err = "未绑定的主系统账号!";
+        break;
+      case "no image file upload":
+        err = "图片上传程序错误!";
+        break;
+      case "recognize error":
+        err = "图片无法识别,请按要求拍摄!";
+        break;
+      case "Image type error":
+        err = "图片类型错误,无法识别为身份证!";
+        break;
+      case "please upload face side":
+        err = "请上传身份证正面的照片!";
+        break;
+      case "card number is empty":
+        err = "卡号为空!";
+        break;
+    }
+    return err;
   }
 })

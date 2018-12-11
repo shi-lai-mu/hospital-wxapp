@@ -24,6 +24,8 @@ Page({
   },
 
   addFamily: function(e) {
-    console.log('add')
+    wx.navigateTo({
+      url: '../../upload/idCard/idcard?addFamily',
+    });
   }
 })
