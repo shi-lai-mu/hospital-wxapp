@@ -2,8 +2,8 @@
 <view class="family row-box" bindtap="click">
 
   <view class="title clearfix">
-    <text class="tag">家庭成员 ( {{familyList.length}} / 5 )</text>
-    <icon class="iconfont icon-add" bindtap='addFamily'></icon>
+    <text class="tag">家庭成员 ( 5 / {{familyList.length}} )</text>
+    <icon wx:if="{{this.data.familyList.length < 5}}" class="iconfont icon-add" bindtap='addFamily'></icon>
   </view>
 
   <view class='loading' wx:if="{{!familyList.length}}">获取中...</view>

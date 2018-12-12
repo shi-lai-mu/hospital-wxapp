@@ -50,7 +50,6 @@ App({
     // 内测版代码区域 //
 
     this.globalData.userInfo = wx.getStorageSync('userInfo') || [];
-    console.log(this.globalData.userInfo)
       /////////////////
 
       // 初始化本地缓存
@@ -141,7 +140,6 @@ App({
               });
             }
             if (colling) {
-              console.log(api in storage_coll)
               storage_coll[api] = Date.now() + colling * 1000;
               wx.setStorage({
                 key: 'colling',
@@ -156,7 +154,6 @@ App({
             mask: true,
             duration: 2000
           });
-          console.error(res);
         }
       },
       fail: err => {
