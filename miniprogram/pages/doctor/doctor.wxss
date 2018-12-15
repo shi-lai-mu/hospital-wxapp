@@ -64,6 +64,7 @@ text.introduce-content {
   position: relative;
   width: 100%;
   padding: 5px;
+  z-index: 5;
   text-align: center;
   box-sizing: border-box;
 }
@@ -74,10 +75,11 @@ text.introduce-content {
   top: 0;
   width: 100vw;
   height: 100%;
-  background-color: rgba(0, 0, 0, .1);
+  background-color: rgba(181, 207, 255, .6);
   border-radius: 0 0 20rpx 20rpx;
   box-shadow: 0 -2px 2px rgba(0, 0, 0, .05) inset;
   pointer-events: none;
+  z-index: 1;
 }
 .muen-list .focus::after {
   left: 0;
@@ -86,7 +88,6 @@ text.introduce-content {
 .muen-list .focus::before {
   right: 0;
   margin-right: 100%;
-  background-color: rgba(0, 0, 0, .1);
 }
 .muen-content {
   padding: 20rpx 10rpx;
@@ -97,4 +98,6 @@ text.introduce-content {
   font-size: .85rem;
   text-align: center;
   color: #888;
+}
+.button {
 }

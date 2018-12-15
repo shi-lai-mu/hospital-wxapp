@@ -32,6 +32,7 @@
     <text wx:if="{{tag.consulting}}">
       <text class="center-text">欢迎使用咨询服务，我将利用我的空余时间，</text>
       <text class="center-text">尽快为您答疑解惑！</text>
+      <text class="button">ss</text>
     </text>
 
     <text wx:if="{{tag.make}}">
