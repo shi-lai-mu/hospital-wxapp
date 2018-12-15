@@ -5,7 +5,7 @@
 
   <image class="doctor-img" src="/images/avatar_1.jpg"></image>
   <view class="img-right">
-    <text class="doctor-name">蔡崇超</text>
+    <text class="doctor-name">蔡崇超<text class="iconfont icon-nvyisheng-mian"></text></text>
     <text class="doctor-tag">儿科专主任医师</text>
   </view>
 
@@ -16,5 +16,30 @@
 
 </view>
 
+
+<view class="muen row-box">
+
+  <view class='muen-list' bindtap="showContent">
+    <text class="{{ tag.qrcode ? 'focus' : '' }}"     data-tag="qrcode">二维码</text>
+    <text class="{{ tag.consulting ? 'focus' : '' }}" data-tag="consulting">咨询</text>
+    <text class="{{ tag.make ? 'focus' : '' }}"       data-tag="make">预约</text>
+  </view>
+
+  <view class='muen-content'>
+
+    <text wx:if="{{tag.qrcode}}">二维码</text>
+
+    <text wx:if="{{tag.consulting}}">
+      <text class="center-text">欢迎使用咨询服务，我将利用我的空余时间，</text>
+      <text class="center-text">尽快为您答疑解惑！</text>
+    </text>
+
+    <text wx:if="{{tag.make}}">
+      <text class="center-text">欢迎使用预约服务，此服务将节省您排队挂号时间！</text>
+    </text>
+
+  </view>
+
+</view>
 
 <msg data="{{toast}}"></msg>

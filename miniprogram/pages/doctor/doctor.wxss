@@ -46,3 +46,55 @@ text.introduce-content {
   padding-left: 2em;
   font-size: .8em;
 }
+.doctor-name .iconfont {
+  margin-left: 20rpx;
+  color: #ccc;
+  font-size: .9em;
+}
+
+.muen {
+  position: relative;
+  overflow: hidden;
+  margin-top: 30rpx;
+}
+.muen-list {
+  display: flex;
+}
+.muen-list text {
+  position: relative;
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+  box-sizing: border-box;
+}
+.muen-list .focus::after,
+.muen-list .focus::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .1);
+  border-radius: 0 0 20rpx 20rpx;
+  box-shadow: 0 -2px 2px rgba(0, 0, 0, .05) inset;
+  pointer-events: none;
+}
+.muen-list .focus::after {
+  left: 0;
+  margin-left: 100%;
+}
+.muen-list .focus::before {
+  right: 0;
+  margin-right: 100%;
+  background-color: rgba(0, 0, 0, .1);
+}
+.muen-content {
+  padding: 20rpx 10rpx;
+}
+.center-text {
+  display: block;
+  margin: 10rpx 0;
+  font-size: .85rem;
+  text-align: center;
+  color: #888;
+}
