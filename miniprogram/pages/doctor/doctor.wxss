@@ -90,6 +90,7 @@ text.introduce-content {
 .muen-list .focus::before {
   right: 0;
   margin-right: 100%;
+  
 }
 .muen-content {
   padding: 20rpx 10rpx;
