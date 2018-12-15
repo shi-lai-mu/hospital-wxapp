@@ -55,7 +55,7 @@
 
 <view class="row-box row-list clearfix">
 
-  <view bindtap="PageErrorNot">
+  <view>
     <navigator url='../upload/idCard/idcard'>
       <icon class="iconfont icon-shenfenzhengzheng"></icon>
       <text>身份证 [上传]</text>

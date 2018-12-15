@@ -100,9 +100,9 @@ Page({
         complete: data => {
 
           // 拉取主系统数据
-          let getLoginData = () => {
+          let getLoginData = e => {
+            data.result.openId = 'test330';
             app.request(data.result.openId, "login", login => {
-              console.log(login)
               // 用户是否注册
               if (login.data.token) {
 
@@ -123,7 +123,7 @@ Page({
                     });
                   } else {
                     !load && wx.navigateTo({
-                      url: "login/login?bindMode=true&token=" + login.data.token
+                      url: "login/login?token=" + login.data.token
                     });
                   }
                 });
