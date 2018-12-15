@@ -27,17 +27,18 @@
 
   <view class='muen-content'>
 
-    <text wx:if="{{tag.qrcode}}">二维码</text>
+    <view wx:if="{{tag.qrcode}}">二维码</view>
 
-    <text wx:if="{{tag.consulting}}">
+    <view wx:if="{{tag.consulting}}">
       <text class="center-text">欢迎使用咨询服务，我将利用我的空余时间，</text>
       <text class="center-text">尽快为您答疑解惑！</text>
-      <text class="button">ss</text>
-    </text>
+      <text class="button">咨询</text>
+    </view>
 
-    <text wx:if="{{tag.make}}">
+    <view wx:if="{{tag.make}}">
       <text class="center-text">欢迎使用预约服务，此服务将节省您排队挂号时间！</text>
-    </text>
+      <text class="button">预约</text>
+    </view>
 
   </view>
 
