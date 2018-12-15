@@ -1,2 +1,20 @@
-<!--miniprogram/pages/doctor/doctor.wxml-->
-<text>miniprogram/pages/doctor/doctor.wxml</text>
+<view class="backgroundColor"></view>
+
+
+<view class="doctor-info row-box">
+
+  <image class="doctor-img" src="/images/avatar_1.jpg"></image>
+  <view class="img-right">
+    <text class="doctor-name">蔡崇超</text>
+    <text class="doctor-tag">儿科专主任医师</text>
+  </view>
+
+  <view class="doctor-introduce">
+    <text class="introduce-tag">简介:</text>
+    <text class="introduce-content">蔡崇超医生是我院儿科专的主任医师,其技术精湛，深受广大患者信赖！</text>
+  </view>
+
+</view>
+
+
+<msg data="{{toast}}"></msg>

@@ -1,1 +1,48 @@
-/* miniprogram/pages/doctor/doctor.wxss */
+.doctor-info {
+  margin-top: 50rpx;
+  padding: 30rpx 0;
+}
+.doctor-img {
+  width: 120rpx;
+  height: 120rpx;
+  margin: 0 30rpx;
+  vertical-align: middle;
+  border-radius: 60rpx;
+  box-shadow: 2px 2px 10px var(--shadow-color);
+}
+.doctor-info .img-right {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  float: right;
+  width: calc(100% - 180rpx);
+  height: 120rpx;
+}
+.doctor-info text {
+  width: 100%;
+  color: #888;
+}
+text.doctor-name {
+  font-size: 1.2em;
+  color: #222;
+}
+text.doctor-tag {
+  margin-top: -10rpx;
+  font-size: .9em;
+}
+.doctor-introduce {
+  padding: 20rpx;
+  padding-bottom: 0;
+  margin: 30rpx;
+  margin-bottom: 0;
+  border-top: 1px solid #eee;
+}
+text.introduce-tag {
+  display: block;
+  color: #333;
+}
+text.introduce-content {
+  padding-left: 2em;
+  font-size: .8em;
+}
