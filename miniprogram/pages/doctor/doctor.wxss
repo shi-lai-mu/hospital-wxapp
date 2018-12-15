@@ -106,7 +106,6 @@ text.introduce-content {
   width: 40vw;
   padding: 5rpx 20rpx;
   margin: 25rpx auto;
-  
   color: #75a5ff;
   font-size: 1rem;
   line-height: 50rpx;
