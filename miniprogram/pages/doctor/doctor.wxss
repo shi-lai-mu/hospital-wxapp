@@ -68,6 +68,9 @@ text.introduce-content {
   text-align: center;
   box-sizing: border-box;
 }
+.muen-list .focus {
+  z-index: 1;
+}
 .muen-list .focus::after,
 .muen-list .focus::before {
   content: '';
@@ -79,7 +82,6 @@ text.introduce-content {
   border-radius: 0 0 20rpx 20rpx;
   box-shadow: 0 -2px 2px rgba(0, 0, 0, .05) inset;
   pointer-events: none;
-  z-index: 1;
 }
 .muen-list .focus::after {
   left: 0;
