@@ -1,3 +1,4 @@
+let loading = null;
 App({
   /**
    * 公共数据
@@ -111,11 +112,35 @@ App({
       }
     }
 
+    // 设定过久显示互动
+    let showToast = false;
+
+    loading = setTimeout(() => {
+      wx.showToast({
+        title: '加载中...',
+        icon: 'loading',
+        mask: true,
+        duration: 5000
+      });
+      showToast = true;
+    },1000);
+
     let req = wx.request({
       url,
       method: post ? "GET" : "POST",
       data: post ? false : data,
       success: res => {
+        // 是否有计数器 有则 清除
+        if (loading) {
+          clearTimeout(loading);
+          loading = null;
+
+          // 判断是否正在显示图标
+          if (showToast) {
+            wx.hideToast();
+            showToast = false;
+          }
+        }
 
         if (res.statusCode == 200 || res.statusCode == 304) {
           callback && (!res.error ? callback(res) : callback(false));
