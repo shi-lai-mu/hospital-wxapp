@@ -60,23 +60,17 @@ App({
 
 
     // 获取全部部门列表 [读取本地,超过一小时则重新获取]
-    let data = wx.getStorageSync('dept');
 
-    if (data && data.time < Date.now()) {
-      this.globalData.dept = data.data;
-    } else {
       this.request("", "getAllDept", res => {
         // 过期时间 
         wx.setStorage({
           key: 'dept',
           data: {
-            data: res.data,
-            time: Date.now() + 3600
+            data: res.data
           },
         });
         this.globalData.dept = res.data;
-      });
-    }
+      }, 3600);
   },
 
   /**

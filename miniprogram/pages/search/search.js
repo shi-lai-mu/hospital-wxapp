@@ -1,4 +1,5 @@
-const app = getApp();
+const app = getApp(),
+  dept = app.globalData.dept;
 
 Page({
 
@@ -11,7 +12,7 @@ Page({
     tag: ''
   },
   onLoad: function(e) {
-    
+
     app.bar({
       title: "查找",
       bcColor: "#F7F7F7,000"
@@ -25,10 +26,35 @@ Page({
 
     // 显示 专家列表
     e.expertDoc && app.request("", "getExpertDoc", res => {
+
+      // 判断部门标签是否注明 否则写入
+      if (res.data[0].tag) {
+        let deptList = {};
+
+        // 主部门
+        for (let id in dept) {
+          // 子部门
+          let subDrpt = dept[id].subDept;
+          for (let subId of subDrpt) {
+            // 格式 主部门ID.子部门ID = 子部门名字
+            deptList[`${id}.${subId.id}`] = subId.name;
+          }
+        }
+
+        // 写入医生信息
+        for (let index in res.data) {
+          let info = res.data[index],
+            tag = `${info.dept_id}.${info.sub_dept_id}`;
+
+          if (tag in deptList) {
+            res.data[index].tag = deptList[tag];
+          } else res.data[index].tag = 'not dept';
+        }
+      }
+
       this.setData({
         results: res.data
       });
-      console.log(res.data)
     }, 3600);
   },
 
@@ -36,7 +62,6 @@ Page({
 
     // 整理部门
     let all = [],
-      dept = app.globalData.dept,
       icon = {
         '疼痛科': 'tengtongke',
         '其他': "qitake",
