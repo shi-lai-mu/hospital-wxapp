@@ -130,6 +130,7 @@ App({
           // ps: 过期请求会被直接覆盖
           if (post && !res.error) {
             if (!isNaN(note) && note) {
+              res.header && delete res.header;
               wx.setStorage({
                 key: api,
                 data: {

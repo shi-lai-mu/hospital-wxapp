@@ -28,6 +28,7 @@ Page({
       this.setData({
         results: res.data
       });
+      console.log(res.data)
     }, 3600);
   },
 
