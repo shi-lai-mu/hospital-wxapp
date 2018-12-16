@@ -32,11 +32,17 @@ text.doctor-tag {
   font-size: .9em;
 }
 .doctor-introduce {
+  overflow: hidden;
+  max-height: 0;
   padding: 20rpx;
   padding-bottom: 0;
   margin: 30rpx;
   margin-bottom: 0;
+  transition: .8s;
+}
+.doctor-introduce.focus {
   border-top: 1px solid #eee;
+  max-height: 100vh;
 }
 text.introduce-tag {
   display: block;
@@ -90,10 +96,17 @@ text.introduce-content {
 .muen-list .focus::before {
   right: 0;
   margin-right: 100%;
-  
 }
 .muen-content {
   padding: 20rpx 10rpx;
+}
+.muen-content .page > view {
+  overflow: hidden;
+  max-height: 0;
+  transition: .8s;
+}
+.muen-content .page .focus {
+  max-height: 100vh;
 }
 .center-text {
   display: block;
@@ -117,4 +130,11 @@ text.introduce-content {
 .button:active {
   color: #fff;
   background-color: #75a5ff;
+}
+
+.qrcode {
+  display: block;
+  width: 50vw;
+  height: 50vw;
+  margin: 0 auto;
 }

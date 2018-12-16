@@ -9,7 +9,7 @@
     <text class="doctor-tag">儿科专主任医师</text>
   </view>
 
-  <view class="doctor-introduce">
+  <view class="doctor-introduce {{introduce ? 'focus' : ''}}">
     <text class="introduce-tag">简介:</text>
     <text class="introduce-content">蔡崇超医生是我院儿科专的主任医师,其技术精湛，深受广大患者信赖！</text>
   </view>
@@ -27,17 +27,38 @@
 
   <view class='muen-content'>
 
-    <view wx:if="{{tag.qrcode}}">二维码</view>
 
-    <view wx:if="{{tag.consulting}}">
-      <text class="center-text">欢迎使用咨询服务，我将利用我的空余时间，</text>
-      <text class="center-text">尽快为您答疑解惑！</text>
-      <text class="button">咨询</text>
+    <view wx:if="{{tag.qrcode}}" class="page">
+      <image src='/images/yn.jpg' class='qrcode'></image>
     </view>
 
-    <view wx:if="{{tag.make}}">
+    <!-- 咨询 -->
+    <view wx:if="{{tag.consulting}}" class="page">
+
+      <view class="{{tag.consulting.page1 ? '' : 'focus'}}">
+        <text class="center-text">欢迎使用咨询服务，我将利用我的空余时间，</text>
+        <text class="center-text">尽快为您答疑解惑！</text>
+        <text class="button" bindtap="switchPage" data-page="tag.consulting.page1">咨询</text>
+      </view>
+
+      <view class="{{tag.consulting.page1 ? 'focus' : ''}}">
+        <text class="center-text">解答界面</text>
+      </view>
+
+    </view>
+
+
+    <view wx:if="{{tag.make}}" class="page">
+      
+      <view class="{{tag.make.page1 ? '' : 'focus'}}">
       <text class="center-text">欢迎使用预约服务，此服务将节省您排队挂号时间！</text>
-      <text class="button">预约</text>
+        <text class="button" bindtap="switchPage" data-page="tag.make.page1">预约</text>
+      </view>
+
+      <view class="{{tag.make.page1 ? 'focus' : ''}}">
+        <text class="center-text">预约界面</text>
+      </view>
+
     </view>
 
   </view>
