@@ -18,9 +18,11 @@ Page({
    * 菜单点击后显示
    */
   showContent: function(e) {
+    let tag = e.target ? e.target.dataset.tag : e;
+    if (this.data.tag[tag]) return;
     this.setData({
       tag: {
-        [e.target ? e.target.dataset.tag : e]: {}
+        [tag]: {}
       },
       introduce: true
     });

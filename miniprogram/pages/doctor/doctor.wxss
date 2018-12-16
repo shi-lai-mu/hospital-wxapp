@@ -38,6 +38,7 @@ text.doctor-tag {
   padding-bottom: 0;
   margin: 30rpx;
   margin-bottom: 0;
+  border-top: 1px solid transparent;
   transition: .8s;
 }
 .doctor-introduce.focus {
