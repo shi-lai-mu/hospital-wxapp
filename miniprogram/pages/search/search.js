@@ -1,5 +1,4 @@
-const app = getApp(),
-  dept = app.globalData.dept;
+const app = getApp();
 
 Page({
 
@@ -28,7 +27,8 @@ Page({
     e.expertDoc && app.request("", "getExpertDoc", res => {
 
       // 判断部门标签是否注明 否则写入
-      if (res.data[0].tag) {
+      let dept = app.globalData.dept;
+      if (!res.data[0].tag && dept[1]) {
         let deptList = {};
 
         // 主部门
@@ -51,7 +51,6 @@ Page({
           } else res.data[index].tag = 'not dept';
         }
       }
-
       this.setData({
         results: res.data
       });
@@ -76,6 +75,7 @@ Page({
       tag = this.data.tag,
       i = 0;
 
+    let dept = app.globalData.dept;
     // 主部门
     for (let id in dept) {
       let name = dept[id].name;
@@ -101,9 +101,7 @@ Page({
       all.push(value);
       i++;
     }
-    this.setData({
-      all
-    });
+    this.setData({all});
   },
 
   // 大类选择
@@ -179,5 +177,21 @@ Page({
       name: val
     });
     this.search({}, val);
-  }
+  },
+
+  /**
+   * 打开医生信息页
+   */
+  doctorPage: function(e) {
+    e = e.target.dataset;
+    if(e.name) {
+      let data = "?";
+      for (let key in e) {
+        data += `${key}=${e[key]}`;
+      }
+      wx.navigateTo({
+        url: '../doctor/doctor' + data,
+      });
+    }
+  },
 })

@@ -42,7 +42,13 @@
 
     <scroll-view class='doctor-scroll' scroll-y>
     
-      <view class="doctor" wx:for="{{results}}" wx:key="key">
+      <view
+        class="doctor"
+        wx:for="{{results}}"
+        wx:key="key"
+        bindtap="doctorPage"
+        data-name="{{item.name}}"
+      >
         <image src="/images/avatar_1.jpg" class="user-icon"></image>
         <text class="doctor-name">{{item.name}}</text>
         <text class="doctor-tag">{{item.tag}}</text>
