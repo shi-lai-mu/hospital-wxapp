@@ -101,7 +101,7 @@ Page({
 
           // 拉取主系统数据
           let getLoginData = e => {
-            data.result.openId = 'test2';
+            // data.result.openId = 'test2';
             app.request(data.result.openId, "login", login => {
               // 用户是否注册
               if (login.data.token) {
