@@ -109,13 +109,16 @@ view.select {
   display: inline-block;
   margin-right: 2%;
   vertical-align: middle;
+  pointer-events: none;
 }
 .doctor-name {
   display: inline-block;
   width: 40%;
   text-indent: .5em;
   font-weight: 500;
+  pointer-events: none;
 }
 .doctor-tag {
   color: #888;
+  pointer-events: none;
 }

@@ -9,8 +9,11 @@ Page({
     tag: {},
   },
   onLoad: function(options) {
-    console.log(options)
     options && this.setData(options);
+    app.bar({
+      title: '医生信息',
+      bgColor: '#B5CFFF'
+    });
     
     // 默认选中 咨询
     this.showContent('consulting');

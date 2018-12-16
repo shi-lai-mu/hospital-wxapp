@@ -72,11 +72,13 @@ text.introduce-content {
   width: 100%;
   padding: 5px;
   z-index: 5;
+  color: #fff;
   text-align: center;
   box-sizing: border-box;
 }
 .muen-list .focus {
   z-index: 1;
+  color: #333;
 }
 .muen-list .focus::after,
 .muen-list .focus::before {
