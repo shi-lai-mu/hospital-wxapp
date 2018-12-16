@@ -47,7 +47,7 @@
         wx:for="{{results}}"
         wx:key="key"
         bindtap="doctorPage"
-        data-name="{{item.name}}"
+        data-doctor="name={{item.name}}&sex={{item.l_sex}}&id={{item.id}}&tags={{item.tag}}"
       >
         <image src="/images/avatar_1.jpg" class="user-icon"></image>
         <text class="doctor-name">{{item.name}}</text>

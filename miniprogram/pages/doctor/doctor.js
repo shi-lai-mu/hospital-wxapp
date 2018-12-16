@@ -9,6 +9,8 @@ Page({
     tag: {},
   },
   onLoad: function(options) {
+    console.log(options)
+    options && this.setData(options);
     
     // 默认选中 咨询
     this.showContent('consulting');

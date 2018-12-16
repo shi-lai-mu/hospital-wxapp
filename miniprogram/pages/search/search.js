@@ -28,6 +28,7 @@ Page({
 
       // 判断部门标签是否注明 否则写入
       let dept = app.globalData.dept;
+      console.log(res.data)
       if (!res.data[0].tag && dept[1]) {
         let deptList = {};
 
@@ -183,15 +184,9 @@ Page({
    * 打开医生信息页
    */
   doctorPage: function(e) {
-    e = e.target.dataset;
-    if(e.name) {
-      let data = "?";
-      for (let key in e) {
-        data += `${key}=${e[key]}`;
-      }
-      wx.navigateTo({
-        url: '../doctor/doctor' + data,
-      });
-    }
+    let doctor = e.target.dataset.doctor;
+    doctor && wx.navigateTo({
+      url: '../doctor/doctor?' + doctor,
+    });
   },
 })

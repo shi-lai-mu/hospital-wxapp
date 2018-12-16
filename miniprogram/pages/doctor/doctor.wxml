@@ -5,13 +5,14 @@
 
   <image class="doctor-img" src="/images/avatar_1.jpg"></image>
   <view class="img-right">
-    <text class="doctor-name">蔡崇超<text class="iconfont icon-nvyisheng-mian"></text></text>
-    <text class="doctor-tag">儿科专主任医师</text>
+    <text class="doctor-name">{{name}}<text class="iconfont icon-{{sex == '女' ? 'nv' : 'nan' }}yisheng-mian"></text>
+    </text>
+    <text class="doctor-tag">{{tags}}主任医师</text>
   </view>
 
   <view class="doctor-introduce {{introduce ? 'focus' : ''}}">
     <text class="introduce-tag">简介:</text>
-    <text class="introduce-content">蔡崇超医生是我院儿科专的主任医师,其技术精湛，深受广大患者信赖！</text>
+    <text class="introduce-content">{{name}}医生是我院{{tags}}的主任医师,其技术精湛，深受广大患者信赖！</text>
   </view>
 
 </view>
