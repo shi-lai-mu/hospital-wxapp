@@ -19,7 +19,7 @@ Page({
 
   onShow: function () {
 
-    !app.globalData.userInfo ? wx.getSetting({
+    !Boolean(app.globalData.userInfo + []) ? wx.getSetting({
       success: setting => {
         if (setting.authSetting["scope.userInfo"]) {
           wx.getUserInfo({
@@ -68,8 +68,8 @@ Page({
   },
 
   // 设置账号
-  settingAccount: function(res, load) {
-    if (this.__viewData__.userInfo) return;
+  settingAccount: function (res, load) {
+    if (this.__viewData__.userInfo.xcxid) return;
 
     // 兼容事件处理
     res.detail && (res = res.detail);
@@ -94,7 +94,7 @@ Page({
 
           // 拉取主系统数据
           let getLoginData = e => {
-            data.result.openId = 'test2';
+            // data.result.openId = 'test2';
             app.request(data.result.openId, "login", login => {
               // 用户是否注册
               if (login.data.token) {
