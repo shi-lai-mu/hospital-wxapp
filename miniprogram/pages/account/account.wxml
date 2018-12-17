@@ -33,8 +33,10 @@
   <!-- 四格分栏 -->
   <block wx:if="{{!doctor}}">
     <view>
-      <icon class="iconfont icon-xiaoxi color5"></icon>
-      <text>消息</text>
+      <navigator url='../upload/page/page'>
+        <icon class="iconfont icon-xiaoxi color5"></icon>
+        <text>消息</text>
+      </navigator>
     </view>
     <view>
       <navigator url='family/family'>
@@ -43,14 +45,16 @@
       </navigator>
     </view>
   </block>
-  
+
   <block wx:else>
     <view>
-      <icon class="iconfont icon-qiyejianchadan color5"></icon>
-      <text>待咨询</text>
+      <navigator url='../upload/page/page'>
+        <icon class="iconfont icon-qiyejianchadan color5"></icon>
+        <text>待咨询</text>
+      </navigator>
     </view>
     <view>
-      <navigator url='family/family'>
+      <navigator url='../upload/page/page'>
         <icon class="iconfont icon-chusheng color7"></icon>
         <text>已完成</text>
       </navigator>
@@ -75,32 +79,41 @@
 <!-- 医生 病人 通用栏 -->
 <view class="row-box row-list clearfix">
 
-  <view bindtap="PageErrorNot">
-    <icon class="iconfont icon-zongjie"></icon>
-    <text>预约</text>
-    <icon class="iconfont icon-fangxiangyou"></icon>
+  <view>
+    <navigator url='../upload/page/page'>
+      <icon class="iconfont icon-zongjie"></icon>
+      <text>预约</text>
+      <icon class="iconfont icon-fangxiangyou"></icon>
+    </navigator>
   </view>
 
-  <view bindtap="PageErrorNot">
-    <icon class="iconfont icon-chufang"></icon>
-    <text>处方</text>
-    <icon class="iconfont icon-fangxiangyou"></icon>
+  <view>
+    <navigator url='../upload/page/page'>
+      <icon class="iconfont icon-chufang"></icon>
+      <text>处方</text>
+      <icon class="iconfont icon-fangxiangyou"></icon>
+    </navigator>
   </view>
 
 
   <block wx:if="{{!doctor}}">
-    <view bindtap="PageErrorNot">
-      <icon class="iconfont icon-yaodian"></icon>
-      <text>我的药店</text>
-      <icon class="iconfont icon-fangxiangyou"></icon>
+
+    <view>
+      <navigator url='../upload/page/page'>
+        <icon class="iconfont icon-yaodian"></icon>
+        <text>我的药店</text>
+        <icon class="iconfont icon-fangxiangyou"></icon>
+     </navigator>
     </view>
 
   </block>
-  
-  <view bindtap="PageErrorNot">
-    <icon class="iconfont icon-qiyejianchadan"></icon>
-    <text>检查单</text>
-    <icon class="iconfont icon-fangxiangyou"></icon>
+
+  <view>
+    <navigator url='../upload/page/page'>
+      <icon class="iconfont icon-qiyejianchadan"></icon>
+      <text>检查单</text>
+      <icon class="iconfont icon-fangxiangyou"></icon>
+    </navigator>
   </view>
 
 </view>
