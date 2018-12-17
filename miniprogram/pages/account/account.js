@@ -12,13 +12,14 @@ Page({
       bind_account: {
         zxyy_id: "------",
         patientname: "点击授权"
-      }
+      },
+      doctor: false
     }
   },
 
-  onShow: function() {
-
-    !app.globalData.userInfo && wx.getSetting({
+  onShow: function () {
+    
+    !app.globalData.userInfo ? wx.getSetting({
       success: setting => {
         if (setting.authSetting["scope.userInfo"]) {
           wx.getUserInfo({
@@ -28,6 +29,8 @@ Page({
           });
         }
       }
+    }) : this.setData({
+        userInfo: app.globalData.userInfo
     });
 
   },
@@ -101,7 +104,7 @@ Page({
 
           // 拉取主系统数据
           let getLoginData = e => {
-            // data.result.openId = 'test2';
+            data.result.openId = 'test2';
             app.request(data.result.openId, "login", login => {
               // 用户是否注册
               if (login.data.token) {
@@ -121,6 +124,13 @@ Page({
                       key: "userInfo",
                       data: user
                     });
+
+                    // 判断是否为医生
+                    if (user.bind_account.ysdm) {
+                      this.setData({
+                        doctor: true
+                      });
+                    }
                   } else {
                     !load && wx.navigateTo({
                       url: "login/login?token=" + login.data.token
