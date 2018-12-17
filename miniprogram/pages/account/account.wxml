@@ -121,16 +121,20 @@
 <!-- 医生专用栏 -->
 <view wx:if="{{doctor}}" class="row-box row-list clearfix">
 
-  <view bindtap="PageErrorNot">
-    <icon class="iconfont icon-yaodian"></icon>
-    <text>药店分组</text>
-    <icon class="iconfont icon-fangxiangyou"></icon>
+  <view>
+    <navigator url='../upload/page/page'>
+      <icon class="iconfont icon-yaodian"></icon>
+      <text>药店分组</text>
+      <icon class="iconfont icon-fangxiangyou"></icon>
+    </navigator>
   </view>
 
-  <view bindtap="PageErrorNot">
-    <icon class="iconfont icon-yaodian"></icon>
-    <text>诊断分组</text>
-    <icon class="iconfont icon-fangxiangyou"></icon>
+  <view>
+    <navigator url='../upload/page/page'>
+      <icon class="iconfont icon-yaodian"></icon>
+      <text>诊断分组</text>
+      <icon class="iconfont icon-fangxiangyou"></icon>
+    </navigator>
   </view>
 
 </view>

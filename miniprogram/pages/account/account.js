@@ -56,17 +56,6 @@ Page({
     });
   },
 
-  // 页面不存在
-  PageErrorNot: function() {
-    this.setData({
-      toast: {
-        text: "此页面正在开发中...",
-        icon: "error",
-        hideTime: 2e3
-      }
-    });
-  },
-
   // 提示版本
   printVersion: function() {
     this.setData({
