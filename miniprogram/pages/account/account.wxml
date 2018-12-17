@@ -30,6 +30,7 @@
 
 <view class="row-box clearfix four-list-icon">
 
+  <!-- 四格分栏 -->
   <block wx:if="{{!doctor}}">
     <view>
       <icon class="iconfont icon-xiaoxi color5"></icon>
@@ -59,6 +60,7 @@
 </view>
 
 
+<!-- 上传身份证 特殊栏 -->
 <view class="row-box row-list clearfix padding-empty">
 
   <view wx:if="{{userInfo.bind_account.patientname}}">
@@ -70,7 +72,7 @@
 
 </view>
 
-
+<!-- 医生 病人 通用栏 -->
 <view class="row-box row-list clearfix">
 
   <view bindtap="PageErrorNot">
@@ -103,7 +105,7 @@
 
 </view>
 
-
+<!-- 医生专用栏 -->
 <view wx:if="{{doctor}}" class="row-box row-list clearfix">
 
   <view bindtap="PageErrorNot">
@@ -120,7 +122,7 @@
 
 </view>
 
-
+<!-- 版本 其他 栏 -->
 <view class="row-box row-list clearfix">
 
   <view bindtap="printVersion">
