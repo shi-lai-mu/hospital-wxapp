@@ -63,3 +63,10 @@
 .account-error {
   font-size: .8rem;
 }
+.padding-empty {
+  min-height:0;
+  padding: 0;
+}
+.padding-empty > view {
+  padding: 10rpx;
+}

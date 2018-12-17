@@ -13,13 +13,12 @@
       userInfo.nickName :
       '点击授权'
     }}</text>
-
-    <text wx:if="{{userInfo.bind_account.ysdm}}">医生代码: {{ userInfo.bind_account.ysdm }}</text>
+    <text wx:if="{{doctor}}">医生代码: {{ userInfo.bind_account.ysdm }}</text>
     <block wx:else>
-      <text wx:if="{{userInfo.bind_account.zxyy_id}}">病号: {{userInfo.bind_account.zxyy_id}}</text>
+      <text wx:if="{{!doctor}}">病号: {{ userInfo.bind_account.zxyy_id }}</text>
       <text wx:else class="account-error">{{
         userInfo.bind_account.patientname ? '未上传身份证' : '点击绑定主账号'
-       }}</text>
+      }}</text>
     </block>
 
   </view>
@@ -31,27 +30,38 @@
 
 <view class="row-box clearfix four-list-icon">
 
-  <view>
-    <icon class="iconfont icon-xiaoxi color5"></icon>
-    <text>消息</text>
-  </view>
-  <view>
-    <icon class="iconfont icon-xiaoxi color2"></icon>
-    <text>我的消息</text>
-  </view>
-  <view>
-    <navigator url='family/family'>
-      <icon class="iconfont icon-chengyuan color7"></icon>
-      <text>家庭成员</text>
-    </navigator>
-  </view>
+  <block wx:if="{{!doctor}}">
+    <view>
+      <icon class="iconfont icon-xiaoxi color5"></icon>
+      <text>消息</text>
+    </view>
+    <view>
+      <navigator url='family/family'>
+        <icon class="iconfont icon-chengyuan color7"></icon>
+        <text>家庭成员</text>
+      </navigator>
+    </view>
+  </block>
   
+  <block wx:else>
+    <view>
+      <icon class="iconfont icon-qiyejianchadan color5"></icon>
+      <text>待咨询</text>
+    </view>
+    <view>
+      <navigator url='family/family'>
+        <icon class="iconfont icon-chusheng color7"></icon>
+        <text>已完成</text>
+      </navigator>
+    </view>
+  </block>
+
 </view>
 
 
-<view class="row-box row-list clearfix">
+<view class="row-box row-list clearfix padding-empty">
 
-  <view>
+  <view wx:if="{{userInfo.bind_account.patientname}}">
     <navigator url='../upload/idCard/idcard'>
       <icon class="iconfont icon-shenfenzhengzheng"></icon>
       <text>身份证 [上传]</text>
@@ -75,17 +85,43 @@
     <icon class="iconfont icon-fangxiangyou"></icon>
   </view>
 
-  <view bindtap="PageErrorNot">
-    <icon class="iconfont icon-yaodian"></icon>
-    <text>我的药店</text>
-    <icon class="iconfont icon-fangxiangyou"></icon>
-  </view>
 
+  <block wx:if="{{!doctor}}">
+    <view bindtap="PageErrorNot">
+      <icon class="iconfont icon-yaodian"></icon>
+      <text>我的药店</text>
+      <icon class="iconfont icon-fangxiangyou"></icon>
+    </view>
+
+  </block>
+  
   <view bindtap="PageErrorNot">
     <icon class="iconfont icon-qiyejianchadan"></icon>
     <text>检查单</text>
     <icon class="iconfont icon-fangxiangyou"></icon>
   </view>
+
+</view>
+
+
+<view wx:if="{{doctor}}" class="row-box row-list clearfix">
+
+  <view bindtap="PageErrorNot">
+    <icon class="iconfont icon-yaodian"></icon>
+    <text>药店分组</text>
+    <icon class="iconfont icon-fangxiangyou"></icon>
+  </view>
+
+  <view bindtap="PageErrorNot">
+    <icon class="iconfont icon-yaodian"></icon>
+    <text>诊断分组</text>
+    <icon class="iconfont icon-fangxiangyou"></icon>
+  </view>
+
+</view>
+
+
+<view class="row-box row-list clearfix">
 
   <view bindtap="printVersion">
     <icon class="iconfont icon-banben"></icon>
@@ -93,6 +129,5 @@
   </view>
 
 </view>
-
 
 <msg data="{{toast}}"></msg>

@@ -30,7 +30,8 @@ Page({
         }
       }
     }) : this.setData({
-        userInfo: app.globalData.userInfo
+        userInfo: app.globalData.userInfo,
+        doctor: !!app.globalData.userInfo.bind_account.ysdm
     });
 
   },
@@ -51,7 +52,6 @@ Page({
     Object.defineProperty(this.data, "userInfo", {
       set: data => {
         app.globalData.userInfo = data;
-        console.log(data)
       }
     });
   },
@@ -94,7 +94,8 @@ Page({
       // 如果本地已存储数据且没过期则用本地的
       let storage = wx.getStorageSync("userInfo");
       if (storage && storage.endTime > Date.now() / 1000) return this.setData({
-        userInfo: storage
+        userInfo: storage,
+        doctor: !!storage.bind_account.ysdm
       });
 
       // 获取openid
@@ -118,19 +119,14 @@ Page({
                   if (user.bind_id) {
                     res.userInfo.endTime = user.token.split("-")[2] || Date.now() + 259200;
                     this.setData({
-                      userInfo: user
+                      userInfo: user,
+                      doctor: !!user.bind_account.ysdm
                     });
                     wx.setStorage({
                       key: "userInfo",
                       data: user
                     });
 
-                    // 判断是否为医生
-                    if (user.bind_account.ysdm) {
-                      this.setData({
-                        doctor: true
-                      });
-                    }
                   } else {
                     !load && wx.navigateTo({
                       url: "login/login?token=" + login.data.token
