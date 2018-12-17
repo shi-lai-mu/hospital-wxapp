@@ -18,7 +18,7 @@ Page({
   },
 
   onShow: function () {
-    
+
     !app.globalData.userInfo ? wx.getSetting({
       success: setting => {
         if (setting.authSetting["scope.userInfo"]) {
@@ -80,7 +80,7 @@ Page({
 
   // 设置账号
   settingAccount: function(res, load) {
-    if (this.data.userInfo) return;
+    if (this.__viewData__.userInfo) return;
 
     // 兼容事件处理
     res.detail && (res = res.detail);
