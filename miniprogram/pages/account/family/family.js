@@ -15,11 +15,14 @@ Page({
     });
   },
 
-
+  /**
+   * 刪除家庭成员
+   */
   click: function(e) {
     let target = e.target.dataset;
     if (target.no) {
       app.request(`${target.no}?token=${app.globalData.userInfo.token}`, 'deleteFamilyUser', res => {
+        // 删除后重新获取
         app.request(`token=${app.globalData.userInfo.token}`, "getFamilyList", res => {
           if (res.data.length) this.setData({
             familyList: res.data
@@ -29,6 +32,9 @@ Page({
     }
   },
 
+  /**
+   * 添加家庭成员
+   */
   addFamily: function(e) {
     wx.navigateTo({
       url: '../../upload/idCard/idcard?addFamily=1',
