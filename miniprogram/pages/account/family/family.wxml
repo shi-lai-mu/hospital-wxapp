@@ -3,7 +3,7 @@
 
   <view class="title clearfix">
     <text class="tag">家庭成员 ( 5 / {{familyList.length}} )</text>
-    <icon wx:if="{{this.data.familyList.length < 5}}" class="iconfont icon-add" bindtap='addFamily'></icon>
+    <icon wx:if="{{familyList.length < 5}}" class="iconfont icon-add" bindtap='addFamily'></icon>
   </view>
 
   <view class='loading' wx:if="{{!familyList.length}}">获取中...</view>
@@ -23,7 +23,7 @@
       <text>{{item.phone}}</text>
     </view>
     <view class="button-list">
-      <button bindtap="click" data-name="小明" wx:if="{{item.isLord == 0}}">删除</button>
+      <button bindtap="click" data-no="{{item.medical_No}}" wx:if="{{item.isLord == 0}}">删除</button>
     </view>
   </view>
 

@@ -34,14 +34,16 @@ App({
       userRegister: "bindAndRegMainSysAccountPat/?token=",
       // 注册 [验证 验证码]
       finishBindAndRegMssion: "finishBindAndRegMssion/",
-      // 获取家庭成员列表
+      // 获取 家庭成员列表
       getFamilyList: "getFamilyList?",
-      // 获取专家列表
-      getExpertDoc: "getExpertDoc",
-      // 添加家庭成员[发送验证码]
+      // 添加 家庭成员[发送验证码]
       addFamilyGetCode: "addFamilyUserStep2/",
-      // 添加家庭成员[验证码验证]
-      addFamilySendCode: "addFamilyUserStep3/"
+      // 添加 家庭成员[验证码验证]
+      addFamilySendCode: "addFamilyUserStep3/",
+      // 删除 家庭成员
+      deleteFamilyUser: "deleteFamilyUser/",
+      // 获取 专家列表
+      getExpertDoc: "getExpertDoc",
     },
   },
 

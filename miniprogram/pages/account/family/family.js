@@ -4,7 +4,7 @@ Page({
   data: {
     familyList: []
   },
-  
+
   onShow: function() {
     app.bar("title", "家庭成员");
     // 读取家庭成员列表
@@ -15,11 +15,17 @@ Page({
     });
   },
 
+
   click: function(e) {
     let target = e.target.dataset;
-    if (target.name) {
-      let slef = this;
-
+    if (target.no) {
+      app.request(`${target.no}?token=${app.globalData.userInfo.token}`, 'deleteFamilyUser', res => {
+        app.request(`token=${app.globalData.userInfo.token}`, "getFamilyList", res => {
+          if (res.data.length) this.setData({
+            familyList: res.data
+          });
+        });
+      });
     }
   },
 
