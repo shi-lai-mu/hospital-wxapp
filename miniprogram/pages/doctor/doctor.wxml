@@ -43,7 +43,10 @@
       </view>
 
       <view class="{{tag.consulting.page1 ? 'focus' : ''}}">
-        <text class="center-text">解答界面</text>
+        <text class="center-text">
+          
+        
+        </text>
       </view>
 
     </view>

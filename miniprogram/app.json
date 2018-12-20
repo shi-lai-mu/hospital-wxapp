@@ -7,7 +7,8 @@
     "pages/doctor/doctor",
     "pages/search/search",
     "pages/account/family/family",
-    "pages/upload/page/page"
+    "pages/upload/page/page",
+    "pages/doctor/consulting/consulting"
   ],
   "window": {
     "backgroundTextStyle": "light",
