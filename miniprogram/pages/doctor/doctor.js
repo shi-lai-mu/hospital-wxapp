@@ -49,5 +49,14 @@ Page({
       [e.target.dataset.page]: true,
       introduce: false
     });
+  },
+
+  /**
+   * 姓名选择
+   */
+  con_picker: function(e) {
+    this.setData({
+      focusFamily: e.detail.value
+    });
   }
 })

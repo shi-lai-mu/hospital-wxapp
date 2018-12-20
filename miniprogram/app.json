@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/doctor/doctor",
     "pages/index/index",
     "pages/account/account",
     "pages/account/register/register",
     "pages/account/login/login",
-    "pages/doctor/doctor",
     "pages/search/search",
     "pages/account/family/family",
     "pages/upload/page/page",
