@@ -141,3 +141,53 @@ text.introduce-content {
   height: 50vw;
   margin: 0 auto;
 }
+
+/* 咨询 */
+.con-list {
+  width: 95%;
+  padding: 10rpx 0;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: #777;
+  border-bottom: 1px solid #eee;
+}
+.con-list text {
+  color: #222;
+  font-weight: 500;
+}
+.con-list .con-right {
+  float: right;
+  text-align: right;
+  min-width: 50%;
+}
+.icon-fangxiangyou {
+  float: right;
+  margin-top: -1.5rpx;
+  font-size: 1rem;
+  color: #ccc;
+}
+.con-list textarea {
+  width: 100%;
+  min-height: 6rem;
+  padding-bottom: 1rem;
+  font-size: .95rem;
+}
+text.ps4 {
+  position: absolute;
+  right: 4%;
+  color: #ccc;
+  font-size: .8rem;
+  transform: translateY(-100%)
+}
+.ps {
+  color: #bbb;
+  font-size: .7rem;
+}
+button {
+  width: 60vw;
+  margin: 20rpx auto 10rpx;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 1rpx #777;
+  background-color: #D3E2FF;
+}

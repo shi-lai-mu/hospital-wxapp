@@ -6,7 +6,15 @@ Page({
     introduce: true,
 
     // 菜单标签
-    tag: {},
+    tag: {
+      consulting: {
+        page1: true
+      }
+    },
+
+    // 家庭列表
+    family: ['郑余国', '啦啦啦', '阿鲁巴吧', '休息休息'],
+    focusFamily: 0
   },
   onLoad: function(options) {
     options && this.setData(options);
