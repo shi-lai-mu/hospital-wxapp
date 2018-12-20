@@ -4,7 +4,7 @@
 
   <view class="select-user" bindtap="selectUserType">
     <text class="select-user-type {{ userType == 0 ? 'onR' : userType == -1 ? 'on' : '' }}" data-i="0">用户 </text>
-    <text class="select-user-type {{ userType == 1 ? 'onL' : '' }}" data-i="1">医生</text>
+    <!-- <text class="select-user-type {{ userType == 1 ? 'onL' : '' }}" data-i="1">医生</text> -->
   </view>
 
   <swiper current="{{userType == -1 ? 0 : userType}}" bindchange="pageChange">
@@ -45,12 +45,7 @@
 
       <form bindsubmit="sendCode" wx:else>
         <view class="{{user.code}} clearfix">
-          <input
-            bindblur="inputBlur"
-            bindtap="inputFocus"
-            data-id="user.code"
-            name="codes"
-          ></input>
+          <input bindblur="inputBlur" bindtap="inputFocus" data-id="user.code" name="codes"></input>
           <icon class="iconfont icon-duanxin"></icon>
           <label>验证码</label>
         </view>
@@ -64,7 +59,7 @@
 
     <!-- 医生 -->
 
-    <swiper-item>
+    <!-- <swiper-item>
       <form bindsubmit="register" class='swiper-list' wx:if="{{!showCode}}">
 
         <view class="{{doctor.name}}">
@@ -80,20 +75,11 @@
         </view>
 
         <view class="{{codes}} clearfix" wx:if="">
-          <input
-            bindblur="inputBlur"
-            bindtap="inputFocus"
-            data-id="doctor.code"
-            name="codes"
-            class="{{!codes ? 'form-input-left' : ''}}"
-          ></input>
+          <input bindblur="inputBlur" bindtap="inputFocus" data-id="doctor.code" name="codes" class="{{!codes ? 'form-input-left' : ''}}"></input>
           <icon class="iconfont icon-duanxin"></icon>
           <label>验证码</label>
-          <button
-            class="{{!codes ? 'form-button-right' : 'none'}} {{sendState > 0 ? 'code-cooling' : ''}}"
-            form-type="submit"
-          >
-          {{ sendState }}
+          <button class="{{!codes ? 'form-button-right' : 'none'}} {{sendState > 0 ? 'code-cooling' : ''}}" form-type="submit">
+            {{ sendState }}
           </button>
         </view>
 
@@ -134,12 +120,7 @@
 
       <form bindsubmit="sendCode" wx:else>
         <view class="{{doctor.code}} clearfix">
-          <input
-            bindblur="inputBlur"
-            bindtap="inputFocus"
-            data-id="doctor.code"
-            name="codes"
-          ></input>
+          <input bindblur="inputBlur" bindtap="inputFocus" data-id="doctor.code" name="codes"></input>
           <icon class="iconfont icon-duanxin"></icon>
           <label>验证码</label>
         </view>
@@ -149,7 +130,7 @@
         </view>
       </form>
 
-    </swiper-item>
+    </swiper-item> -->
 
   </swiper>
 

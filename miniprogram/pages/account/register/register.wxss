@@ -22,7 +22,7 @@ radio-group {
 }
 .select-user-type {
   display: inline-block;
-  width: 50%;
+  width: 100%;
   padding: 10rpx 0;
   text-align: center;
   color: #333;
