@@ -14,13 +14,24 @@ Page({
 
     // 家庭列表
     family: ['郑余国', '啦啦啦', '阿鲁巴吧', '休息休息'],
-    focusFamily: 0
+    focusFamily: 0,
+    familyList: []
   },
   onLoad: function(options) {
     options && this.setData(options);
     app.bar({
       title: '医生信息',
       bgColor: '#B5CFFF'
+    });
+
+    app.request(`token=${app.globalData.userInfo.token}`, "getFamilyList", res => {
+      let data = [];
+      console.log(res.data)
+      for (let obj of res.data) data.push(obj.patientname);
+      this.setData({
+        family: data,
+        familyList: res.data
+      });
     });
     
     // 默认选中 咨询
@@ -58,5 +69,21 @@ Page({
     this.setData({
       focusFamily: e.detail.value
     });
-  }
+  },
+
+  /**
+   * 咨询提交
+   */
+  consulting: function(e) {
+    if (e.detail.value.content.length < 4) {
+      this.setData({
+        toast: {
+          text: "请至少输入4个字符!",
+          icon: "error"
+        }
+      })
+      return;
+    }
+    
+  },
 })

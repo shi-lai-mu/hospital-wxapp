@@ -21,9 +21,9 @@
 <view class="muen row-box">
 
   <view class='muen-list' bindtap="showContent">
-    <text class="{{ tag.qrcode ? 'focus' : '' }}"     data-tag="qrcode">二维码</text>
+    <text class="{{ tag.qrcode ? 'focus' : '' }}" data-tag="qrcode">二维码</text>
     <text class="{{ tag.consulting ? 'focus' : '' }}" data-tag="consulting">咨询</text>
-    <text class="{{ tag.make ? 'focus' : '' }}"       data-tag="make">预约</text>
+    <text class="{{ tag.make ? 'focus' : '' }}" data-tag="make">预约</text>
   </view>
 
   <view class='muen-content'>
@@ -44,35 +44,36 @@
 
       <view class="{{tag.consulting.page1 ? 'focus' : ''}}">
 
-        <view class="con-list">
-          <text>咨询者:</text>
-          <view class="con-right">
-            <picker range="{{family}}" value="{{focusFamily}}" bindchange="con_picker">
-            {{family[focusFamily]}}
-            <icon class="iconfont icon-fangxiangyou"></icon>
-            </picker>
+        <form bindsubmit="consulting">
+          <view class="con-list">
+            <text>咨询者:</text>
+            <view class="con-right">
+              <picker range="{{family}}" value="{{focusFamily}}" bindchange="con_picker">
+                {{familyList[focusFamily].patientname}}
+                <icon class="iconfont icon-fangxiangyou"></icon>
+              </picker>
+            </view>
           </view>
-        </view>
 
-        <view class="con-list">
-          <text>哪不舒服:</text>
-          <textarea wx:if="{{tag.consulting.page1}}" placeholder='请准确的描述你的症状（问题），比如：哪里不舒服，症状持续时间，是否曾接受治疗，效果如何。病情描述越准确，医生对你的帮助越大。' auto-height></textarea>
-          <text class="ps4">请至少输入4个字符</text>
-        </view>
+          <view class="con-list">
+            <text>哪不舒服:</text>
+            <textarea wx:if="{{tag.consulting.page1}}" placeholder='请准确的描述你的症状（问题），比如：哪里不舒服，症状持续时间，是否曾接受治疗，效果如何。病情描述越准确，医生对你的帮助越大。' name="content" auto-height></textarea>
+            <text class="ps4">请至少输入4个字符</text>
+          </view>
 
-        <text class="ps">＊为保护您的隐私，请不要输入微信号、住址等信息。</text>
+          <text class="ps">＊为保护您的隐私，请不要输入微信号、住址等信息。</text>
 
-        <button>提交</button>
-        
+          <button form-type='submit'>提交</button>
+        </form>
       </view>
 
     </view>
 
 
     <view wx:if="{{tag.make}}" class="page">
-      
+
       <view class="{{tag.make.page1 ? '' : 'focus'}}">
-      <text class="center-text">欢迎使用预约服务，此服务将节省您排队挂号时间！</text>
+        <text class="center-text">欢迎使用预约服务，此服务将节省您排队挂号时间！</text>
         <text class="button" bindtap="switchPage" data-page="tag.make.page1">预约</text>
       </view>
 
