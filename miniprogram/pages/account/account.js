@@ -1,4 +1,5 @@
 var app = getApp();
+let register = false;
 
 Page({
   data: {
@@ -17,22 +18,27 @@ Page({
     }
   },
 
-  onShow: function () {
+  onShow: function() {
+    if (!Boolean(app.globalData.userInfo + []) || 
+        !app.globalData.userInfo.bind_account.length) {
 
-    !Boolean(app.globalData.userInfo + []) ? wx.getSetting({
-      success: setting => {
-        if (setting.authSetting["scope.userInfo"]) {
-          wx.getUserInfo({
-            success: res => {
-              this.settingAccount(res, true);
-            }
-          });
+      wx.getSetting({
+        success: setting => {
+          if (setting.authSetting["scope.userInfo"]) {
+            wx.getUserInfo({
+              success: res => {
+                this.settingAccount(res, true);
+              }
+            });
+          }
         }
-      }
-    }) : this.setData({
+      })
+    } else {
+      this.setData({
         userInfo: app.globalData.userInfo,
         doctor: !!app.globalData.userInfo.bind_account.ysdm
-    });
+      });
+    }
 
   },
 
@@ -68,7 +74,7 @@ Page({
   },
 
   // 设置账号
-  settingAccount: function (res, load) {
+  settingAccount: function(res, load) {
     if (this.__viewData__.userInfo.xcxid) return;
 
     // 兼容事件处理
@@ -94,7 +100,7 @@ Page({
 
           // 拉取主系统数据
           let getLoginData = e => {
-            // data.result.openId = 'test2';
+            // data.result.openId = 'o-PgA5R0PU-6L-JS_XN0jHGD1ss';
             app.request(data.result.openId, "login", login => {
               // 用户是否注册
               if (login.data.token) {
@@ -122,12 +128,13 @@ Page({
                     });
                   }
                 });
-              } else {
+              } else if (!register) {
 
                 // 注册账号
+                register = true;
                 app.request(data.result.openId, "register", getLoginData, false, 20);
               }
-            }, 259200);
+            }, 5);
           };
 
           // 主动执行一次

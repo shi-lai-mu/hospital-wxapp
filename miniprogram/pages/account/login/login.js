@@ -33,7 +33,7 @@ Page({
   /**
    * 绑定账号事件
    */
-  bind: function(e) {
+  bind: function (e) {
     let value = e.detail.value;
 
     // 获取token
@@ -61,8 +61,8 @@ Page({
               }
             });
           } else {
-            wx.navigateBack({
-              delta: 1
+            wx.switchTab({
+              url: '../account?reload'
             });
           }
         });
