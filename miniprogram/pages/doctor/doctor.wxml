@@ -49,7 +49,11 @@
             <text>咨询者:</text>
             <view class="con-right">
               <picker range="{{family}}" value="{{focusFamily}}" bindchange="con_picker">
-                {{familyList[focusFamily].patientname}}
+                {{
+                  familyList[focusFamily].patientname + " "
+                  + familyList[focusFamily].sex + " "
+                  + familyList[focusFamily].age
+                }}
                 <icon class="iconfont icon-fangxiangyou"></icon>
               </picker>
             </view>

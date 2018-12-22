@@ -13,11 +13,15 @@ Page({
     },
 
     // 家庭列表
-    family: ['郑余国', '啦啦啦', '阿鲁巴吧', '休息休息'],
+    family: [],
     focusFamily: 0,
-    familyList: []
+    familyList: [{
+      patientname: '--',
+      sex: '--',
+      age: '--',
+    }]
   },
-  onLoad: function(options) {
+  onShow: function(options) {
     options && this.setData(options);
     app.bar({
       title: '医生信息',
@@ -26,8 +30,8 @@ Page({
 
     app.request(`token=${app.globalData.userInfo.token}`, "getFamilyList", res => {
       let data = [];
-      console.log(res.data)
-      for (let obj of res.data) data.push(obj.patientname);
+      for (let obj of res.data) data.push(`${obj.patientname} ${obj.sex} ${obj.age}`);
+      (res.data.length < 5) && data.push(`+ 添加家庭成员`);
       this.setData({
         family: data,
         familyList: res.data
@@ -66,6 +70,12 @@ Page({
    * 姓名选择
    */
   con_picker: function(e) {
+    if (e.detail.value == this.data.family.length - 1) {
+      wx.navigateTo({
+        url: '../account/family/family',
+      })
+      return;
+    }
     this.setData({
       focusFamily: e.detail.value
     });
