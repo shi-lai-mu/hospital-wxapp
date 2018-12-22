@@ -7,7 +7,7 @@
   <text class="doc-department">儿科</text>
 </view>
 
-<scroll-view class="msg-box" scroll-top="1000000" scroll-y>
+<scroll-view class="msg-box" scroll-top="{{ scrollTop }}" scroll-y>
 
     <view class="put-info">
       <text>郑余国 男 18岁</text>
@@ -19,12 +19,11 @@
       <image src="{{ user.avatarUrl }}"></image>
     </view>
 
-    <view class="fix"></view>
 </scroll-view>
 
 <view class="input-box">
   <form bindsubmit="sendInput" class="form clearfix">
-    <input type="text" name="content"></input>
+    <input type="text" name="content" value="{{ inputValue }}"></input>
     <icon class="iconfont icon-fangxiangshang {{ tool ? 'deg' : '' }}" bindtap="toggleTool"></icon>
     <button form-type="submit" plain>发送</button>
   </form>
@@ -34,9 +33,6 @@
       <text>申请开药</text>
       <text>申请开检验检查单</text>
       <text>我已经知道</text>
-      <text>我已经知道1</text>
-      <text>我已经知道2</text>
-      <text>我已经知道3</text>
     </scroll-view>
   </view>
 </view>

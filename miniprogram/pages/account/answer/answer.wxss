@@ -71,6 +71,15 @@ page {
   word-wrap: break-word;
   background-image: linear-gradient(90deg, #29CCC1, #53DB95);
   border-radius: 20rpx;
+  transform-origin: right;
+  transform: rotateY(90deg);
+  animation: 1s .5s msg;
+  animation-fill-mode: forwards;
+}
+@keyframes msg {
+  to {
+    transform: rotateY(0deg);
+  }
 }
 .msg-box .put::after,
 .doc-box .doc::after {
@@ -102,6 +111,16 @@ page {
   margin: 10rpx;
   border: 1rpx dashed #ccc;
   border-radius: 10rpx;
+  animation: .5s icon;
+}
+@keyframes icon {
+  from {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 .fix {
   height: 100rpx;
