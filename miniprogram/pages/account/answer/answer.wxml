@@ -40,7 +40,7 @@
       <image src="{{ user.avatarUrl }}"></image>
     </view>
     <view class="put-box">
-      <view class="put">阿鲁巴吧</view>
+      <view class="put">阿鲁巴吧 超长的文字，阿鲁巴吧 超长的文字，阿鲁巴吧 超长的文字，阿鲁巴吧 超长的文字，阿鲁巴吧 超长的文字，</view>
       <image src="{{ user.avatarUrl }}"></image>
     </view>
 
@@ -54,7 +54,7 @@
 
 <view class="input-box">
   <view >
-    
+
   </view>
   <form bindsubmit="sendInput" class="form clearfix">
     <input type='text'></input>
