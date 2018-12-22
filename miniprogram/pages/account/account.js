@@ -9,10 +9,9 @@ Page({
 
     // 用户信息
     userInfo: {
-      avatarUrl: "/images/avatar_1.jpg",
+      avatarUrl: "/images/avatar_user_0.png",
       bind_account: {
-        zxyy_id: "------",
-        patientname: "点击授权"
+        zxyy_id: "------"
       },
       doctor: false
     }
