@@ -28,7 +28,6 @@
 
   <view class='muen-content'>
 
-
     <view wx:if="{{tag.qrcode}}" class="page">
       <image src='/images/yn.jpg' class='qrcode'></image>
     </view>

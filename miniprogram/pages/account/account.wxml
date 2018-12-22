@@ -1,6 +1,5 @@
 <view class="backgroundColor"></view>
 
-
 <view class="account row-box">
 
   <image src="{{userInfo.avatarUrl}}"></image>
@@ -35,7 +34,7 @@
   <!-- 四格分栏 -->
   <block wx:if="{{!doctor}}">
     <view>
-      <navigator url='../upload/page/page'>
+      <navigator url='docAskList/docAskList'>
         <icon class="iconfont icon-xiaoxi color5"></icon>
         <text>消息</text>
       </navigator>

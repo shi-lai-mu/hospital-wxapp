@@ -1,1 +1,61 @@
-/* miniprogram/pages/account/docAskList/docAskList.wxss */
+.row-box {
+  position: relative;
+  overflow: hidden;
+  padding: 10rpx 20rpx;
+  margin: 20rpx auto;
+  box-sizing: border-box;
+}
+.user-icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  margin-right: 20rpx;
+  height: 110rpx;
+  width: 110rpx;
+  border-radius: 50%;
+}
+text {
+  display: inline-block;
+  width: calc(50% - 75rpx);
+}
+text:nth-of-type(odd) {
+  margin-left: 130rpx;
+}
+text:nth-of-type(even) {
+  text-align: right;
+  color: #888;
+}
+.createTime {
+  font-size: .7rem;
+  
+}
+.descript {
+  overflow: hidden;
+  width: calc(100% - 130rpx);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.patName::before {
+  content: '[咨询] ';
+  color: #999;
+}
+.docName::before {
+  content: '[医生] ';
+  color: #999;
+}
+
+.nick::after,
+.waiting::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 70rpx;
+  height: 30rpx;
+  background-color: rgba(0, 95, 0, .6);
+  transform: rotateZ(45deg) translateY(-20rpx) translateX(10rpx)
+}
+.waiting::after {
+  background-color: rgba(214, 86, 0, 0.6);
+}
