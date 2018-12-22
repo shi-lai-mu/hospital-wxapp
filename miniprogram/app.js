@@ -76,6 +76,10 @@ App({
     // 内测版代码区域 //
 
     this.globalData.userInfo = wx.getStorageSync('userInfo') || [];
+    if (this.globalData.userInfo.nickName)
+      this.globalData.doctor = !!this.globalData.userInfo.bind_account.ysdm;
+
+    console.log(this.globalData)
     /////////////////
 
     // 初始化本地缓存

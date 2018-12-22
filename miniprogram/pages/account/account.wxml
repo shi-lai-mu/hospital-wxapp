@@ -33,18 +33,17 @@
 
   <!-- 四格分栏 -->
   <block wx:if="{{!doctor}}">
-    <view>
-      <navigator url='docAskList/docAskList'>
-        <icon class="iconfont icon-xiaoxi color5"></icon>
-        <text>消息</text>
-      </navigator>
+
+    <view bindtap="navgiate" data-page="docAskList/docAskList" data-pro="put">
+      <icon class="iconfont icon-xiaoxi color5"></icon>
+      <text>消息</text>
     </view>
-    <view>
-      <navigator url='family/family'>
-        <icon class="iconfont icon-chengyuan color7"></icon>
-        <text>家庭成员</text>
-      </navigator>
+
+    <view bindtap="navgiate" data-page="family/family" data-pro="put">
+      <icon class="iconfont icon-chengyuan color7"></icon>
+      <text>家庭成员</text>
     </view>
+
   </block>
 
   <block wx:else>
@@ -104,7 +103,7 @@
         <icon class="iconfont icon-yaodian"></icon>
         <text>我的药店</text>
         <icon class="iconfont icon-fangxiangyou"></icon>
-     </navigator>
+      </navigator>
     </view>
 
   </block>

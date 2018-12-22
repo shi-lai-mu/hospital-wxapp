@@ -16,7 +16,7 @@
 
     <view wx:for="{{ msg }}" wx:key="key" class="{{ item.is_question ? 'put-box' : 'doc-box' }} {{ end < index ? 'nick' : '' }}">
       <view class="{{ item.is_question ? 'put' : 'doc' }}">{{ item.l_content }}</view>
-      <image src="{{ user.avatarUrl }}"></image>
+      <image src="{{ item.is_question ? user.avatarUrl : '/images/avatar_1.jpg' }}"></image>
     </view>
 
 </scroll-view>

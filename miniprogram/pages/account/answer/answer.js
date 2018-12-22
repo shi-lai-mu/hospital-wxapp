@@ -2,11 +2,7 @@ const app = getApp();
 Page({
 
   data: {
-    msg: [{
-      l_content: "我发送了一条回复",
-      is_question: 1,
-      create_time: "2018-12-20 18:09:00"
-    }],
+    msg: [],
     end: 0,
     inputValue: '',
     scrollTop: 0

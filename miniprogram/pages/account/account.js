@@ -19,8 +19,8 @@ Page({
   },
 
   onShow: function() {
-    if (!Boolean(app.globalData.userInfo + []) || 
-        !app.globalData.userInfo.bind_account.length) {
+    if (!Boolean(app.globalData.userInfo + []) ||
+      !app.globalData.userInfo.bind_account.length) {
 
       wx.getSetting({
         success: setting => {
@@ -100,7 +100,7 @@ Page({
 
           // 拉取主系统数据
           let getLoginData = e => {
-            // data.result.openId = 'o-PgA5R0PU-6L-JS_XN0jHGD1ss';
+            // data.result.openId = 'o-PgA5R0PU-6L-JS_XN0jHGDp-3w';
             app.request(data.result.openId, "login", login => {
               // 用户是否注册
               if (login.data.token) {
@@ -151,6 +151,37 @@ Page({
         }
       });
     }
+  },
+
+  /**
+   * 权限检测
+   */
+  navgiate: function(e) {
+
+    let data = e.currentTarget.dataset;
+    if (data.page) {
+      if (data.pro) {
+        let error = false;
+        if (data.pro == 'put' && !app.globalData.userInfo.nickName) {
+          error = '请先登录!';
+        } else if (data.pro == 'doc' && !app.globalData.doctor) {
+          error = '非医生不能进行此操作!';
+        } else if (data.pro == 'card' && !app.globalData.userInfo.bind_account.patientname) {
+          error = '此操作必须在实名后!';
+        }
+        if (error) return this.setData({
+          toast: {
+            text: error,
+            icon: 'error'
+          }
+        });
+      }
+      wx.navigateTo({
+        url: data.page,
+      });
+    }
+    console.log(e, data)
+    if (!app.globalData.userInfo.nickName) {}
   },
 
 });
