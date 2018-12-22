@@ -122,8 +122,11 @@ App({
     // 查看是否存在缓存,有则直接返回[GET]
     if (post && note) {
       let storage = wx.getStorageSync(api);
-      // 存在数据 && url相等 && 数据未过期
 
+      // 添加缓存识别
+      storage.storage = true;
+      
+      // 存在数据 && url相等 && 数据未过期
       if (storage &&
         storage.url == url &&
         storage.end >= Date.now()
