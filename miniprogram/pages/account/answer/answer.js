@@ -33,11 +33,10 @@ Page({
       msg.push({
         "l_content": "我发送了一条回复",
         "is_question": 1,
-        "create_time": "2018-12-20 18:09:00"
+        "create_time": app.getDate("yyyy-MM-dd EEE hh:mm:ss")
       });
-      this.setData({
-        msg: msg
-      });
+      console.log(msg)
+      this.setData({ msg });
     }
   },
 

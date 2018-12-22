@@ -76,33 +76,33 @@ App({
     // 内测版代码区域 //
 
     this.globalData.userInfo = wx.getStorageSync('userInfo') || [];
-      /////////////////
+    /////////////////
 
-      // 初始化本地缓存
-      !wx.getStorageSync('colling') && wx.setStorage({
-        key: 'colling',
-        data: {},
-      });
+    // 初始化本地缓存
+    !wx.getStorageSync('colling') && wx.setStorage({
+      key: 'colling',
+      data: {},
+    });
 
 
     // 获取全部部门列表 [读取本地,超过一小时则重新获取]
 
-      this.request("", "getAllDept", res => {
+    this.request("", "getAllDept", res => {
 
-        let deptList = [];
-        // 主部门
-        for (let id in res.data) {
-          // 子部门
-          let subDrpt = res.data[id].subDept;
-          for (let subId of subDrpt) {
-            // 格式 主部门ID.子部门ID = 子部门名字
-            deptList[`${id}.${subId.id}`] = subId.name;
-          }
+      let deptList = [];
+      // 主部门
+      for (let id in res.data) {
+        // 子部门
+        let subDrpt = res.data[id].subDept;
+        for (let subId of subDrpt) {
+          // 格式 主部门ID.子部门ID = 子部门名字
+          deptList[`${id}.${subId.id}`] = subId.name;
         }
+      }
 
-        this.globalData.dept = res.data;
-        this.globalData.deptList = deptList;
-      }, 3600);
+      this.globalData.dept = res.data;
+      this.globalData.deptList = deptList;
+    }, 3600);
   },
 
   /**
@@ -128,7 +128,7 @@ App({
     // 查看是否存在缓存,有则直接返回[GET]
     if (post && note) {
       let storage = wx.getStorageSync(api);
-      
+
       // 存在数据 && url相等 && 数据未过期
       if (storage &&
         storage.url == url &&
@@ -158,7 +158,7 @@ App({
         duration: 5000
       });
       showToast = true;
-    },1000);
+    }, 1000);
 
     let req = wx.request({
       url,
@@ -242,5 +242,42 @@ App({
     );
   },
 
-  
+  /**
+   * 返回格式的时间
+   */
+  getDate: function(fmt) {
+    let date = new Date();
+    let o = {
+      "M+": date.getMonth() + 1,
+      "d+": date.getDate(),
+      "h+": date.getHours() % 12 == 0 ? 12 : date.getHours() % 12,
+      "H+": date.getHours(),
+      "m+": date.getMinutes(),
+      "s+": date.getSeconds(),
+      "q+": Math.floor((date.getMonth() + 3) / 3),
+      "S": date.getMilliseconds()
+    };
+    let week = {
+      "0": "日",
+      "1": "一",
+      "2": "二",
+      "3": "三",
+      "4": "四",
+      "5": "五",
+      "6": "六"
+    };
+    if (/(y+)/.test(fmt)) {
+      fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+    }
+    if (/(E+)/.test(fmt)) {
+      fmt = fmt.replace(RegExp.$1, ((RegExp.$1.length > 1) ? (RegExp.$1.length > 2 ? "星期" : "周") : "") + week[date.getDay() + ""]);
+    }
+    for (let k in o) {
+      if (new RegExp("(" + k + ")").test(fmt)) {
+        fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+      }
+    }
+    return fmt;
+  }
+
 });
