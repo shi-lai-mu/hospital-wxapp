@@ -1,8 +1,6 @@
 const app = getApp();
 Page({
-  data: {},
-
-  onLoad: function(options) {
+  onShow: function() {
     app.bar({
       title: "我的咨询",
       bgColor: "#B5CFFF"

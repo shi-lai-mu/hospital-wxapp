@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/account/docAskList/docAskList",
+    "pages/account/answer/answer",
     "pages/index/index",
     "pages/doctor/doctor",
     "pages/account/account",
@@ -10,7 +10,7 @@
     "pages/account/family/family",
     "pages/upload/page/page",
     "pages/doctor/consulting/consulting",
-    "pages/account/answer/answer"
+    "pages/account/docAskList/docAskList"
   ],
   "window": {
     "backgroundTextStyle": "light",

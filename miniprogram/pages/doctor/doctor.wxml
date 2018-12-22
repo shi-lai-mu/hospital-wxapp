@@ -1,6 +1,5 @@
 <view class="backgroundColor"></view>
 
-
 <view class="doctor-info row-box">
 
   <image class="doctor-img" src="/images/avatar_1.jpg"></image>
