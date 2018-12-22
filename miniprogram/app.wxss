@@ -212,11 +212,11 @@ page {
 /* 字体图标 */
 @font-face {
   font-family: 'iconfont';  /* project id 906741 */
-  src: url('//at.alicdn.com/t/font_906741_e9rw7j9d7mb.eot');
-  src: url('//at.alicdn.com/t/font_906741_e9rw7j9d7mb.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_906741_e9rw7j9d7mb.woff') format('woff'),
-  url('//at.alicdn.com/t/font_906741_e9rw7j9d7mb.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_906741_e9rw7j9d7mb.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_906741_fjs57q4lyma.eot');
+  src: url('//at.alicdn.com/t/font_906741_fjs57q4lyma.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_906741_fjs57q4lyma.woff') format('woff'),
+  url('//at.alicdn.com/t/font_906741_fjs57q4lyma.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_906741_fjs57q4lyma.svg#iconfont') format('svg');
 }
 .iconfont {
   font-family: "iconfont" !important;
@@ -228,6 +228,7 @@ page {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-tupianpx-:before { content: "\e644"; }
 .icon-nvyisheng-mian:before { content: "\e7da"; }
 .icon-nanyisheng-mian:before { content: "\e7db"; }
 .icon-tianjia:before { content: "\e60a"; }
