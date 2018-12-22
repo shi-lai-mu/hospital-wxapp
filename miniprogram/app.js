@@ -128,15 +128,16 @@ App({
     // 查看是否存在缓存,有则直接返回[GET]
     if (post && note) {
       let storage = wx.getStorageSync(api);
-
-      // 添加缓存识别
-      storage.storage = true;
       
       // 存在数据 && url相等 && 数据未过期
       if (storage &&
         storage.url == url &&
         storage.end >= Date.now()
-      ) return callback(storage.data);
+      ) {
+        // 添加缓存识别
+        storage.data.storage = true;
+        return callback(storage.data);
+      }
     } else if (colling) {
       // 非缓存数据 才有冷却
       if (api in storage_coll) {

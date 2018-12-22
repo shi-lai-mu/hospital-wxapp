@@ -1,4 +1,9 @@
+page {
+  max-height: 100vh;
+  overflow: hidden;
+}
 .row-box {
+  width: 100vw;
   padding: 20rpx 0;
 }
 .row-box .user-icon {
@@ -16,25 +21,107 @@
 }
 .doc-department {
   display: block;
-  width: clac(100% - 100rpx);
+  width: clac(100% - 150rpx);
   font-size: .9rem;
   color: #777;
 }
 
+
 .msg-box {
   height: calc(100vh - 200rpx);
+  padding-bottom: 150rpx;
+}
+.put-info {
+  width: 90vw;
+  margin: 20rpx auto;
+  padding: 20rpx;
+  color: #555;
+  background-color: #eee;
+  border: 10rpx dashed #ddd;
+  border-radius: 20rpx;
+  box-sizing: border-box;
+}
+.descript {
+  display: block;
+  text-indent: 2rem;
+  color: #888;
+}
+.put-box,
+.doc-box {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+}
+.doc-box {
+  flex-direction: row-reverse;
+}
+.msg-box .put,
+.doc-box .doc {
+  float: left;
+  position: relative;
+  padding: 20rpx;
+  margin-right: 30rpx;
+  color: #fff;
+  line-height: 1.75;
+  background-image: linear-gradient(90deg, #29CCC1, #53DB95);
+  border-radius: 20rpx;
+}
+.msg-box .put::after,
+.doc-box .doc::after {
+  content: "";
+  position: absolute;
+  right: -28rpx;
+  border-style: solid;
+  border-width: 15rpx;
+  border-color: transparent transparent transparent #53DB95;
+  transform: translateY(50%);
+}
+.doc-box .doc {
+  margin-right: 0;
+  margin-left: 30rpx;
+}
+.doc-box .doc::after {
+  right: auto;
+  left: -28rpx;
+  border-color: transparent #29CCC1 transparent transparent;
+}
+.msg-box image {
+  float: right;
+  width: 100rpx;
+  height: 100rpx;
+  margin: 10rpx;
+  border: 1rpx dashed #ccc;
+  border-radius: 10rpx;
+}
+.fix {
+  height: 50rpx;
 }
 
+
 .input-box {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   width: 100%;
   background-color: #eee;
   border-top: 1px solid #ddd;
 }
+.input-box .iconfont {
+  float: left;
+  width: calc(10% - 2rpx);
+  height: 10%;
+  margin: 15rpx 0;
+  text-align: center;
+  color: #999;
+  background-color: #ddd;
+  border: 1px solid #ccc;
+  border-radius: 100px;
+}
 .input-box input {
   float: left;
-  width: 70%;
+  width: 60%;
   height: 2rem;
   padding: 0 .5rem;
   margin: 15rpx 10rpx;
@@ -51,6 +138,7 @@
   height: calc(2rem - 1rpx);
   margin: 15rpx 10rpx;
   line-height: initial;
+  white-space: nowrap;
   color: #666;
   background-color: #ddd;
   border-radius: 100px;
