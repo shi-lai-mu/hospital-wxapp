@@ -22,11 +22,14 @@ Page({
       title: "咨询医生",
       bgColor: "#B5CFFF"
     });
-    setTimeout(() => {
+    let token = app.globalData.userInfo.token;
+    app.request(`${option.id}?token=${token}`, 'getHistoryQA', res => {
+      console.log(res)
       this.setData({
-        nick: 'nick'
+        msg: res.data,
+        end: res.data.length
       });
-    }, 1000);
+    });
   },
 
   onShow: function() {
