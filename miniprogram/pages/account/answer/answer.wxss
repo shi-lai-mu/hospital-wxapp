@@ -49,6 +49,7 @@ page {
 .put-box,
 .doc-box {
   width: 100vw;
+  margin: 10rpx 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -103,7 +104,7 @@ page {
   border-radius: 10rpx;
 }
 .fix {
-  height: 50rpx;
+  height: 100rpx;
 }
 
 
@@ -114,7 +115,7 @@ page {
   background-color: #eee;
   border-top: 1px solid #ddd;
 }
-.input-box .iconfont {
+.input-box .icon-fangxiangshang {
   float: left;
   width: calc(10% - 2rpx);
   height: 10%;
@@ -150,4 +151,23 @@ page {
   border-radius: 100px;
   border: 1px solid #ccc;
   outline: 0;
+}
+.tool-box {
+  width: 100vw;
+  padding-top: 10rpx;
+}
+.tool {
+  white-space: nowrap;
+}
+.tool icon {
+  padding: 0 20rpx;
+  border: 1px solid #29CCC1;
+  border-radius: 30rpx;
+}
+.tool text {
+  padding: 0 10rpx;
+  margin: 0 10rpx;
+  border: 1px solid #29CCC1;
+  border-radius: 30rpx;
+  vertical-align: middle;
 }

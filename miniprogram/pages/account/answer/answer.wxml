@@ -7,11 +7,11 @@
   <text class="doc-department">儿科</text>
 </view>
 
-<scroll-view class="msg-box" scroll-top="100" scroll-y>
+<scroll-view class="msg-box" scroll-top="1000000" scroll-y>
 
     <view class="put-info">
       <text>郑余国 男 18岁</text>
-      <text class="descript">111111111111111111111</text>
+      <text class="descript">就诊原因：沉迷代码无法自拔</text>
     </view>
 
     <view class="put-box">
@@ -28,20 +28,13 @@
       <image src="{{ user.avatarUrl }}"></image>
     </view>
     <view class="put-box">
-      <view class="put">阿鲁巴吧</view>
-      <image src="{{ user.avatarUrl }}"></image>
-    </view>
-    <view class="put-box">
-      <view class="put">阿鲁巴吧</view>
-      <image src="{{ user.avatarUrl }}"></image>
-    </view>
-    <view class="put-box">
-      <view class="put">阿鲁巴吧</view>
-      <image src="{{ user.avatarUrl }}"></image>
-    </view>
-    <view class="put-box">
       <view class="put">阿鲁巴吧 超长的文字，阿鲁巴吧 超长的文字，阿鲁巴吧 超长的文字，阿鲁巴吧 超长的文字，阿鲁巴吧 超长的文字，</view>
       <image src="{{ user.avatarUrl }}"></image>
+    </view>
+
+    <view class="doc-box">
+      <view class="doc">阿鲁巴吧 超长的文字，阿鲁巴吧 超长的文字，阿鲁巴吧 超长的文字，阿鲁巴吧 超长的文字，阿鲁巴吧 超长的文字，</view>
+      <image src="/images/avatar_1.jpg"></image>
     </view>
 
     <view class="doc-box">
@@ -49,16 +42,24 @@
       <image src="/images/avatar_1.jpg"></image>
     </view>
 
-    <view class='fix'></view>
+    <view class="fix"></view>
 </scroll-view>
 
 <view class="input-box">
-  <view >
-
-  </view>
   <form bindsubmit="sendInput" class="form clearfix">
-    <input type='text'></input>
-    <icon class='iconfont icon-fangxiangshang'></icon>
+    <input type="text"></input>
+    <icon class="iconfont icon-fangxiangshang"></icon>
     <button form-type="submit" plain>发送</button>
   </form>
+  <view class="tool-box">
+    <scroll-view class='tool' scroll-x>
+      <icon class="iconfont icon-tupianpx-"></icon>
+      <text>申请开药</text>
+      <text>申请开检验检查单</text>
+      <text>我已经知道</text>
+      <text>我已经知道1</text>
+      <text>我已经知道2</text>
+      <text>我已经知道3</text>
+    </scroll-view>
+  </view>
 </view>
