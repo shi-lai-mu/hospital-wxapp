@@ -2,7 +2,11 @@ const app = getApp();
 Page({
 
   data: {
-
+    msg: [{
+      l_content: "我发送了一条回复",
+      is_question: 1,
+      create_time: "2018-12-20 18:09:00"
+    }]
   },
 
   onLoad: function(option) {
@@ -17,13 +21,32 @@ Page({
     });
   },
 
-  onShow: function () {
-  },
+  onShow: function() {},
 
   /**
    * 发送消息
    */
   sendInput: function(e) {
-    console.log(e)
-  }
+    let con = e.detail.value.content;
+    if (con) {
+      let msg = this.data.msg;
+      msg.push({
+        "l_content": "我发送了一条回复",
+        "is_question": 1,
+        "create_time": "2018-12-20 18:09:00"
+      });
+      this.setData({
+        msg: msg
+      });
+    }
+  },
+
+  /**
+   * 切换工具栏
+   */
+  toggleTool: function() {
+    this.setData({
+      tool: !!!this.data.tool
+    });
+  },
 })

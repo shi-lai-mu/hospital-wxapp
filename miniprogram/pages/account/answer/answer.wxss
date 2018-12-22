@@ -125,6 +125,10 @@ page {
   background-color: #ddd;
   border: 1px solid #ccc;
   border-radius: 100px;
+  transition: .5s;
+}
+.deg {
+  transform: rotate(180deg)
 }
 .input-box input {
   float: left;
@@ -153,21 +157,24 @@ page {
   outline: 0;
 }
 .tool-box {
+  max-height: 0;
   width: 100vw;
-  padding-top: 10rpx;
+  transition: 1s;
+}
+.show {
+  max-height: 10vh;
 }
 .tool {
+  min-height: 2.5rem;
   white-space: nowrap;
 }
-.tool icon {
-  padding: 0 20rpx;
-  border: 1px solid #29CCC1;
-  border-radius: 30rpx;
-}
+.tool icon,
 .tool text {
-  padding: 0 10rpx;
+  padding: 0 20rpx;
   margin: 0 10rpx;
-  border: 1px solid #29CCC1;
-  border-radius: 30rpx;
   vertical-align: middle;
+  color: #666;
+  background-color: #ddd;
+  border-radius: 100px;
+  border: 1px solid #ccc;
 }
