@@ -38,7 +38,6 @@ Page({
         family: data,
         familyList: res.data
       });
-      console.log(res.data)
     });
 
     // 默认选中 咨询

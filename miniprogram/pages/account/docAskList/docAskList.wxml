@@ -1,9 +1,10 @@
 <view class="backgroundColor"></view>
-
-<view wx:for="{{ docList }}" class="row-box clearfix {{ item.status == 1 ? 'end' : item.status == -1 ? 'waiting' : 'nick' }}" wx:key="key">
-  <image src="/images/avatar_1.jpg" class="user-icon"></image>
-  <text class="docName">{{ item.doctor_name }}</text>
-  <text class="state">{{ item.status == 1 ? '会话已结束' : item.status == -1 ? '待医生回复' : '医生已回复' }}</text>
-  <text class="descript">{{ item.content }}</text>
-  <text class="createTime">{{ item.create_day }}</text>
-</view>
+<navigator wx:for="{{ docList }}" url="../answer/answer?id={{ item.id }}">
+  <view class="row-box clearfix {{ item.status == 1 ? 'end' : item.status == -1 ? 'waiting' : 'nick' }}" wx:key="key">
+    <image src="/images/avatar_1.jpg" class="user-icon"></image>
+    <text class="docName">{{ item.doctor_name }}</text>
+    <text class="state">{{ item.status == 1 ? '会话已结束' : item.status == -1 ? '待医生回复' : '医生已回复' }}</text>
+    <text class="descript">{{ item.content }}</text>
+    <text class="createTime">{{ item.create_day }}</text>
+  </view>
+</navigator>
