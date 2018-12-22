@@ -1,8 +1,6 @@
 const app = getApp();
 Page({
-  data: {
-
-  },
+  data: {},
 
   onLoad: function (options) {
     app.bar({
@@ -11,7 +9,9 @@ Page({
     });
 
     app.request(app.globalData.userInfo.token, "getDocAskListByPat", res => {
-      console.log(res)
+      this.setData({
+        docList: res.data
+      });
     });
   },
 

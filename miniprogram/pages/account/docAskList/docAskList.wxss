@@ -1,7 +1,7 @@
 .row-box {
   position: relative;
   overflow: hidden;
-  padding: 10rpx 20rpx;
+  padding: 10rpx 30rpx;
   margin: 20rpx auto;
   box-sizing: border-box;
 }
@@ -19,30 +19,33 @@ text {
   display: inline-block;
   width: calc(50% - 75rpx);
 }
-text:nth-of-type(odd) {
+
+.docName,
+.descript {
   margin-left: 130rpx;
 }
-text:nth-of-type(even) {
+.state,
+.createTime {
+  float: right;
+  font-size: .8rem;
   text-align: right;
-  color: #888;
+  color: #999;
 }
+
 .createTime {
   font-size: .7rem;
-  
+  color: #ccc;
+}
+.docName {
+  font-size: 1.2rem;
 }
 .descript {
   overflow: hidden;
   width: calc(100% - 130rpx);
   text-overflow: ellipsis;
+  text-indent: 1rem;
   white-space: nowrap;
-}
-.patName::before {
-  content: '[咨询] ';
-  color: #999;
-}
-.docName::before {
-  content: '[医生] ';
-  color: #999;
+  color: #888;
 }
 
 .nick::after,

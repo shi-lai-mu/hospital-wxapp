@@ -1,46 +1,9 @@
 <view class="backgroundColor"></view>
 
-<view class="row-box clearfix waiting">
+<view wx:for="{{ docList }}" class="row-box clearfix {{ item.status == 1 ? '' : item.status == -1 ? 'waiting' : 'nick' }}" wx:key="key">
   <image src="/images/avatar_1.jpg" class="user-icon"></image>
-  <text class="docName">蔡崇超</text>
-  <text class="createTime">2018-01-01</text>
-  <text class="patName">郑余国</text>
-  <text class="state">等待回复</text>
-  <text class="descript">测试测试测试测试测试测试测试测试测试</text>
-</view>
-
-<view class="row-box clearfix nick">
-  <image src="/images/avatar_1.jpg" class="user-icon"></image>
-  <text class="docName">蔡崇超</text>
-  <text class="createTime">2018-01-01</text>
-  <text class="patName">郑余国</text>
-  <text class="state">已经回复</text>
-  <text class="descript">发送一条消息试试看"</text>
-</view>
-
-<view class="row-box clearfix">
-  <image src="/images/avatar_1.jpg" class="user-icon"></image>
-  <text class="docName">蔡崇超</text>
-  <text class="createTime">2018-01-01</text>
-  <text class="patName">郑余国</text>
-  <text class="state">问题结束</text>
-  <text class="descript">发送一条消息试试看"</text>
-</view>
-
-<view class="row-box clearfix">
-  <image src="/images/avatar_1.jpg" class="user-icon"></image>
-  <text class="docName">蔡崇超</text>
-  <text class="createTime">2018-01-01</text>
-  <text class="patName">郑余国</text>
-  <text class="state">问题结束</text>
-  <text class="descript">发送一条消息试试看"</text>
-</view>
-
-<view class="row-box clearfix">
-  <image src="/images/avatar_1.jpg" class="user-icon"></image>
-  <text class="docName">蔡崇超</text>
-  <text class="createTime">2018-01-01</text>
-  <text class="patName">郑余国</text>
-  <text class="state">问题结束</text>
-  <text class="descript">溢出溢出溢出溢出溢出溢出溢出溢出溢出溢出溢出溢出溢出溢出溢出</text>
+  <text class="docName">{{ item.doctor_name }}</text>
+  <text class="state">{{ item.status == 1 ? '会话已结束' : item.status == -1 ? '待医生回复' : '医生已回复' }}</text>
+  <text class="descript">{{ item.content }}</text>
+  <text class="createTime">{{ item.create_day }}</text>
 </view>
