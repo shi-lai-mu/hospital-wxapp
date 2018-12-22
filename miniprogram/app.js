@@ -68,7 +68,10 @@ App({
       // 医生账户下的咨询记录
       getDocAskListByDoc: "getDocAskListByDoc?token=",
     },
+
   },
+
+
 
   onLaunch: function() {
     wx.cloud.init();
@@ -109,12 +112,16 @@ App({
     }, 3600);
   },
 
+
+
   /**
    * 判断是否登录
    */
   isLogin: function() {
     return this.globalData.userInfo.bind_id ? this.globalData.userInfo : false;
   },
+
+
 
   /**
    * 判断是否上传身份证
@@ -123,12 +130,31 @@ App({
     return this.isLogin() ? this.globalData.userInfo.bind_account.patientname : false;
   },
   
+
+
   /**
    * 判断是否为医生
    */
   isDoctor: function() {
     return this.isLogin() ? !!this.globalData.userInfo.bind_account.ysdm : false;
   },
+
+
+  /**
+   * 获取公共信息
+   */
+  getMessage: function(tag) {
+
+    let msg = {
+      'not login': '请先登录!'
+    }
+
+    if (tag in msg) return msg[tag];
+
+    return 'error msg!';
+  },
+
+
 
   /**
    * 请求函数封装：
@@ -244,6 +270,7 @@ App({
   },
 
 
+
   /**
    * 设置顶部封装
    * @param {string/object} data 传入string为单项属性设置 反之 多项设定
@@ -266,6 +293,8 @@ App({
       setBar(val, json[val])
     );
   },
+
+
 
   /**
    * 返回格式的时间

@@ -176,6 +176,12 @@ Page({
    * 打开医生信息页
    */
   doctorPage: function(e) {
+    if(!app.isLogin()) return this.setData({
+      toast: {
+        text: app.getMessage("not login"),
+        icon: "error"
+      }
+    });
     let doctor = e.target.dataset.doctor;
     doctor && wx.navigateTo({
       url: '../doctor/doctor?' + doctor,
