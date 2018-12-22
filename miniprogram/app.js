@@ -88,14 +88,20 @@ App({
     // 获取全部部门列表 [读取本地,超过一小时则重新获取]
 
       this.request("", "getAllDept", res => {
-        // 过期时间 
-        wx.setStorage({
-          key: 'dept',
-          data: {
-            data: res.data
-          },
-        });
+
+        let deptList = [];
+        // 主部门
+        for (let id in res.data) {
+          // 子部门
+          let subDrpt = res.data[id].subDept;
+          for (let subId of subDrpt) {
+            // 格式 主部门ID.子部门ID = 子部门名字
+            deptList[`${id}.${subId.id}`] = subId.name;
+          }
+        }
+
         this.globalData.dept = res.data;
+        this.globalData.deptList = deptList;
       }, 3600);
   },
 

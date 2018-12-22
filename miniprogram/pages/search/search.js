@@ -32,23 +32,13 @@ Page({
       if (!res.data[0].tag && dept[1]) {
         let deptList = {};
 
-        // 主部门
-        for (let id in dept) {
-          // 子部门
-          let subDrpt = dept[id].subDept;
-          for (let subId of subDrpt) {
-            // 格式 主部门ID.子部门ID = 子部门名字
-            deptList[`${id}.${subId.id}`] = subId.name;
-          }
-        }
-
         // 写入医生信息
         for (let index in res.data) {
           let info = res.data[index],
             tag = `${info.dept_id}.${info.sub_dept_id}`;
-
-          if (tag in deptList) {
-            res.data[index].tag = deptList[tag];
+            
+          if (tag in app.globalData.deptList) {
+            res.data[index].tag = app.globalData.deptList[tag];
           } else res.data[index].tag = 'not dept';
         }
       }
@@ -102,7 +92,9 @@ Page({
       all.push(value);
       i++;
     }
-    this.setData({all});
+    this.setData({
+      all
+    });
   },
 
   // 大类选择
