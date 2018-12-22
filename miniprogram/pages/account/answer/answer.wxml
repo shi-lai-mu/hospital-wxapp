@@ -14,7 +14,7 @@
       <text class="descript">就诊原因：沉迷代码无法自拔</text>
     </view>
 
-    <view wx:for="{{ msg }}" wx:key="key" class="{{ item.is_question ? 'put-box' : 'doc-box' }}">
+    <view wx:for="{{ msg }}" wx:key="key" class="{{ item.is_question ? 'put-box' : 'doc-box' }} {{ end < index ? 'nick' : '' }}">
       <view class="{{ item.is_question ? 'put' : 'doc' }}">{{ item.l_content }}</view>
       <image src="{{ user.avatarUrl }}"></image>
     </view>

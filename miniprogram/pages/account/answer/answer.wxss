@@ -75,10 +75,13 @@ page {
   word-wrap: break-word;
   background-image: linear-gradient(90deg, #29CCC1, #53DB95);
   border-radius: 20rpx;
+}
+.nick .put,
+.nick .doc {
   transform-origin: right;
-  transform: rotateY(90deg);
   animation: 1s .5s msg;
   animation-fill-mode: forwards;
+  transform: rotateY(90deg);
 }
 @keyframes msg {
   to {
@@ -115,6 +118,8 @@ page {
   margin: 10rpx;
   border: 1rpx dashed #ccc;
   border-radius: 10rpx;
+}
+.nick image {
   animation: .5s icon;
 }
 @keyframes icon {

@@ -7,6 +7,7 @@ Page({
       is_question: 1,
       create_time: "2018-12-20 18:09:00"
     }],
+    end: 0,
     inputValue: '',
     scrollTop: 0
   },
@@ -21,9 +22,16 @@ Page({
       title: "咨询医生",
       bgColor: "#B5CFFF"
     });
+    setTimeout(() => {
+      this.setData({
+        nick: 'nick'
+      });
+    }, 1000);
   },
 
-  onShow: function() {},
+  onShow: function() {
+
+  },
 
   /**
    * 发送消息
