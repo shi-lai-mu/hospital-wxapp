@@ -7,7 +7,7 @@
   <text class="doc-department">儿科</text>
 </view>
 
-<scroll-view class="msg-box" scroll-top="{{ scrollTop }}" scroll-y>
+<scroll-view class="msg-box {{ tool ? 'msg-show' : '' }}" scroll-top="{{ scrollTop }}" scroll-y>
 
     <view class="put-info">
       <text>郑余国 男 18岁</text>
@@ -21,7 +21,7 @@
 
 </scroll-view>
 
-<view class="input-box">
+<view class="input-box clearfix">
   <form bindsubmit="sendInput" class="form clearfix">
     <input type="text" name="content" value="{{ inputValue }}"></input>
     <icon class="iconfont icon-fangxiangshang {{ tool ? 'deg' : '' }}" bindtap="toggleTool"></icon>

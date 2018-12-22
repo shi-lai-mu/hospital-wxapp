@@ -4,6 +4,7 @@ page {
 }
 .row-box {
   width: 100vw;
+  height: 100rpx;
   padding: 20rpx 0;
 }
 .row-box .user-icon {
@@ -28,12 +29,15 @@ page {
 
 
 .msg-box {
-  height: calc(100vh - 200rpx);
-  padding-bottom: 150rpx;
+  height: calc(100vh - 225rpx);
+  transition: .5s;
+}
+.msg-show {
+  height: calc(100vh - 300rpx);
 }
 .put-info {
   width: 90vw;
-  margin: 20rpx auto;
+  margin: 30rpx auto;
   padding: 20rpx;
   color: #555;
   background-color: #eee;
@@ -128,10 +132,8 @@ page {
 
 
 .input-box {
-  position: absolute;
-  bottom: 0;
   width: 100%;
-  background-color: #eee;
+  /* background-color: #eee; */
   border-top: 1px solid #ddd;
 }
 .input-box .icon-fangxiangshang {
@@ -152,10 +154,10 @@ page {
 .input-box input {
   float: left;
   width: 60%;
-  height: 2rem;
+  height: 60rpx;
   padding: 0 .5rem;
   margin: 15rpx 10rpx;
-  font-size: 1.3rem;
+  font-size: 1rem;
   color: #444;
   border: 1px solid #ddd;
   background-color: #fff;
@@ -165,7 +167,7 @@ page {
 .input-box button {
   float: left;
   width: calc(30% - 40rpx);
-  height: calc(2rem - 1rpx);
+  height: 60rpx;
   margin: 15rpx 10rpx;
   line-height: initial;
   white-space: nowrap;
