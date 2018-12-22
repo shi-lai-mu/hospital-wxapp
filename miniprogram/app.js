@@ -18,22 +18,28 @@ App({
       login: "login/",
       // 小程序注册
       register: "register/",
+
       // 获取用户信息
       accountData: "getUserDetail/?token=",
       // 绑定到主系统[第一步]
       existAccount: "bindExistAccount/",
       // 绑定到主系统[第二步]
       finishBind: "finishBind/",
+
       // 搜索医生
       searchDoctor: "searchDoctor",
       // 获取所有部门列表
       getAllDept: "getAllDept",
+      // 获取 专家列表
+      getExpertDoc: "getExpertDoc",
+
       // 医生注册
       doctorRegister: "bindAndRegMainSysAccountDoc/?token=",
       // 用户注册
       userRegister: "bindAndRegMainSysAccountPat/?token=",
       // 注册 [验证 验证码]
       finishBindAndRegMssion: "finishBindAndRegMssion/",
+
       // 获取 家庭成员列表
       getFamilyList: "getFamilyList?",
       // 添加 家庭成员[发送验证码]
@@ -42,8 +48,25 @@ App({
       addFamilySendCode: "addFamilyUserStep3/",
       // 删除 家庭成员
       deleteFamilyUser: "deleteFamilyUser/",
-      // 获取 专家列表
-      getExpertDoc: "getExpertDoc",
+
+      // 添加医生咨询
+      addDoctorAsk: "addDoctorAsk?token=",
+      // 医生发送聊天：回复
+      docAddAnswer: "docAddAnswer?token=",
+      // 病人发送聊天：咨询
+      patAddAnswer: "patAddAnswer?token=",
+      // 获取咨询信息
+      getAskDoctorDetail: "getAskDoctorDetail/",
+      // 获取未读的聊天信息
+      getUnreadQA: "getUnreadQA/",
+      // 标记聊天消息未已读
+      qaMarkAsRead: "QAMarkAsRead/",
+      // 获取历史聊天记录
+      getHistoryQA: "getHistoryQA/",
+      // 病人账户下的咨询记录
+      getDocAskListByPat: "getDocAskListByPat?token=",
+      // 医生账户下的咨询记录
+      getDocAskListByDoc: "getDocAskListByDoc?token=",
     },
   },
 
