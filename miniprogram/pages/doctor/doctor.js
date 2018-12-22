@@ -1,4 +1,5 @@
 const app = getApp();
+let token = app.globalData.userInfo.token;
 Page({
   data: {
 
@@ -30,7 +31,7 @@ Page({
       bgColor: '#B5CFFF'
     });
 
-    app.request(`token=${app.globalData.userInfo.token}`, "getFamilyList", res => {
+    app.request(`token=${token}`, "getFamilyList", res => {
       let data = [];
       for (let obj of res.data) data.push(`${obj.patientname} ${obj.sex} ${obj.age}`);
       (res.data.length < 5) && data.push(`+ 添加家庭成员`);
@@ -98,22 +99,22 @@ Page({
     }
 
     let data = this.data;
-    console.log(data)
     app.request({
       patient_id: data.familyList[data.focusFamily].id,
       doctor_id: data.id,
       content: e.detail.value.content
     }, "addDoctorAsk", res => {
-      console.log(res)
       if (res.data.ask_id) {
-
+        wx.navigateTo({
+          url: '../../account/answer/answer?id=' + res.data.ask_id,
+        });
       } else this.setData({
         toast: {
           text: res.data.error,
           icon: 'error'
         }
       });
-    }, app.globalData.userInfo.token);
+      }, token);
 
   },
 })
