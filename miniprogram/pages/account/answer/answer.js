@@ -15,4 +15,11 @@ Page({
 
   onShow: function () {
   },
+
+  /**
+   * 发送消息
+   */
+  sendInput: function(e) {
+    console.log(e)
+  }
 })

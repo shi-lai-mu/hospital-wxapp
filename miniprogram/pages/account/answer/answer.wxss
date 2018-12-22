@@ -5,3 +5,55 @@
   float: left;
   margin: 0 20rpx;
 }
+.doc-name {
+  font-size: 1.2rem;
+  color: #333;
+}
+.doc-type {
+  margin-left: 20rpx;
+  font-size: .8rem;
+  color: #ccc;
+}
+.doc-department {
+  display: block;
+  width: clac(100% - 100rpx);
+  font-size: .9rem;
+  color: #777;
+}
+
+.msg-box {
+  height: calc(100vh - 200rpx);
+}
+
+.input-box {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #eee;
+  border-top: 1px solid #ddd;
+}
+.input-box input {
+  float: left;
+  width: 70%;
+  height: 2rem;
+  padding: 0 .5rem;
+  margin: 15rpx 10rpx;
+  font-size: 1.3rem;
+  color: #444;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 100px;
+  box-sizing: border-box;
+}
+.input-box button {
+  float: left;
+  width: calc(30% - 40rpx);
+  height: calc(2rem - 1rpx);
+  margin: 15rpx 10rpx;
+  line-height: initial;
+  color: #666;
+  background-color: #ddd;
+  border-radius: 100px;
+  border: 1px solid #ccc;
+  outline: 0;
+}

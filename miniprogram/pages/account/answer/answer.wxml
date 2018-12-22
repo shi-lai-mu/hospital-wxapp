@@ -4,5 +4,16 @@
   <image src="/images/avatar_1.jpg" class="user-icon"></image>
   <text class="doc-name">蔡崇超</text>
   <text class="doc-type">主任医生</text>
-  <text class="doc-depar">儿科</text>
+  <text class="doc-department">儿科</text>
+</view>
+
+<scroll-view class="msg-box" scroll-y>
+    <view>xxxxxxxxxxxxxxxxxx</view>
+</scroll-view>
+
+<view class="input-box">
+  <form bindsubmit="sendInput" class="clearfix">
+    <input type='text'></input>
+    <button form-type="submit" plain>发送</button>
+  </form>
 </view>
