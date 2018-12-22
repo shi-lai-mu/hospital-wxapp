@@ -21,8 +21,10 @@ Page({
       age: '--',
     }]
   },
-  onShow: function(options) {
+  onLoad: function (options) {
     options && this.setData(options);
+  },
+  onShow: function() {
     app.bar({
       title: '医生信息',
       bgColor: '#B5CFFF'
@@ -36,8 +38,9 @@ Page({
         family: data,
         familyList: res.data
       });
+      console.log(res.data)
     });
-    
+
     // 默认选中 咨询
     this.showContent('consulting');
   },
@@ -94,6 +97,24 @@ Page({
       })
       return;
     }
-    
+
+    let data = this.data;
+    console.log(data)
+    app.request({
+      patient_id: data.familyList[data.focusFamily].id,
+      doctor_id: data.id,
+      content: e.detail.value.content
+    }, "addDoctorAsk", res => {
+      console.log(res)
+      if (res.data.ask_id) {
+
+      } else this.setData({
+        toast: {
+          text: res.data.error,
+          icon: 'error'
+        }
+      });
+    }, app.globalData.userInfo.token);
+
   },
 })
