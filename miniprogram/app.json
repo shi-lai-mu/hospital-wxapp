@@ -9,7 +9,8 @@
     "pages/search/search",
     "pages/account/family/family",
     "pages/upload/page/page",
-    "pages/doctor/consulting/consulting"
+    "pages/doctor/consulting/consulting",
+    "pages/account/answer/answer"
   ],
   "window": {
     "backgroundTextStyle": "light",
