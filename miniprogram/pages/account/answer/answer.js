@@ -5,7 +5,8 @@ Page({
     msg: [],
     end: 0,
     inputValue: '',
-    scrollTop: 0
+    scrollTop: 0,
+    loading: true
   },
 
   onLoad: function(option) {
@@ -26,7 +27,8 @@ Page({
       console.log(res)
       this.setData({
         msg: res.data,
-        end: res.data.length
+        end: res.data.length - 1,
+        loading: false
       });
     });
   },

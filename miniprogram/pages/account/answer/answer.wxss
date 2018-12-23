@@ -29,7 +29,7 @@ page {
 
 
 .msg-box {
-  height: calc(100vh - 225rpx);
+  height: calc(100vh - 235rpx);
   transition: .5s;
 }
 .msg-show {
@@ -203,4 +203,18 @@ page {
   background-color: #ddd;
   border-radius: 100px;
   border: 1px solid #ccc;
+}
+
+.loading {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: .8rem;
+  color: #ccc;
+}
+.loading icon {
+  margin: -10rpx 10rpx 0;
+  font-size: 1rem;
+  vertical-align: middle;
 }

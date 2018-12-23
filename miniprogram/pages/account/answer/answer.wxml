@@ -18,6 +18,10 @@
       <view class="{{ item.is_question ? 'put' : 'doc' }}">{{ item.l_content }}</view>
       <image src="{{ item.is_question ? user.avatarUrl : '/images/avatar_1.jpg' }}"></image>
     </view>
+    <view class='loading' wx:if="{{ loading }}">
+      <icon class='iconfont icon-loading'></icon>
+      <text>刷新中...</text>
+    </view>
 
 </scroll-view>
 
