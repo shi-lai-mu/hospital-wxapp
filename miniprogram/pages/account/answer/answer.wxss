@@ -224,3 +224,17 @@ page {
   text-align: center;
   color: #ccc;
 }
+.old {
+  text-align: center;
+  color: #888;
+  font-size: .8rem;
+}
+.old::after,
+.old::before {
+  content: '';
+  display: inline-block;
+  margin: 0 5vw .3rem;
+  width: calc(40vw - 2.8rem);
+  height: 2rpx;
+  background-color: currentColor;
+}

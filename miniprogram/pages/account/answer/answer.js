@@ -27,6 +27,7 @@ Page({
     let value = `${option.id}?token=${token}`;
     // 咨询消息读取
     app.request(value, "getAskDoctorDetail", res => {
+      console.log(res.data)
       if (res.data) {
         console.log(res.data)
         this.setData({
@@ -49,7 +50,7 @@ Page({
         val.addDate = date2 - date < -timeC ? val.create_time : false;
         return val;
       });
-      list.push();
+      (list.length > 0) && (list[list.length - 1].old = true); 
       this.setData({
         msg: list,
         end: list.length - 1,
