@@ -1,4 +1,5 @@
 const app = getApp();
+const timeC = 60 * 1000;
 Page({
 
   data: {
@@ -24,10 +25,18 @@ Page({
     });
     let token = app.globalData.userInfo.token;
     app.request(`${option.id}?token=${token}`, 'getHistoryQA', res => {
-      console.log(res)
+      
+      // 计算时间差
+      let list = res.data.map((val, ind, arr) => {
+        let date = new Date(val.create_time),
+          date2 = arr[ind - 1] ? new Date(arr[ind - 1].create_time) : 0;
+        val.addDate = date2 - date < -timeC ? val.create_time : false;
+        return val;
+      });
+        list.push();
       this.setData({
-        msg: res.data,
-        end: res.data.length - 1,
+        msg: list,
+        end: list.length - 1,
         loading: false
       });
     });
@@ -44,12 +53,14 @@ Page({
     let con = e.detail.value.content || e.detail.value;
     if (typeof con == 'string') {
       let msg = this.data.msg;
+      // 时差计算
+      let time = app.getDate("yyyy-MM-dd hh:mm:ss");
       msg.push({
-        "l_content": con,
-        "is_question": 1,
-        "create_time": app.getDate("yyyy-MM-dd EEE hh:mm:ss")
+        l_content: con,
+        is_question: 1,
+        create_time: time,
+        addDate: msg[msg.length - 1] ? (new Date(msg[msg.length - 1].create_time) - new Date(time) < -timeC) ? time : false : time
       });
-      console.log(msg)
       this.setData({
         msg,
         inputValue: '',

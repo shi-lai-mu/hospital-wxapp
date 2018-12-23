@@ -218,3 +218,9 @@ page {
   font-size: 1rem;
   vertical-align: middle;
 }
+.date {
+  display: block;
+  font-size: .8rem;
+  text-align: center;
+  color: #ccc;
+}
