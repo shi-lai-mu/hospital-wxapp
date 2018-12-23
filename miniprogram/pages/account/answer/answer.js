@@ -13,7 +13,7 @@ Page({
   onLoad: function(option) {
     console.log(app.globalData.userInfo)
 
-    option.id = 648;
+    // option.id = 648;
 
     this.setData({
       user: app.globalData.userInfo,

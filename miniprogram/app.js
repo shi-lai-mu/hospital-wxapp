@@ -4,7 +4,7 @@ App({
    * 公共数据
    */
   globalData: {
-    version: "0.6.5 [Alpha]",
+    version: "0.7.5 [Alpha]",
     title: "康达互联网医院",
 
     // 域名
@@ -212,10 +212,10 @@ App({
           title: '加载中...',
           icon: 'loading',
           mask: true,
-          duration: 5000
+          duration: 10000
         });
         showToast = true;
-      }, 1000);
+      }, 1500);
     }
 
     let req = wx.request({
