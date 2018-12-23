@@ -1,6 +1,6 @@
 # 微信小程序-前端 [开发版]
-> `文档更新： 2018-12-6`
-> `体验版本： v0.6.1 [Alpha]`
+> `文档更新： 2018-12-23`
+> `体验版本： v0.7.0 [Alpha]`
 ### 内部原创组件说明
 >`Toast` 组件: [查看 说明/源码](https://gitee.com/slm47888/wechat_applet__component_toast)
 ### 进度浏览：
@@ -69,13 +69,20 @@
 |   |
 |   \---pages       [页面]
 |       +---account [账号]
-|       |   +---family   [我的家庭]
-|       |   +---login    [登录]
-|       |   \---register [注册]
+|       |   +---family     [我的家庭]
+|       |   +---answer     [咨询界面]
+|       |   +---docAskList [咨询历史]
+|       |   +---login      [登录]
+|       |   \---register   [注册]
+|       |
+|       +---doctor  [医生]
+|       |   \---consulting [待定]
+|       |
 |       +---index   [首页]
 |       +---search  [搜索]
 |       \---upload  [上传]
-|           \---idCard   [身份证]
+|           +---idCard     [身份证]
+|           \---page       [空白页]
 
 */
 ```
