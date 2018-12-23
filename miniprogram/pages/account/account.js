@@ -19,11 +19,12 @@ Page({
 
   onShow: function() {
     if (!Boolean(app.globalData.userInfo + []) ||
-      !app.globalData.userInfo.bind_account.length) {
-
+      !app.globalData.userInfo.bind_account) {
+      console.log(132465)
       wx.getSetting({
         success: setting => {
           if (setting.authSetting["scope.userInfo"]) {
+            console.log(564)
             wx.getUserInfo({
               success: res => {
                 this.settingAccount(res, true);
@@ -42,7 +43,7 @@ Page({
   },
 
   onLoad: function(a) {
-
+    console.log(a)
     app.bar({
       title: "我的",
       bgColor: "#b5cfff"
@@ -73,8 +74,8 @@ Page({
   },
 
   // 设置账号
-  settingAccount: function(res, load) {
-    if (this.__viewData__.userInfo.xcxid) return;
+  settingAccount: function (res, load) {
+    // if (this.__viewData__.userInfo.xcxid) return;
 
     // 兼容事件处理
     res.detail && (res = res.detail);
@@ -87,9 +88,9 @@ Page({
 
       // 如果本地已存储数据且没过期则用本地的
       let storage = wx.getStorageSync("userInfo");
-      if (storage && storage.endTime > Date.now() / 1000) return this.setData({
+      if (storage && storage.bind_account && storage.endTime > Date.now() / 1000) return this.setData({
         userInfo: storage,
-        doctor: !!storage.bind_account.ysdm
+        doctor: storage.bind_account ? !!storage.bind_account.ysdm : false
       });
 
       // 获取openid
@@ -99,7 +100,7 @@ Page({
 
           // 拉取主系统数据
           let getLoginData = e => {
-            // data.result.openId = 'o-PgA5R0PU-6L-JS_XN0jHGDp-3w';
+            data.result.openId = 'o-PgA5R0PU-6L-JS_XN0jHGDp-3sss';
             app.request(data.result.openId, "login", login => {
               // 用户是否注册
               if (login.data.token) {
@@ -108,13 +109,12 @@ Page({
                 // 获取账号数据
                 app.request(login.data.token, "accountData", info => {
                   let user = Object.assign(res.userInfo, login.data, info.data);
-
                   // 判断绑定
-                  if (user.bind_id) {
+                  if (user.bind_account) {
                     res.userInfo.endTime = user.token.split("-")[2] || Date.now() + 259200;
                     this.setData({
                       userInfo: user,
-                      doctor: !!user.bind_account.ysdm
+                      doctor: user.bind_account ? !!user.bind_account.ysdm : false
                     });
                     wx.setStorage({
                       key: "userInfo",

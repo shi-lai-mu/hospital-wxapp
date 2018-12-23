@@ -16,7 +16,7 @@
     }}</text>
     <text wx:if="{{doctor}}">医生代码: {{ userInfo.bind_account.ysdm }}</text>
     <block wx:else>
-      <text wx:if="{{userInfo.bind_account.patientname }}">病号: {{ userInfo.bind_account.zxyy_id }}</text>
+      <text wx:if="{{userInfo.bind_account.zxyy_id }}">病号: {{ userInfo.bind_account.zxyy_id }}</text>
       <text wx:else class="account-error">{{
         userInfo.bind_account.patientname ? '未上传身份证' : '点击绑定主账号'
       }}</text>
@@ -65,9 +65,9 @@
 
 
 <!-- 上传身份证 特殊栏 -->
-<view class="row-box row-list clearfix padding-empty">
+<view class="row-box row-list clearfix padding-empty" wx:if="{{ userInfo.bind_account.patientname }}">
 
-  <view wx:if="{{!userInfo.bind_account.patientname && !userInfo.bind_account.name}}">
+  <view wx:if="{{ !userInfo.bind_account.zxyy_id }}">
     <navigator url='../upload/idCard/idcard'>
       <icon class="iconfont icon-shenfenzhengzheng"></icon>
       <text>身份证 [上传]</text>

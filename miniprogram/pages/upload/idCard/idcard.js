@@ -70,8 +70,15 @@ Page({
     // 如果为上传家庭成员身份证
     if (this.data.addFamily) return this.addFamily();
 
-
-
+    this.uploadFile(res => {
+      if (res.status) {
+        app.globalData.userInfo = [];
+        wx.removeStorageSync('userInfo');
+        wx.switchTab({
+          url: '../../account/account'
+        });
+      }
+    });
   },
 
   /**

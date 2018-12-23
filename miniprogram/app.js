@@ -80,7 +80,7 @@ App({
 
     this.globalData.userInfo = wx.getStorageSync('userInfo') || [];
     if (this.globalData.userInfo.nickName)
-      this.globalData.doctor = !!this.globalData.userInfo.bind_account.ysdm;
+      this.globalData.doctor = this.isCard();
 
     console.log(this.globalData)
     /////////////////
@@ -118,7 +118,7 @@ App({
    * 判断是否登录
    */
   isLogin: function() {
-    return this.globalData.userInfo.bind_id ? this.globalData.userInfo : false;
+    return this.globalData.userInfo.bind_account ? this.globalData.userInfo : false;
   },
 
 
