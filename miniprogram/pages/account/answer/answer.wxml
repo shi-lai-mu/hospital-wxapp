@@ -23,7 +23,7 @@
 
 <view class="input-box clearfix">
   <form bindsubmit="sendInput" class="form clearfix">
-    <input type="text" name="content" value="{{ inputValue }}"></input>
+    <input type="text" name="content" value="{{ inputValue }}" bindconfirm="sendInput" confirm-hold></input>
     <icon class="iconfont icon-fangxiangshang {{ tool ? 'deg' : '' }}" bindtap="toggleTool"></icon>
     <button form-type="submit" plain>发送</button>
   </form>

@@ -9,11 +9,14 @@ Page({
   },
 
   onLoad: function(option) {
-    console.log(option)
     console.log(app.globalData.userInfo)
+
+    option.id = 648;
+    
     this.setData({
-      user: app.globalData.userInfo
-    })
+      user: app.globalData.userInfo,
+      id: option.id
+    });
     app.bar({
       title: "咨询医生",
       bgColor: "#B5CFFF"
@@ -36,7 +39,7 @@ Page({
    * 发送消息
    */
   sendInput: function(e) {
-    let con = e.detail.value.content;
+    let con = e.detail.value.content || e.detail.value;
     if (con) {
       let msg = this.data.msg;
       console.log(this.data.inputValue)

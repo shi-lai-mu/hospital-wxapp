@@ -83,13 +83,13 @@ App({
       this.globalData.doctor = this.isCard();
 
     console.log(this.globalData)
-    /////////////////
+      /////////////////
 
-    // 初始化本地缓存
-    !wx.getStorageSync('colling') && wx.setStorage({
-      key: 'colling',
-      data: {},
-    });
+      // 初始化本地缓存
+      !wx.getStorageSync('colling') && wx.setStorage({
+        key: 'colling',
+        data: {},
+      });
 
 
     // 获取全部部门列表 [读取本地,超过一小时则重新获取]
@@ -126,10 +126,10 @@ App({
   /**
    * 判断是否上传身份证
    */
-  isCard: function () {
+  isCard: function() {
     return this.isLogin() ? this.globalData.userInfo.bind_account.patientname : false;
   },
-  
+
 
 
   /**
@@ -200,16 +200,23 @@ App({
 
     // 设定过久显示互动
     let showToast = false;
-
-    loading = setTimeout(() => {
-      wx.showToast({
-        title: '加载中...',
-        icon: 'loading',
-        mask: true,
-        duration: 5000
-      });
-      showToast = true;
-    }, 1000);
+    console.log(api)
+    // 禁止显示toast api列表
+    let notLoading = {
+      getHistoryQA : 1,
+    };
+    // 如果不在不显示toast列表内
+    if (!(api in notLoading)) {
+      loading = setTimeout(() => {
+        wx.showToast({
+          title: '加载中...',
+          icon: 'loading',
+          mask: true,
+          duration: 5000
+        });
+        showToast = true;
+      }, 1000);
+    }
 
     let req = wx.request({
       url,
