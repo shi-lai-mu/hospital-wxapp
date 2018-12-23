@@ -20,11 +20,9 @@ Page({
   onShow: function() {
     if (!Boolean(app.globalData.userInfo + []) ||
       !app.globalData.userInfo.bind_account) {
-      console.log(132465)
       wx.getSetting({
         success: setting => {
           if (setting.authSetting["scope.userInfo"]) {
-            console.log(564)
             wx.getUserInfo({
               success: res => {
                 this.settingAccount(res, true);
@@ -43,7 +41,6 @@ Page({
   },
 
   onLoad: function(a) {
-    console.log(a)
     app.bar({
       title: "我的",
       bgColor: "#b5cfff"
