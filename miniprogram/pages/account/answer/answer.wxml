@@ -34,7 +34,7 @@
   <view class="tool-box {{ tool ? 'show' : 'hide' }}">
     <scroll-view class="tool" scroll-x>
       <icon class="iconfont icon-tupianpx-"></icon>
-      <text>申请开药</text>
+      <text bindtap="addContent">申请开药</text>
       <text>申请开检验检查单</text>
       <text>我已经知道</text>
     </scroll-view>

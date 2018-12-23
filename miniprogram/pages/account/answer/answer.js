@@ -42,9 +42,8 @@ Page({
    */
   sendInput: function(e) {
     let con = e.detail.value.content || e.detail.value;
-    if (con) {
+    if (typeof con == 'string') {
       let msg = this.data.msg;
-      console.log(this.data.inputValue)
       msg.push({
         "l_content": con,
         "is_question": 1,
@@ -66,5 +65,16 @@ Page({
     this.setData({
       tool: !!!this.data.tool
     });
+  },
+
+  /**
+   * 
+   */
+  addContent: function(e) {
+    if (e._relatedInfo) {
+      this.setData({
+        inputValue: e._relatedInfo.anchorTargetText
+      })
+    }
   },
 })
