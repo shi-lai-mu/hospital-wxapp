@@ -1,17 +1,17 @@
 <view class="backgroundColor"></view>
 
-<view class="row-box clearfix">
+<view class="row-box clearfix" wx:if="{{ detail.patient_name }}">
   <image src="/images/avatar_1.jpg" class="user-icon"></image>
-  <text class="doc-name">蔡崇超</text>
+  <text class="doc-name">{{ detail.doctor_name }}</text>
   <text class="doc-type">主任医生</text>
   <text class="doc-department">儿科</text>
 </view>
 
 <scroll-view class="msg-box {{ tool ? 'msg-show' : '' }}" scroll-top="{{ scrollTop }}" scroll-y>
 
-  <view class="put-info">
-    <text>郑余国 男 18岁</text>
-    <text class="descript">就诊原因：沉迷代码无法自拔</text>
+  <view class="put-info" wx:if="{{ detail.patient_name }}">
+    <text >{{ detail.patient_name + " " + detail.l_sex + " " + detail.age }}</text>
+    <text class="descript">咨询原因：{{ detail.content }}</text>
   </view>
   <block wx:for="{{ msg }}" wx:key="key">
     <text wx:if="{{ item.addDate }}" class="date">{{ item.addDate }}</text>
@@ -20,7 +20,7 @@
       <image src="{{ item.is_question ? user.avatarUrl : '/images/avatar_1.jpg' }}"></image>
     </view>
   </block>
-  <view class='loading' wx:if="{{ loading }}">
+  <view class='loading' wx:if="{{ loading && detail.doctor_name }}">
     <icon class='iconfont icon-loading'></icon>
     <text>刷新中...</text>
   </view>

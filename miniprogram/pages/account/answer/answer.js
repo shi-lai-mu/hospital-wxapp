@@ -14,7 +14,7 @@ Page({
     console.log(app.globalData.userInfo)
 
     option.id = 648;
-    
+
     this.setData({
       user: app.globalData.userInfo,
       id: option.id
@@ -24,8 +24,24 @@ Page({
       bgColor: "#B5CFFF"
     });
     let token = app.globalData.userInfo.token;
-    app.request(`${option.id}?token=${token}`, 'getHistoryQA', res => {
-      
+    let value = `${option.id}?token=${token}`;
+    // 咨询消息读取
+    app.request(value, "getAskDoctorDetail", res => {
+      if (res.data) {
+        console.log(res.data)
+        this.setData({
+          detail: res.data
+        });
+      } else this.setData({
+        toast: {
+          text: "咨询数据读取错误,不存在或无权限!",
+          icon: "error"
+        }
+      });
+    });
+    // 已读内容获取
+    app.request(value, "getHistoryQA", res => {
+
       // 计算时间差
       let list = res.data.map((val, ind, arr) => {
         let date = new Date(val.create_time),
@@ -33,7 +49,7 @@ Page({
         val.addDate = date2 - date < -timeC ? val.create_time : false;
         return val;
       });
-        list.push();
+      list.push();
       this.setData({
         msg: list,
         end: list.length - 1,
