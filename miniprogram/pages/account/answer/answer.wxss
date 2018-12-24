@@ -29,7 +29,7 @@ page {
 
 
 .msg-box {
-  height: calc(100vh - 235rpx);
+  height: calc(100vh - 225rpx);
   transition: .5s;
 }
 .msg-show {
@@ -92,7 +92,7 @@ page {
 .doc-box .doc::after {
   content: "";
   position: absolute;
-  right: -28rpx;
+  right: -27rpx;
   top: 0;
   bottom: 0;
   height: 0;
@@ -108,7 +108,7 @@ page {
 }
 .doc-box .doc::after {
   right: auto;
-  left: -28rpx;
+  left: -27rpx;
   border-color: transparent #29CCC1 transparent transparent;
 }
 .msg-box image {
@@ -226,7 +226,7 @@ page {
 }
 .old {
   text-align: center;
-  color: #888;
+  color: #ccc;
   font-size: .8rem;
 }
 .old::after,
