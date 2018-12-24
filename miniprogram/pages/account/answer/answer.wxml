@@ -9,7 +9,7 @@
   </block>
 </view>
 
-<scroll-view class="msg-box {{ tool ? 'msg-show' : '' }}" bindscrolltolower="lower" scroll-top="{{ scrollTop }}" scroll-y>
+<scroll-view class="msg-box {{ tool ? 'msg-show' : '' }}" bindscroll="lower" scroll-top="{{ scrollTop }}" scroll-y>
 
   <view class="put-info" wx:if="{{ detail.patient_name }}">
     <text >{{ detail.patient_name + " " + detail.l_sex + " " + detail.age }}</text>
@@ -19,7 +19,10 @@
   <view wx:for="{{ msg }}" wx:key="key">
     <text wx:if="{{ item.addDate }}" class="date">{{ item.addDate }}</text>
     <view class="in-box {{ item.is_question ? 'put-box' : 'doc-box' }} {{ end < index ? 'nick' : '' }}">
-      <view class="{{ item.is_question ? 'put' : 'doc' }}">{{ item.l_content }}</view>
+      <view class="{{ item.is_question ? 'put' : 'doc' }}">
+        {{ item.l_content }}
+        <text wx:if="{{ item.error }}">{{ item.error }}</text>
+      </view>
       <image src="{{ item.is_question ? user.avatarUrl : '/images/avatar_1.jpg' }}"></image>
     </view>
     <text class='old' wx:if="{{ item.old }}">以上是历史消息</text>

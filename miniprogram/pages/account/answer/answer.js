@@ -1,5 +1,7 @@
 const app = getApp();
 const timeC = 60 * 1000;
+let msgBox = {},
+  token = false;
 
 Page({
 
@@ -24,7 +26,7 @@ Page({
       title: "咨询医生",
       bgColor: "#B5CFFF"
     });
-    let token = app.globalData.userInfo.token;
+    token = app.globalData.userInfo.token;
     let value = `${option.id}?token=${token}`;
 
     // 未读读内容获取[权重 高]
@@ -35,7 +37,7 @@ Page({
       let list = this.unDate(res.data);
 
       // 如果 未读先得到则合并 但是 已读一定得在未读后面
-      if(this.data.msg.length) {
+      if (this.data.msg.length) {
         this.data.msg.push(...res.data);
         list = this.data.msg;
       }
@@ -87,7 +89,19 @@ Page({
           scrollTop: res[0].top + 'rpx'
         });
       });
-      console.log(list)
+
+      // 得到聊天视图大小
+      query.select('.msg-box').boundingClientRect();
+      query.exec(res => {
+        msgBox.box = res[1];
+        let child = wx.createSelectorQuery();
+        child.selectAll('.in-box').boundingClientRect();
+        child.selectViewport()
+
+        child.exec(res => {
+          console.log(res, msgBox.box)
+        });
+      });
 
     });
 
@@ -99,7 +113,7 @@ Page({
   },
 
   /**
-   * 发送消息
+   * 发送咨询消息
    */
   sendInput: function(e) {
     let con = e.detail.value.content || e.detail.value;
@@ -107,17 +121,33 @@ Page({
       let msg = this.data.msg;
       // 时差计算
       let time = app.getDate("yyyy-MM-dd hh:mm:ss");
-      msg.push({
+      let index = msg.push({
         l_content: con,
         is_question: 1,
         create_time: time,
         addDate: msg[msg.length - 1] ? (new Date(msg[msg.length - 1].create_time) - new Date(time) < -timeC) ? time : false : time
       });
+
+      // 写入数据 并 滚动至底部
       this.setData({
         msg,
         inputValue: '',
         scrollTop: msg.length * 100 + 'px'
       });
+
+      // 向服务器发送消息
+      app.request({
+        ask_id: this.data.id,
+        content: con
+      }, "patAddAnswer", res => {
+        console.log(res)
+        if (!res.data.status) {
+          this.data.msg[index - 1].error = ' [发送失败]';
+          this.setData({
+            msg: this.data.msg
+          });
+        }
+      }, token);
     }
   },
 
@@ -141,16 +171,10 @@ Page({
     }
   },
 
-
-  ss: function(e) {
-    //选择id
-    query.select('.old').boundingClientRect()
-    query.exec(function(res) {
-      //res就是 所有标签为mjltest的元素的信息 的数组
-      console.log(res);
-      //取高度
-      console.log(res[0].top);
-    })
+  /**
+   * 滚动时触发
+   */
+  lower: function(e) {
 
   },
 
