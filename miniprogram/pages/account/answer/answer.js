@@ -186,13 +186,15 @@ Page({
   },
 
   /**
-   * 
+   * 直接发送内容
    */
   addContent: function(e) {
     if (e._relatedInfo) {
-      this.setData({
-        inputValue: e._relatedInfo.anchorTargetText
-      })
+      this.sendInput({
+        detail: {
+          value: e._relatedInfo.anchorTargetText
+        }
+      });
     }
   },
 
