@@ -225,6 +225,7 @@ page {
   color: #ccc;
 }
 .old {
+  margin: 20rpx 0;
   text-align: center;
   color: #ccc;
   font-size: .8rem;

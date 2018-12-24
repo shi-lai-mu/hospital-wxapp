@@ -1,5 +1,6 @@
 const app = getApp();
 const timeC = 60 * 1000;
+
 Page({
 
   data: {
@@ -13,7 +14,7 @@ Page({
   onLoad: function(option) {
     console.log(app.globalData.userInfo)
 
-    // option.id = 648;
+    option.id = 648;
 
     this.setData({
       user: app.globalData.userInfo,
@@ -25,11 +26,28 @@ Page({
     });
     let token = app.globalData.userInfo.token;
     let value = `${option.id}?token=${token}`;
-    // 咨询消息读取
+    // 未读读内容获取[权重 高]
+    app.request(value, "getUnreadQA", res => {
+      if (!res.data.length) return;
+
+      // 如果 未读先得到则合并 但是 已读一定得在未读后面
+      if(this.data.msg.length) {
+        this.data.msg.push(...res.data);
+        list = this.data.msg;
+      }
+
+      // 计算时差
+      let list = this.unDate(res.data);
+      this.setData({
+        msg: list,
+        end: list.length - 1,
+        loading: false
+      });
+      console.log(list)
+    });
+    // 咨询消息读取[权重 中]
     app.request(value, "getAskDoctorDetail", res => {
-      console.log(res.data)
       if (res.data) {
-        console.log(res.data)
         this.setData({
           detail: res.data
         });
@@ -40,22 +58,34 @@ Page({
         }
       });
     });
-    // 已读内容获取
+    // 已读内容获取[权重 低]
     app.request(value, "getHistoryQA", res => {
+      if (!res.data.length) return;
 
-      // 计算时间差
-      let list = res.data.map((val, ind, arr) => {
-        let date = new Date(val.create_time),
-          date2 = arr[ind - 1] ? new Date(arr[ind - 1].create_time) : 0;
-        val.addDate = date2 - date < -timeC ? val.create_time : false;
-        return val;
-      });
-      (list.length > 0) && (list[list.length - 1].old = true); 
+      // 计算时差
+      let list = this.unDate(res.data);
+
+      // 最后一条消息后面显示历史消息
+      (list.length > 0) && (list[list.length - 1].old = true);
+
+      // 如果 未读先得到则合并 但是 已读一定得在未读后面
+      this.data.msg.length && list.push(...this.data.msg);
+
       this.setData({
         msg: list,
         end: list.length - 1,
         loading: false
       });
+      // 滑动到历史位置[测试]
+      let query = wx.createSelectorQuery();
+      query.select('.old').boundingClientRect();
+      query.exec(res => {
+        this.setData({
+          scrollTop: res[0].top + 'rpx'
+        });
+      });
+      console.log(list)
+
     });
   },
 
@@ -68,7 +98,7 @@ Page({
    */
   sendInput: function(e) {
     let con = e.detail.value.content || e.detail.value;
-    if (typeof con == 'string') {
+    if (con && typeof con == 'string') {
       let msg = this.data.msg;
       // 时差计算
       let time = app.getDate("yyyy-MM-dd hh:mm:ss");
@@ -104,5 +134,32 @@ Page({
         inputValue: e._relatedInfo.anchorTargetText
       })
     }
+  },
+
+
+  ss: function(e) {
+    //选择id
+    query.select('.old').boundingClientRect()
+    query.exec(function(res) {
+      //res就是 所有标签为mjltest的元素的信息 的数组
+      console.log(res);
+      //取高度
+      console.log(res[0].top);
+    })
+
+  },
+
+  /**
+   * 时差计算
+   */
+  unDate: function(date) {
+    // 计算时间差
+    return date.map((val, ind, arr) => {
+      let date = new Date(val.create_time),
+        date2 = arr[ind - 1] ? new Date(arr[ind - 1].create_time) : 0;
+
+      val.addDate = date2 - date < -timeC ? val.create_time : false;
+      return val;
+    });
   },
 })
