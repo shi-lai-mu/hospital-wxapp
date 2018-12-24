@@ -120,12 +120,12 @@ Page({
     if (con && typeof con == 'string') {
       let msg = this.data.msg;
       // 时差计算
-      let time = app.getDate("yyyy-MM-dd hh:mm:ss");
+      let time = app.getDate("yyyy-MM-dd HH:mm:ss");
       let index = msg.push({
         l_content: con,
         is_question: 1,
         create_time: time,
-        addDate: msg[msg.length - 1] ? (new Date(msg[msg.length - 1].create_time) - new Date(time) < -timeC) ? time : false : time
+        addDate: msg[msg.length - 1] ? (new Date(time) - new Date(msg[msg.length - 1].create_time) < timeC) ? time : false : time
       });
 
       // 写入数据 并 滚动至底部
