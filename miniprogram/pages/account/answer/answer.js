@@ -85,10 +85,18 @@ Page({
       last = list.length;
 
       // 最后一条消息后面显示历史消息
-      (list.length > 0) && (list[list.length - 1].old = true);
-
+      // (list.length > 0) && (list[list.length - 1].old = true);
+      let listLast = list.length;
       // 如果 未读先得到则合并 但是 已读一定得在未读后面
       this.data.msg.length && list.push(...this.data.msg);
+
+      // 最后一条消息后面显示历史消息 但如果已读的前几条为病人的消息 则往下直到医生
+      if (listLast) {
+        while (list[listLast] && list[listLast].is_question) {
+          listLast ++;
+        }
+        list[listLast - 1].old = true
+      }
 
       this.setData({
         msg: list,
@@ -101,7 +109,7 @@ Page({
       query.select('.old').boundingClientRect();
       query.exec(res => {
         this.setData({
-          scrollTop: res[0].top + 'rpx'
+          scrollTop: res[0].top + msgBox.box.height + 'rpx'
         });
       });
 
@@ -142,7 +150,7 @@ Page({
         l_content: con,
         is_question: 1,
         create_time: time,
-        addDate: msg[msg.length - 1] ? (new Date(time) - new Date(msg[msg.length - 1].create_time) < timeC) ? time : false : time
+        addDate: msg[msg.length - 1] ? (new Date(time) - new Date(msg[msg.length - 1].create_time) > timeC) ? time : false : time
       });
 
       // 写入数据 并 滚动至底部
@@ -200,7 +208,8 @@ Page({
         newVl = last;
       
       for (let i = last, l = msgBox.child.length; i < l; i++) {
-        msgBox.child[i].top <= top && (last = i);
+        // 标记医生消息
+        (msgBox.child[i].top <= top && !this.data.msg[i].is_question) && (last = i);
       }
 
       // 得到屏幕最后一条可见消息 标记已读

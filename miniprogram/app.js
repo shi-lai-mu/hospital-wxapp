@@ -59,13 +59,13 @@ App({
       getAskDoctorDetail: "getAskDoctorDetail/",
       // 获取未读的聊天信息
       getUnreadQA: "getUnreadQA/",
-      // 标记聊天消息已读
+      // 设置 标记聊天消息已读
       qaMarkAsRead: "QAMarkAsRead/",
-      // 获取历史聊天记录
+      // 获取 历史聊天记录
       getHistoryQA: "getHistoryQA/",
-      // 病人账户下的咨询记录
+      // 获取 病人账户下的咨询记录
       getDocAskListByPat: "getDocAskListByPat?token=",
-      // 医生账户下的咨询记录
+      // 获取 医生账户下的咨询记录
       getDocAskListByDoc: "getDocAskListByDoc?token=",
     },
 
