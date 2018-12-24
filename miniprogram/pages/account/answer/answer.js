@@ -26,9 +26,13 @@ Page({
     });
     let token = app.globalData.userInfo.token;
     let value = `${option.id}?token=${token}`;
+
     // 未读读内容获取[权重 高]
     app.request(value, "getUnreadQA", res => {
       if (!res.data.length) return;
+
+      // 计算时差
+      let list = this.unDate(res.data);
 
       // 如果 未读先得到则合并 但是 已读一定得在未读后面
       if(this.data.msg.length) {
@@ -36,14 +40,11 @@ Page({
         list = this.data.msg;
       }
 
-      // 计算时差
-      let list = this.unDate(res.data);
       this.setData({
         msg: list,
         end: list.length - 1,
         loading: false
       });
-      console.log(list)
     });
     // 咨询消息读取[权重 中]
     app.request(value, "getAskDoctorDetail", res => {
@@ -58,6 +59,8 @@ Page({
         }
       });
     });
+
+
     // 已读内容获取[权重 低]
     app.request(value, "getHistoryQA", res => {
       if (!res.data.length) return;
@@ -87,6 +90,8 @@ Page({
       console.log(list)
 
     });
+
+
   },
 
   onShow: function() {
