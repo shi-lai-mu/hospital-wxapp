@@ -59,7 +59,7 @@ App({
       getAskDoctorDetail: "getAskDoctorDetail/",
       // 获取未读的聊天信息
       getUnreadQA: "getUnreadQA/",
-      // 标记聊天消息未已读
+      // 标记聊天消息已读
       qaMarkAsRead: "QAMarkAsRead/",
       // 获取历史聊天记录
       getHistoryQA: "getHistoryQA/",
@@ -205,6 +205,7 @@ App({
     let notLoading = {
       getHistoryQA : 1,
       patAddAnswer : 1,
+      qaMarkAsRead : 1, 
     };
     // 如果不在不显示toast列表内
     if (!(api in notLoading)) {

@@ -1,7 +1,9 @@
 const app = getApp();
 const timeC = 60 * 1000;
 let msgBox = {},
-  token = false;
+  token = false,
+  last = 0,
+  scroll = null;
 
 Page({
 
@@ -16,7 +18,7 @@ Page({
   onLoad: function(option) {
     console.log(app.globalData.userInfo)
 
-    // option.id = 648;
+    option.id = 648;
 
     this.setData({
       user: app.globalData.userInfo,
@@ -54,6 +56,8 @@ Page({
         end: list.length - 1,
         loading: false
       });
+
+      update();
     });
     // 咨询消息读取[权重 中]
     app.request(value, "getAskDoctorDetail", res => {
@@ -77,6 +81,9 @@ Page({
       // 计算时差
       let list = this.unDate(res.data);
 
+      // 未读位置
+      last = list.length;
+
       // 最后一条消息后面显示历史消息
       (list.length > 0) && (list[list.length - 1].old = true);
 
@@ -88,6 +95,7 @@ Page({
         end: list.length - 1,
         loading: false
       });
+
       // 滑动到历史位置[测试]
       let query = wx.createSelectorQuery();
       query.select('.old').boundingClientRect();
@@ -97,22 +105,24 @@ Page({
         });
       });
 
+      update();
+    });
+
+    function update() {
+      let query = wx.createSelectorQuery();
       // 得到聊天视图大小
       query.select('.msg-box').boundingClientRect();
       query.exec(res => {
-        msgBox.box = res[1];
+        msgBox.box = res[0];
         let child = wx.createSelectorQuery();
         child.selectAll('.in-box').boundingClientRect();
         child.selectViewport()
 
         child.exec(res => {
-          console.log(res, msgBox.box)
+          msgBox.child = res[0];
         });
       });
-
-    });
-
-
+    }
   },
 
   onShow: function() {
@@ -179,10 +189,25 @@ Page({
   },
 
   /**
-   * 滚动时触发
+   * 滚动时节流算法触发 [已读算法]
    */
   lower: function(e) {
+    // 节流
+    clearTimeout(scroll);
+    scroll = setTimeout(() => {
+      // 计算可视角大小
+      let top = e.detail.scrollTop + msgBox.box.height,
+        newVl = last;
+      
+      for (let i = last, l = msgBox.child.length; i < l; i++) {
+        msgBox.child[i].top <= top && (last = i);
+      }
 
+      // 得到屏幕最后一条可见消息 标记已读
+      if (newVl < last) {
+        app.request(`${this.data.id}/${this.data.msg[last].id}?token=${token}`,"qaMarkAsRead");
+      }
+    }, 1000);
   },
 
   /**
