@@ -16,7 +16,7 @@ Page({
   onLoad: function(option) {
     console.log(app.globalData.userInfo)
 
-    option.id = 648;
+    // option.id = 648;
 
     this.setData({
       user: app.globalData.userInfo,
@@ -31,6 +31,13 @@ Page({
 
     // 未读读内容获取[权重 高]
     app.request(value, "getUnreadQA", res => {
+
+      setTimeout(() => {
+        this.setData({
+          loading: false
+        });
+      }, 5000);
+
       if (!res.data.length) return;
 
       // 计算时差
