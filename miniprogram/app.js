@@ -204,6 +204,7 @@ App({
     // 禁止显示toast api列表
     let notLoading = {
       getHistoryQA : 1,
+      patAddAnswer : 1,
     };
     // 如果不在不显示toast列表内
     if (!(api in notLoading)) {
