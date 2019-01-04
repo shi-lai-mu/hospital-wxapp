@@ -116,7 +116,7 @@ Page({
       let query = wx.createSelectorQuery();
       query.select('.old').boundingClientRect();
       query.exec(res => {
-        res[0].top && this.setData({
+        (res[0].top && msgBox.box.height) && this.setData({
           scrollTop: res[0].top + msgBox.box.height + 'rpx'
         });
       });
