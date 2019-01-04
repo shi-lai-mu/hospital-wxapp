@@ -81,8 +81,7 @@ App({
     // 内测版代码区域 //
 
     this.globalData.userInfo = wx.getStorageSync('userInfo') || [];
-    if (this.globalData.userInfo.nickName)
-      this.globalData.doctor = this.isCard();
+    this.globalData.doctor = this.isDoctor();
 
     console.log(this.globalData)
       /////////////////

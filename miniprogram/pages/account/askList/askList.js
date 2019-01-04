@@ -1,5 +1,8 @@
 const app = getApp();
 Page({
+  data: {
+    doctor: false
+  },
   onLoad: function(e) {
 
     app.bar({
@@ -7,6 +10,11 @@ Page({
       bgColor: "#B5CFFF"
     });
     e.type = 'DocClose'
+
+    this.setData({
+      doctor: app.globalData.doctor
+    });
+
     // 按页面参数 进行请求
     e.type && app.request(app.globalData.userInfo.token, `getDocAskListBy${e.type}`, res => {
       if (res.data) {
@@ -28,7 +36,7 @@ Page({
         newArr.push(...sorting[0], ...sorting[1], ...sorting[2]);
 
         this.setData({
-          docList: newArr
+          list: newArr
         });
       }
     });
