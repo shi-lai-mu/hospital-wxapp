@@ -38,6 +38,7 @@ Page({
         this.setData({
           list: newArr
         });
+        console.log(newArr)
       }
     });
 

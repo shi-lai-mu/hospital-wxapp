@@ -63,6 +63,30 @@ page {
 .doc-box {
   flex-direction: row-reverse;
 }
+/* 医生 */
+.doctor .doc-box {
+  flex-direction: inherit;
+}
+.doctor .doc-box .doc {
+  margin-right: 30rpx;
+}
+.doctor .put-box {
+  flex-direction: row-reverse;
+}
+.doctor .put-box .put {
+  margin-left: 30rpx;
+}
+.doctor .doc-box .doc::after {
+  right: -27rpx;
+  left: auto;
+  border-color: transparent transparent transparent #53DB95;
+}
+.doctor .put-box .put::after {
+  right: auto;
+  left: -27rpx;
+  border-color: transparent #29CCC1 transparent transparent;
+}
+/* 公用对话 */
 .msg-box .put,
 .doc-box .doc {
   float: left;

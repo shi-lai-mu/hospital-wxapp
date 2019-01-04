@@ -1,8 +1,8 @@
 <view class="backgroundColor"></view>
 <navigator wx:for="{{ list }}" wx:key="index" url="../answer/answer?id={{ item.id }}">
   <view class="row-box clearfix {{ item.status == 1 ? 'end' : item.status == -1 ? 'waiting' : 'nick' }}">
-    <image src="/images/avatar_1.jpg" class="user-icon"></image>
-    <text class="docName">{{ item.doctor_name }}</text>
+    <image src="/images/{{ doctor ? 'avatar_user_0.png' : 'avatar_1.jpg' }}" class="user-icon"></image>
+    <text class="docName">{{ doctor ? item.patient_name : item.doctor_name }}</text>
     <text class="state">{{ item.status == 1 ? '会话已结束' : item.status == -1 ? '待医生回复' : '医生已回复' }}</text>
     <text class="descript">{{ item.content }}</text>
     <text class="createTime">{{ item.create_day }}</text>

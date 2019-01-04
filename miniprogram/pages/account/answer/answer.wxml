@@ -9,7 +9,7 @@
   </block>
 </view>
 
-<scroll-view class="msg-box {{ tool ? 'msg-show' : '' }}" bindscroll="lower" scroll-top="{{ scrollTop }}" scroll-y>
+<scroll-view class="msg-box {{ tool ? 'msg-show' : '' }} {{ doctor ? 'doctor' : '' }}" bindscroll="lower" scroll-top="{{ scrollTop }}" scroll-y>
 
   <view class="put-info" wx:if="{{ detail.patient_name }}">
     <text >{{ detail.patient_name + " " + detail.l_sex + " " + detail.age }}</text>

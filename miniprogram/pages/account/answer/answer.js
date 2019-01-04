@@ -22,7 +22,8 @@ Page({
 
     this.setData({
       user: app.globalData.userInfo,
-      id: option.id
+      id: option.id,
+      doctor: app.globalData.doctor
     });
     app.bar({
       title: "咨询医生",
@@ -90,10 +91,17 @@ Page({
       // 如果 未读先得到则合并 但是 已读一定得在未读后面
       this.data.msg.length && list.push(...this.data.msg);
 
-      // 最后一条消息后面显示历史消息 但如果已读的前几条为病人的消息 则往下直到医生
       if (listLast) {
-        while (list[listLast] && list[listLast].is_question) {
-          listLast ++;
+        if (!this.data.doctor) {
+          // 最后一条消息后面显示历史消息 但如果已读的前几条为病人的消息 则往下直到医生
+          while (list[listLast] && list[listLast].is_question) {
+            listLast++;
+          }
+        } else {
+          // 与上条相反 直到病人
+          while (list[listLast] && !list[listLast].is_question) {
+            listLast++;
+          }
         }
         list[listLast - 1].old = true
       }
@@ -148,7 +156,7 @@ Page({
       let time = app.getDate("yyyy-MM-dd HH:mm:ss");
       let index = msg.push({
         l_content: con,
-        is_question: 1,
+        is_question: this.data.doctor ? 0 : 1,
         create_time: time,
         addDate: msg[msg.length - 1] ? (new Date(time) - new Date(msg[msg.length - 1].create_time) > timeC) ? time : false : time
       });
@@ -164,7 +172,7 @@ Page({
       app.request({
         ask_id: this.data.id,
         content: con
-      }, "patAddAnswer", res => {
+      }, this.data.doctor ? "docAddAnswer" : "patAddAnswer", res => {
         console.log(res)
         if (!res.data.status) {
           this.data.msg[index - 1].error = ' [发送失败]';
