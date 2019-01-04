@@ -29,9 +29,10 @@
 </view>
 
 
+<!-- 四格分栏 -->
 <view class="row-box clearfix four-list-icon">
 
-  <!-- 四格分栏 -->
+  <!-- 病人 -->
   <block wx:if="{{!doctor}}">
 
     <view bindtap="navgiate" data-page="docAskList/docAskList" data-pro="put">
@@ -46,15 +47,16 @@
 
   </block>
 
+  <!-- 医生 -->
   <block wx:else>
     <view>
-      <navigator url='../upload/page/page'>
+      <navigator url='docAskList/docAskList?type=DocAlive'>
         <icon class="iconfont icon-qiyejianchadan color5"></icon>
         <text>待咨询</text>
       </navigator>
     </view>
     <view>
-      <navigator url='../upload/page/page'>
+      <navigator url='docAskList/docAskList?type=DocClose'>
         <icon class="iconfont icon-chusheng color7"></icon>
         <text>已完成</text>
       </navigator>

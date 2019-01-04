@@ -1,16 +1,16 @@
 {
   "pages": [
+    "pages/account/account",
     "pages/index/index",
     "pages/account/answer/answer",
     "pages/doctor/doctor",
-    "pages/account/account",
     "pages/account/register/register",
     "pages/account/login/login",
     "pages/search/search",
     "pages/account/family/family",
     "pages/upload/page/page",
     "pages/doctor/consulting/consulting",
-    "pages/account/docAskList/docAskList"
+    "pages/account/askList/askList"
   ],
   "window": {
     "backgroundTextStyle": "light",
