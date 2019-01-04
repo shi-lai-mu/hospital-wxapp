@@ -9,7 +9,6 @@ Page({
       title: "我的咨询",
       bgColor: "#B5CFFF"
     });
-    e.type = 'DocClose'
 
     this.setData({
       doctor: app.globalData.doctor
@@ -38,7 +37,6 @@ Page({
         this.setData({
           list: newArr
         });
-        console.log(newArr)
       }
     });
 
