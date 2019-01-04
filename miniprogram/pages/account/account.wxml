@@ -35,9 +35,13 @@
   <!-- 病人 -->
   <block wx:if="{{!doctor}}">
 
-    <view bindtap="navgiate" data-page="askList/askList" data-pro="put">
+    <view bindtap="navgiate" data-page="askList/askList?type=DocAlive" data-pro="put">
       <icon class="iconfont icon-xiaoxi color5"></icon>
-      <text>消息</text>
+      <text>待咨询</text>
+    </view>
+    <view bindtap="navgiate" data-page="askList/askList?type=PatClose" data-pro="put">
+      <icon class="iconfont icon-xiaoxi color4"></icon>
+      <text>已结束</text>
     </view>
 
     <view bindtap="navgiate" data-page="family/family" data-pro="put">
@@ -50,16 +54,16 @@
   <!-- 医生 -->
   <block wx:else>
     <view>
-      <navigator url='askList/askList?type=DocAlive'>
+      <view bindtap="navgiate" data-page="askList/askList?type=DocAlive" data-pro="doc">
         <icon class="iconfont icon-qiyejianchadan color5"></icon>
         <text>待咨询</text>
-      </navigator>
+      </view>
     </view>
     <view>
-      <navigator url='askList/askList?type=DocClose'>
+      <view bindtap="navgiate" data-page="askList/askList?type=DocClose" data-pro="doc">
         <icon class="iconfont icon-chusheng color7"></icon>
         <text>已完成</text>
-      </navigator>
+      </view>
     </view>
   </block>
 

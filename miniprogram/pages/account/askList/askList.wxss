@@ -71,3 +71,14 @@ text {
   height: 100%;
   background-color: rgba(0, 0, 0, .05);
 }
+.not-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #888;
+}
+.not-content text {
+  width: 100%;
+  text-align: center;
+}

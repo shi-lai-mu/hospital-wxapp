@@ -1,7 +1,8 @@
 const app = getApp();
 Page({
   data: {
-    doctor: false
+    doctor: false,
+    empty: !1
   },
   onLoad: function(e) {
 
@@ -16,7 +17,8 @@ Page({
 
     // 按页面参数 进行请求
     e.type && app.request(app.globalData.userInfo.token, `getDocAskListBy${e.type}`, res => {
-      if (res.data) {
+      console.log(res.data)
+      if (res.data.length) {
 
         //排序 已回复 > 待回复 > 已结束
         let sorting = [
@@ -36,6 +38,10 @@ Page({
 
         this.setData({
           list: newArr
+        });
+      } else {
+        this.setData({
+          empty: !0
         });
       }
     });

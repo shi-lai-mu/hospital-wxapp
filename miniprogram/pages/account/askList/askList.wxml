@@ -8,3 +8,6 @@
     <text class="createTime">{{ item.create_day }}</text>
   </view>
 </navigator>
+<view wx:if="{{ empty }}" class="not-content">
+  <text>暂无任何咨询消息!</text>
+</view>
