@@ -72,7 +72,8 @@ App({
       // 获取 [医生]关闭的咨询列表
       getDocAskListByDocClose: "getDocAskListByDocClose?token=",
     },
-
+    userInfo: {},
+    doctor: false
   },
 
 
@@ -80,12 +81,12 @@ App({
   onLaunch: function() {
     wx.cloud.init();
 
-    // 内测版代码区域 //
+    let storage = wx.getStorageSync("userInfo");
+    if (storage && storage.bind_account && storage.endTime > Date.now() / 1000) {
+      this.globalData.userInfo = storage;
+      this.globalData.doctor = this.isDoctor();
+    }
 
-    this.globalData.userInfo = wx.getStorageSync('userInfo') || [];
-    this.globalData.doctor = this.isDoctor();
-
-    console.log(this.globalData)
       /////////////////
 
       // 初始化本地缓存
@@ -203,7 +204,6 @@ App({
 
     // 设定过久显示互动
     let showToast = false;
-    console.log(api)
     // 禁止显示toast api列表
     let notLoading = {
       getHistoryQA : 1,

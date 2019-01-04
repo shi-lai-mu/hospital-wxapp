@@ -84,11 +84,11 @@ Page({
       });
 
       // 如果本地已存储数据且没过期则用本地的
-      let storage = wx.getStorageSync("userInfo");
-      if (storage && storage.bind_account && storage.endTime > Date.now() / 1000) return this.setData({
-        userInfo: storage,
-        doctor: storage.bind_account ? !!storage.bind_account.ysdm : false
-      });
+      // let storage = wx.getStorageSync("userInfo");
+      // if (storage && storage.bind_account && storage.endTime > Date.now() / 1000) return this.setData({
+      //   userInfo: storage,
+      //   doctor: storage.bind_account ? !!storage.bind_account.ysdm : false
+      // });
 
       // 获取openid
       wx.cloud.callFunction({
