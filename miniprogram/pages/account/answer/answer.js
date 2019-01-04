@@ -16,7 +16,6 @@ Page({
   },
 
   onLoad: function(option) {
-    console.log(app.globalData.userInfo)
 
     option.id = 648;
 
@@ -58,7 +57,6 @@ Page({
         loading: false
       });
 
-      update();
     });
     // 咨询消息读取[权重 中]
     app.request(value, "getAskDoctorDetail", res => {
@@ -112,33 +110,36 @@ Page({
         loading: false
       });
 
+      this.update();
       // 滑动到历史位置[测试]
       let query = wx.createSelectorQuery();
       query.select('.old').boundingClientRect();
       query.exec(res => {
-        (res[0].top && msgBox.box.height) && this.setData({
+        (res[0].top && msgBox.box) && this.setData({
           scrollTop: res[0].top + msgBox.box.height + 'rpx'
         });
       });
 
-      update();
     });
+  },
 
-    function update() {
-      let query = wx.createSelectorQuery();
-      // 得到聊天视图大小
-      query.select('.msg-box').boundingClientRect();
-      query.exec(res => {
-        msgBox.box = res[0];
-        let child = wx.createSelectorQuery();
-        child.selectAll('.in-box').boundingClientRect();
-        child.selectViewport()
+  /**
+   * 视图大小更新
+   */
+  update: function() {
+    let query = wx.createSelectorQuery();
+    // 得到聊天视图大小
+    query.select('.msg-box').boundingClientRect();
+    query.exec(res => {
+      msgBox.box = res[0];
+      let child = wx.createSelectorQuery();
+      child.selectAll('.in-box').boundingClientRect();
+      child.selectViewport()
 
-        child.exec(res => {
-          msgBox.child = res[0];
-        });
+      child.exec(res => {
+        msgBox.child = res[0];
       });
-    }
+    });
   },
 
   onShow: function() {
@@ -173,7 +174,6 @@ Page({
         ask_id: this.data.id,
         content: con
       }, this.data.doctor ? "docAddAnswer" : "patAddAnswer", res => {
-        console.log(res)
         if (!res.data.status) {
           this.data.msg[index - 1].error = ' [发送失败]';
           this.setData({
@@ -213,13 +213,21 @@ Page({
     // 节流
     clearTimeout(scroll);
     scroll = setTimeout(() => {
+      this.update();
       // 计算可视角大小
       let top = e.detail.scrollTop + msgBox.box.height,
         newVl = last;
       
+      // 从最后一条开始往下遍历 防止多余的遍历
       for (let i = last, l = msgBox.child.length; i < l; i++) {
-        // 标记医生消息
-        (msgBox.child[i].top <= top && !this.data.msg[i].is_question) && (last = i);
+        (msgBox.child[i].top <= top && 
+          (
+            // 标记医生消息
+            (!this.data.doctor && !this.data.msg[i].is_question) ||
+            // 标记用户消息
+            (this.data.doctor && this.data.msg[i].is_question)
+          )
+        ) && (last = i);
       }
 
       // 得到屏幕最后一条可见消息 标记已读
