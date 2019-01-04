@@ -64,7 +64,6 @@ Page({
         this.setData({
           detail: res.data
         });
-        console.log(res)
       } else this.setData({
         toast: {
           text: "咨询数据读取错误,不存在或无权限!",
