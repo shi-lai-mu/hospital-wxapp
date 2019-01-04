@@ -63,8 +63,10 @@ App({
       qaMarkAsRead: "QAMarkAsRead/",
       // 获取 历史聊天记录
       getHistoryQA: "getHistoryQA/",
-      // 获取 病人账户下的咨询记录
-      getDocAskListByPat: "getDocAskListByPat?token=",
+      // 获取 [病人]活跃的咨询列表
+      getDocAskListByPatAlive: "getDocAskListByPatAlive?token=",
+      // 获取 [病人]活跃的咨询列表
+      getDocAskListByPatClose: "getDocAskListByPatClose?token=",
       // 获取 [医生]活跃的咨询列表
       getDocAskListByDocAlive: "getDocAskListByDocAlive?token=",
       // 获取 [医生]关闭的咨询列表
