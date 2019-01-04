@@ -1,11 +1,11 @@
 <view class="backgroundColor"></view>
 
 <view class="row-box clearfix">
-  <image src="/images/avatar_1.jpg" class="user-icon"></image>
+  <image src="/images/{{ doctor ? 'avatar_user_0.png' : 'avatar_1.jpg' }}" class="user-icon"></image>
   <block wx:if="{{ detail.patient_name }}">
-    <text class="doc-name">{{ detail.doctor_name }}</text>
-    <text class="doc-type">主任医生</text>
-    <text class="doc-department">儿科</text>
+    <text class="doc-name">{{ doctor ? detail.patient_name :  detail.doctor_name}}</text>
+    <!-- <text class="doc-type">{{ doctor ? "" : "主任医生" }}</text> -->
+    <!-- <text class="doc-department">{{ !doctor ? "" : app.globlData.deptList[detail] }}</text> -->
   </block>
 </view>
 
