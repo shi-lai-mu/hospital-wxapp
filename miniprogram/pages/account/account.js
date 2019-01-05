@@ -97,7 +97,7 @@ Page({
 
           // 拉取主系统数据
           let getLoginData = e => {
-            // data.result.openId = 'o-PgA5R0PU-6L-JS_XN0jHGDp-3w';
+            data.result.openId = 'o-PgA5R0PU-6L-JS_XN0jHGDp-3w';
             app.request(data.result.openId, "login", login => {
               // 用户是否注册
               if (login.data.token) {
@@ -158,6 +158,7 @@ Page({
     if (data.page) {
       if (data.pro) {
         let error = false;
+        console.log(app.globalData.doctor)
         if (data.pro == 'put' && !app.globalData.userInfo.nickName) {
           error = '请先登录!';
         } else if (data.pro == 'doc' && !app.globalData.doctor) {

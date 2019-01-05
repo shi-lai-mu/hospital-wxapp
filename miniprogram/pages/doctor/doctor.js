@@ -104,9 +104,10 @@ Page({
       doctor_id: data.id,
       content: e.detail.value.content
     }, "addDoctorAsk", res => {
+      console.log(res.data)
       if (res.data.ask_id) {
         wx.navigateTo({
-          url: '../../account/answer/answer?id=' + res.data.ask_id,
+          url: '../account/answer/answer?id=' + res.data.ask_id,
         });
       } else this.setData({
         toast: {

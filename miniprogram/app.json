@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/account/account",
-    "pages/account/answer/answer",
     "pages/account/askList/askList",
     "pages/index/index",
     "pages/doctor/doctor",

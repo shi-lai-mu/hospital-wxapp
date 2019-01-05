@@ -17,6 +17,7 @@ Page({
 
   onLoad: function(option) {
 
+    option.id = 659;
     this.setData({
       user: app.globalData.userInfo,
       id: option.id,
@@ -119,6 +120,45 @@ Page({
       });
 
     });
+
+    setInterval(() => {
+
+      app.request(value, "getUnreadQA", res => {
+
+        if (!this.data.msg.length && !res.data.length) return;
+
+        // 计算时差
+        let list = this.unDate(res.data);
+        // 过滤出自己的消息
+        for (let i = 0, l = res.data.length - 1; i < l; i++) {
+          if (this.data.doctor) {
+            if (!res.data[i].is_question) res.data.splice(i, 1)
+          } else {
+            if (res.data[i].is_question) res.data.splice(i, 1)
+          }
+        }
+        if (res.data.length) {
+          this.data.msg.push(...res.data);
+          this.setData({
+            msg: this.data.msg
+          });
+          last = this.data.msg.length - 1
+          console.log(res.data,last)
+          app.request(`${this.data.id}/${res.data[res.data.length - 1].id}?token=${token}`, "qaMarkAsRead");
+
+          this.update();
+          // 滑动到历史位置[测试]
+          let query = wx.createSelectorQuery();
+          query.select('.msg-box').boundingClientRect();
+          query.exec(res => {
+            (res[0].top && msgBox.box) && this.setData({
+              scrollTop: (last * 150) + 'rpx'
+            });
+          });
+        }
+
+      });
+    }, 5000)
   },
 
   /**
@@ -212,8 +252,9 @@ Page({
     clearTimeout(scroll);
     scroll = setTimeout(() => {
       this.update();
+      let height = msgBox.box ? msgBox.box.height : 0;
       // 计算可视角大小
-      let top = e.detail.scrollTop + msgBox.box.height,
+      let top = e.detail.scrollTop + height,
         newVl = last;
       
       // 从最后一条开始往下遍历 防止多余的遍历

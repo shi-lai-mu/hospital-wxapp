@@ -35,7 +35,7 @@
   <!-- 病人 -->
   <block wx:if="{{!doctor}}">
 
-    <view bindtap="navgiate" data-page="askList/askList?type=DocAlive" data-pro="put">
+    <view bindtap="navgiate" data-page="askList/askList?type=PatAlive" data-pro="put">
       <icon class="iconfont icon-xiaoxi color5"></icon>
       <text>待咨询</text>
     </view>

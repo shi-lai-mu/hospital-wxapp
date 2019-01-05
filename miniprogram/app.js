@@ -209,7 +209,8 @@ App({
       getHistoryQA : 1,
       patAddAnswer : 1,
       qaMarkAsRead : 1,
-      docAddAnswer : 1
+      docAddAnswer : 1,
+      getUnreadQA: 1
     };
     // 如果不在不显示toast列表内
     if (!(api in notLoading)) {
