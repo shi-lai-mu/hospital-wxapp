@@ -5,6 +5,8 @@ let msgBox = {},
   last = 0,
   scroll = null;
 
+let unRead = null;
+
 Page({
 
   data: {
@@ -121,7 +123,7 @@ Page({
 
     });
 
-    setInterval(() => {
+    unRead = setInterval(() => {
 
       app.request(value, "getUnreadQA", res => {
 
@@ -142,9 +144,15 @@ Page({
           this.setData({
             msg: this.data.msg
           });
-          last = this.data.msg.length - 1
-          console.log(res.data,last)
-          app.request(`${this.data.id}/${res.data[res.data.length - 1].id}?token=${token}`, "qaMarkAsRead");
+          let oldLast = last;
+          // 根据 得到消息进行判断
+          for (let i = last, l = this.data.msg.length; i < l; i ++) {
+            if (!this.data.doctor && !this.data.msg[i].is_question) last = i;
+            if (this.data.doctor && this.data.msg[i].is_question) last = i;
+          }
+          if (oldLast < last) {
+            app.request(`${this.data.id}/${res.data[res.data.length - 1].id}?token=${token}`, "qaMarkAsRead");
+          }
 
           this.update();
           // 滑动到历史位置[测试]
@@ -159,6 +167,11 @@ Page({
 
       });
     }, 5000)
+  },
+
+
+  onUnload: function () {
+    clearInterval(unRead);
   },
 
   /**
