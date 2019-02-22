@@ -5,7 +5,14 @@
 ### 内部原创组件说明
 >`Toast` 组件: [查看 说明/源码](https://gitee.com/slm47888/wechat_applet__component_toast)
 ### 部分截图预览：
-
+()[https://gitee.com/shi_lai_mu/wxxcxqd/blob/master/png/home.jpg]
+()[https://gitee.com/shi_lai_mu/wxxcxqd/blob/master/png/card.jpg]
+()[https://gitee.com/shi_lai_mu/wxxcxqd/blob/master/png/dc.jpg]
+()[https://gitee.com/shi_lai_mu/wxxcxqd/blob/master/png/msg.jpg]
+()[https://gitee.com/shi_lai_mu/wxxcxqd/blob/master/png/msg2.jpg]
+()[https://gitee.com/shi_lai_mu/wxxcxqd/blob/master/png/msg3.jpg]
+()[https://gitee.com/shi_lai_mu/wxxcxqd/blob/master/png/register.jpg]
+()[https://gitee.com/shi_lai_mu/wxxcxqd/blob/master/png/user.jpg]
 ### 进度浏览：
 `删除线代表未完成`
 >##### `页面/布局:`
