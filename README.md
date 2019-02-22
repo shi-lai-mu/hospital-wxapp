@@ -5,14 +5,14 @@
 ### 内部原创组件说明
 >`Toast` 组件: [查看 说明/源码](https://gitee.com/slm47888/wechat_applet__component_toast)
 ### 部分截图预览：
-![Image](https://gitee.com/shi_lai_mu/wxxcxqd/blob/master/png/home.jpg)
-![Image](https://gitee.com/shi_lai_mu/wxxcxqd/blob/master/png/card.jpg)
-![Image](https://gitee.com/shi_lai_mu/wxxcxqd/blob/master/png/dc.jpg)
-![Image](https://gitee.com/shi_lai_mu/wxxcxqd/blob/master/png/msg.jpg)
-![Image](https://gitee.com/shi_lai_mu/wxxcxqd/blob/master/png/msg2.jpg)
-![Image](https://gitee.com/shi_lai_mu/wxxcxqd/blob/master/png/msg3.jpg)
-![Image](https://gitee.com/shi_lai_mu/wxxcxqd/blob/master/png/register.jpg)
-![Image](https://gitee.com/shi_lai_mu/wxxcxqd/blob/master/png/user.jpg)
+![Image](//res.mczyzy.cn/img/git-img/wxxcxqd/home.jpg)
+![Image](//res.mczyzy.cn/img/git-img/wxxcxqd/card.jpg)
+![Image](//res.mczyzy.cn/img/git-img/wxxcxqd/dc.jpg)
+![Image](//res.mczyzy.cn/img/git-img/wxxcxqd/msg.jpg)
+![Image](//res.mczyzy.cn/img/git-img/wxxcxqd/msg2.jpg)
+![Image](//res.mczyzy.cn/img/git-img/wxxcxqd/msg3.jpg)
+![Image](//res.mczyzy.cn/img/git-img/wxxcxqd/register.jpg)
+![Image](//res.mczyzy.cn/img/git-img/wxxcxqd/user.jpg)
 ### 进度浏览：
 `删除线代表未完成`
 >##### `页面/布局:`
