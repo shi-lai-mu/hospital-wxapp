@@ -16,6 +16,9 @@
 <img width="200" src="http://res.mczyzy.cn/img/git-img/wxxcxqd/user.jpg" alt="SLM-BLOG LOGO"/>
 </div>
 
+### 修改接口[开源设定]：
+修改 [app.js](https://github.com/shi-lai-mu/hospital-wxapp/blob/master/miniprogram/app.js) 文件内的URL即可，接口传回数据参考下方的后端文档
+
 ### 进度浏览：
 `删除线代表未完成`
 >##### `页面/布局:`
