@@ -167,8 +167,8 @@ PS：以下2个账号仅供测试：
     "wecha_id": "oW*****************************Kuw",
     "medical_No": "3303*************34",
     "patientname": "姓名01",
-    "lxfs": "13345829695",
-    "csrq": "2000-04-01",
+    "lxfs": "133*******5",
+    "csrq": "2000-00-00",
     "l_sex": "男",
     "is_temp": 0,
     "is_default": "1",
@@ -455,7 +455,7 @@ doc_name表示医生名称，当为“”的时候，表示不限制医生姓名
 会返回
 
 ```json
-[{"id":103,"token":"ynxx14737******","wecha_id":"cb","username":null,"phone":"17**875****","password":null,"name":"姓名03","hospital_id":0,"dept_id":6,"sub_dept_id":30,"price":null,"ldesc":null,"mzsj":null,"photo":null,"level_id":null,"lxfs":null,"qrcode":null,"email":null,"l_sex":null,"is_community":0,"wxh":null,"csrq":null,"status":0,"active_index":0,"follow_num":0,"ysdm":"YTU0510","ksdm":"K18","is_online":1,"zhengshu_no":null,"dp_count":1,"dp_score":5,"rounds":-1,"is_recommended":0,"good_num":0,"normal_num":0,"bad_num":0,"total_num":0,"create_time":null,"is_expert":null,"MatchDegree":"0.5000"},{"id":101,"token":"ynxx14737******","wecha_id":"oWq8F1q8P4VQ04hOUvYEchS0femg","username":null,"phone":"1876782****5519****","password":"","name":"陈豪杰","hospital_id":null,"dept_id":1,"sub_dept_id":13,"price":null,"ldesc":null,"mzsj":null,"photo":null,"level_id":115,"lxfs":null,"qrcode":null,"email":null,"l_sex":"男","is_community":0,"wxh":null,"csrq":null,"status":1,"active_index":0,"follow_num":0,"ysdm":"yux","ksdm":"34","is_online":1,"zhengshu_no":null,"dp_count":1,"dp_score":5,"rounds":-1,"is_recommended":0,"good_num":0,"normal_num":0,"bad_num":0,"total_num":0,"create_time":null,"is_expert":null,"MatchDegree":"0.3333"}]
+[{"id":103,"token":"ynxx14737******","wecha_id":"cb","username":null,"phone":"17**875****","password":null,"name":"姓名03","hospital_id":0,"dept_id":6,"sub_dept_id":30,"price":null,"ldesc":null,"mzsj":null,"photo":null,"level_id":null,"lxfs":null,"qrcode":null,"email":null,"l_sex":null,"is_community":0,"wxh":null,"csrq":null,"status":0,"active_index":0,"follow_num":0,"ysdm":"YTU0510","ksdm":"K18","is_online":1,"zhengshu_no":null,"dp_count":1,"dp_score":5,"rounds":-1,"is_recommended":0,"good_num":0,"normal_num":0,"bad_num":0,"total_num":0,"create_time":null,"is_expert":null,"MatchDegree":"0.5000"},{"id":101,"token":"ynxx14737******","wecha_id":"oWq********chS0femg","username":null,"phone":"1876782****5519****","password":"","name":"陈**杰","hospital_id":null,"dept_id":1,"sub_dept_id":13,"price":null,"ldesc":null,"mzsj":null,"photo":null,"level_id":115,"lxfs":null,"qrcode":null,"email":null,"l_sex":"男","is_community":0,"wxh":null,"csrq":null,"status":1,"active_index":0,"follow_num":0,"ysdm":"yux","ksdm":"34","is_online":1,"zhengshu_no":null,"dp_count":1,"dp_score":5,"rounds":-1,"is_recommended":0,"good_num":0,"normal_num":0,"bad_num":0,"total_num":0,"create_time":null,"is_expert":null,"MatchDegree":"0.3333"}]
 ```
 
 限于篇幅有限，不便展开json，可以自己复制到json查看器中观看。
@@ -548,7 +548,7 @@ $.ajax(settings).done(function (response) {
 成功返回如下：
 
 ```json
-[{"id":4559,"zxyy_id":"183589","medical_No":"3303*************34","patientname":"姓名01","phone":"13345829695","csrq":"2000-04-01","isLord":"1"},{"id":4572,"zxyy_id":"179756","medical_No":"230***************6","patientname":"姓名02","phone":"17**875****","csrq":"1986-02-23","isLord":"0"}]
+[{"id":4559,"zxyy_id":"183589","medical_No":"3303*************34","patientname":"姓名01","phone":"1334******","csrq":"2000-00-00","isLord":"1"},{"id":4*72,"zxyy_id":"179756","medical_No":"230***************6","patientname":"姓名02","phone":"17**875****","csrq":"1986-02-23","isLord":"0"}]
 ```
 
 这边的medical_No是身份证，zxyy_id是医院ID，isLord是标志位，用于标明是否是否为主主家庭成员。比如账号本身是由姓名01申请的，那他就是主家庭成员。如果他添加了几个家庭成员到账号里来，那他添加的那些账号就是非主家庭成员，用isLord=0来标志。
@@ -812,7 +812,7 @@ status表示当前问题状态（-1为待医生回复，0为医生已经回复�
 24小时后问题就自动结束 
 
 ```json
-[{"id":635,"token":"ynxx14737******","wecha_id":"oW*****************************Kuw","patient_id":4559,"zxyy_account_id":null,"patient_name":"姓名01","doctor_id":98,"doctor_name":"蔡崇超","age":"18","content":"测试测试测试测试测试测试测试测试测试","help":null,"l_sex":"男","ill":null,"condition":"姓名01的提问","exp":null,"ask_type":0,"question_type":0,"hospital":null,"jzjl":null,"chufang":null,"photo":null,"dept_name":null,"dp_status":0,"status":1,"create_day":"2018-11-01","create_time":"2018-11-01 16:14:30","kyqx":null,"cflx":null,"jblx":null,"cyts":null,"yfid":null},
+[{"id":635,"token":"ynxx14737******","wecha_id":"oW*****************************Kuw","patient_id":4559,"zxyy_account_id":null,"patient_name":"姓名01","doctor_id":98,"doctor_name":"蔡**","age":"18","content":"测试测试测试测试测试测试测试测试测试","help":null,"l_sex":"男","ill":null,"condition":"姓名01的提问","exp":null,"ask_type":0,"question_type":0,"hospital":null,"jzjl":null,"chufang":null,"photo":null,"dept_name":null,"dp_status":0,"status":1,"create_day":"2018-11-01","create_time":"2018-11-01 16:14:30","kyqx":null,"cflx":null,"jblx":null,"cyts":null,"yfid":null},
  
  {"id":648,"token":"ynxx14737******","wecha_id":"oW*****************************Kuw","patient_id":4559,"zxyy_account_id":187977,"patient_name":"姓名01","doctor_id":103,"doctor_name":"姓名03","age":"18","content":"发送一条消息试试看","help":null,"l_sex":"男","ill":null,"condition":"姓名01的提问","exp":null,"ask_type":0,"question_type":0,"hospital":null,"jzjl":null,"chufang":null,"photo":null,"dept_name":null,"dp_status":0,"status":-1,"create_day":"2018-12-20","create_time":"2018-12-20 16:40:30","kyqx":"","cflx":null,"jblx":null,"cyts":null,"yfid":null}]
 ```
