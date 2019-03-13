@@ -13,7 +13,7 @@
 <img width="200" align="left" src="https://slmblog.com/img/git-img/wxxcxqd/msg2.jpg" alt="SLM-BLOG LOGO"/>
 <img width="200" align="left" src="https://slmblog.com/img/git-img/wxxcxqd/msg3.jpg" alt="SLM-BLOG LOGO"/>
 <img width="200" align="left" src="https://slmblog.com/img/git-img/wxxcxqd/register.jpg" alt="SLM-BLOG LOGO"/>
-<img width="200" src="http://res.mczyzy.cn/img/git-img/wxxcxqd/user.jpg" alt="SLM-BLOG LOGO"/>
+<img width="200" src="https://slmblog.com/img/git-img/wxxcxqd/user.jpg" alt="SLM-BLOG LOGO"/>
 </div>
 
 ### 修改接口[开源设定]：
